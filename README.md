@@ -10,4 +10,4 @@ Kidnap the Princess
 631310082 กมลลักษณ์ ศรีตุลานนท์   https://github.com/ictsu631310082 \
 631310085 คฑาธร แสงแก้วสุข      https://github.com/ictsu631310085 \
 631310089 นทีธร ธรรมชาติ         https://github.com/ictsu631310089 \
-631310435 จิรพัทธ์ สายสืบ         https://github.com/ictsu631310435 \
+631310435 จิรพัทธ์ สายสืบ         https://github.com/ictsu631310435 
