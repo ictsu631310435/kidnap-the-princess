@@ -10,4 +10,6 @@ Kidnap the Princess
 631310082 กมลลักษณ์ ศรีตุลานนท์ (3D Modeler)   https://github.com/ictsu631310082 \
 631310085 คฑาธร แสงแก้วสุข (Developer)     https://github.com/ictsu631310085 \
 631310089 นทีธร ธรรมชาติ   (2D Artist)      https://github.com/ictsu631310089 \
-631310435 จิรพัทธ์ สายสืบ   (Technical Artist)      https://github.com/ictsu631310435 
+631310435 จิรพัทธ์ สายสืบ   (Technical Artist)      https://github.com/ictsu631310435
+
+Unity 2021.3.8f1
