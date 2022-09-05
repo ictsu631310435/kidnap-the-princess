@@ -57,8 +57,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\PlayerScripts\Behaviours\PlayerWalkBehaviour.cs" />
-    <Compile Include="Assets\Scripts\BasicScripts\Interfaces\IDamageable.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\Behaviours\Test_MeleeEnemyAttack.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\Behaviours\PlayerRollBehaviour.cs" />
     <Compile Include="Assets\Scripts\HealthSystem.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\TriggerByPlayer.cs" />
@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\EnemyScripts\Behaviours\Test_MeleeEnemyIdle.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Behaviours\PlayerMeleeAttackBehaviour.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Behaviours\PlayerIdleBehaviour.cs" />
+    <Compile Include="Assets\Scripts\BasicScripts\MaterialFlashHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -14,10 +14,10 @@ public class PlayerMeleeAttackBehaviour : StateMachineBehaviour
         _playerCtrl = animator.gameObject.GetComponent<PlayerController>();
 
         // Stop Player's Movement
-        _playerCtrl.rb.velocity = Vector3.zero;
+        _playerCtrl.rb.velocity = Vector2.zero;
 
         // Detect Melee Hit
-        _playerCtrl.DetectHit(_playerCtrl.attackPoint, _playerCtrl.meleeRange, _playerCtrl.enemyLayer);
+        _playerCtrl.DetectMeleeHit(_playerCtrl.attackPoint, _playerCtrl.meleeRange, _playerCtrl.enemyLayer);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

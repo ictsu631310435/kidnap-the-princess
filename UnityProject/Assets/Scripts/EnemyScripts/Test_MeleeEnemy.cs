@@ -19,11 +19,10 @@ public class Test_MeleeEnemy : MonoBehaviour
     [HideInInspector] public float nextAttackTime;
     [HideInInspector] public Transform target;
     [HideInInspector] public float targetDistance;
+    [HideInInspector] public Vector2 moveDir;
 
     private Animator _anim;
-    [HideInInspector] public Rigidbody rb;
-
-    //[HideInInspector] public NavMeshAgent navAgent;
+    [HideInInspector] public Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
@@ -31,11 +30,7 @@ public class Test_MeleeEnemy : MonoBehaviour
         _healthSys = GetComponent<HealthSystem>();
         target = FindObjectOfType<PlayerController>().transform;
         _anim = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody>();
-        /*navAgent = GetComponent<NavMeshAgent>();
-        navAgent.speed = moveSpeed;
-        navAgent.angularSpeed = turnSpeed;
-        navAgent.stoppingDistance = attackDistance;*/
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -63,28 +58,27 @@ public class Test_MeleeEnemy : MonoBehaviour
 
     public void Turn()
     {
-        Vector3 heading = target.position - transform.position;
-        float distance = heading.magnitude;
-        Vector3 moveDir = heading / distance;
+        Vector2 heading = target.position - transform.position;
+        moveDir = heading.normalized;
 
-        Quaternion toRotation = Quaternion.LookRotation(moveDir, Vector3.up);
+        Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, moveDir);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, turnSpeed * Time.deltaTime);
     }
 
-    public void Follow()
+    public void Move()
     {
-        //navAgent.SetDestination(target.position);
-        transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+        rb.velocity = moveDir * moveSpeed;
     }
 
     public void Hurt(int currentHealth)
     {
-        Debug.Log(gameObject.name + " Hurt");
-
         if (currentHealth <= 0)
         {
             Die();
+            return;
         }
+
+        Debug.Log(gameObject.name + " Hurt");
     }
 
     private void Die()
@@ -93,10 +87,10 @@ public class Test_MeleeEnemy : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void DetectHit(Transform attackPoint, float range, LayerMask targetLayer)
+    public void DetectMeleeHit(Transform attackPoint, float range, LayerMask targetLayer)
     {
         // Player caught in Range.
-        Collider[] hitColliders = Physics.OverlapSphere(attackPoint.position, range, targetLayer);
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(attackPoint.position, range, targetLayer);
         foreach (var collider in hitColliders)
         {
             // Check for HealthSystem

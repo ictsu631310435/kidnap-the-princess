@@ -7,19 +7,18 @@ public class PlayerController : MonoBehaviour
 {
     #region Data Members
     private float _moveX; // Horizontal Movement Input
-    private float _moveZ; // Vertical Movement Input if 3D Scene
-    [HideInInspector] public Vector3 moveDir; // Movement Direction
-
+    private float _moveY; // Vertical Movement Input
+    [HideInInspector] public Vector2 moveDir; // Movement Direction
     [Tooltip("Player's movement speed.")]
     public float moveSpeed;
 
-    [HideInInspector] public Rigidbody rb;
+    [HideInInspector] public Rigidbody2D rb;
 
     [Tooltip("Player's turning speed.")]
     public float turnSpeed;
+    [HideInInspector] public Vector2 dir; // Rolling Direction
+    public float rollForce;
 
-    [Tooltip("Player's attack mode, 0 is melee and 1 is range.")]
-    public bool isRange;
     [Tooltip("The origin of player's attack.")]
     public Transform attackPoint;
     [Tooltip("Player's melee attack range.")]
@@ -33,7 +32,9 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         // Get Component
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();
+
+        dir = Vector2.up;
     }
 
     // Update is called once per frame
@@ -41,9 +42,9 @@ public class PlayerController : MonoBehaviour
     {
         // Get Player's MovementInput
         _moveX = Input.GetAxis("Horizontal"); // X Axis Input
-        _moveZ = Input.GetAxis("Vertical"); // Z Axis Input
+        _moveY = Input.GetAxis("Vertical"); // Y Axis Input
         // Turn MovementInput into MovementDirection
-        moveDir = new Vector3(_moveX, 0, _moveZ).normalized;
+        moveDir = new Vector2(_moveX, _moveY).normalized;
     }
 
     void OnDrawGizmos()
@@ -63,15 +64,21 @@ public class PlayerController : MonoBehaviour
     // Method for Turning Character
     public void Turn()
     {
-        Quaternion toRotation = Quaternion.LookRotation(moveDir, Vector3.up);
+        Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, moveDir);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, turnSpeed * Time.deltaTime);
     }
-    
-    // Method for Melee Hit Detection
-    public void DetectHit(Transform attackPoint, float range, LayerMask targetLayer)
+
+    // Method for Rolling Character
+    public void Roll()
     {
-        // Array of all Enemies caught in Range.
-        Collider[] hitColliders = Physics.OverlapSphere(attackPoint.position, range, targetLayer);
+        rb.AddForce(dir * rollForce);
+    }
+
+    // Method for Melee Hit Detection
+    public void DetectMeleeHit(Transform attackPoint, float range, LayerMask targetLayer)
+    {
+        // Array of all Colliders in targetLayer caught in Range.
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(attackPoint.position, range, targetLayer);
         foreach (var collider in hitColliders)
         {
             // Check for HealthSystem

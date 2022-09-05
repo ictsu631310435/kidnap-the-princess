@@ -10,7 +10,8 @@ public class Test_MeleeEnemyAttack : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _MeleeEnemy = animator.GetComponent<Test_MeleeEnemy>();
-        _MeleeEnemy.DetectHit(_MeleeEnemy.attackPoint, _MeleeEnemy.attackRange, _MeleeEnemy.playerLayer);
+
+        _MeleeEnemy.DetectMeleeHit(_MeleeEnemy.attackPoint, _MeleeEnemy.attackRange, _MeleeEnemy.playerLayer);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

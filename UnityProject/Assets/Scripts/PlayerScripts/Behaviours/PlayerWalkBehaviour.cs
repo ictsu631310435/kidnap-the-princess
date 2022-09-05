@@ -11,30 +11,38 @@ public class PlayerWalkBehaviour : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // Get Component
-        _playerCtrl = animator.gameObject.GetComponent<PlayerController>();    
+        _playerCtrl = animator.gameObject.GetComponent<PlayerController>();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // Check if Player is still walking
-        if (_playerCtrl.moveDir != Vector3.zero)
+        if (_playerCtrl.moveDir != Vector2.zero)
         {
             _playerCtrl.Turn(); // Turn Character to MovementDirection
             _playerCtrl.Move(); // Move Character
+
+            _playerCtrl.dir = _playerCtrl.moveDir;
+
+            // Player inputs Roll, Transition to Roll State
+            if (Input.GetButtonDown("Roll"))
+            {
+                // SetTrigger for State Transition to "Melee Attack"
+                animator.SetTrigger("Roll");
+            }
+            // Player inputs attack, Transition to Attack State
+            else if (Input.GetButtonDown("MeleeAttack"))
+            {
+                // SetTrigger for State Transition to "Melee Attack"
+                animator.SetTrigger("Attack");
+            }
         }
         // Player has stopped walking
         else
         {
             // SetBool for State Transition to "Idle"
             animator.SetBool("isWalking", false);
-        }
-
-        // Player inputs attack, Transition to Attack State
-        if(Input.GetButtonDown("Attack"))
-        {
-            // SetTrigger for State Transition to "Melee Attack"
-            animator.SetTrigger("Attack");
         }
     }
 

@@ -14,28 +14,33 @@ public class PlayerIdleBehaviour : StateMachineBehaviour
         _playerCtrl = animator.gameObject.GetComponent<PlayerController>();
 
         // Stop Player's Movement
-        //playerCtrl.rb2d.velocity = Vector2.zero;
-        _playerCtrl.rb.velocity = Vector3.zero;
-
-        // Set AttackMode Bool 
-        animator.SetBool("isRange", _playerCtrl.isRange);
+        //_playerCtrl.rb.velocity = Vector2.zero;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        // Player inputs movement, Transition to Walk State
-        if (_playerCtrl.moveDir != Vector3.zero)
+        // Stop Player's Movement
+        _playerCtrl.rb.velocity = Vector2.zero;
+
+        // Player inputs Movement, Transition to Walk State
+        if (_playerCtrl.moveDir != Vector2.zero)
         {
             // SetBool for State Transition to "Walk"
             animator.SetBool("isWalking", true);
         }
-        // Player inputs attack, Transition to Attack State
-        else if(Input.GetButtonDown("Attack"))
+        // Player inputs Roll, Transition to Roll State
+        else if (Input.GetButtonDown("Roll"))
+        {
+            // SetTrigger for State Transition to "Melee Attack"
+            animator.SetTrigger("Roll");
+        }
+        // Player inputs MeleeAttack, Transition to Attack State
+        else if(Input.GetButtonDown("MeleeAttack"))
         {
             // SetTrigger for State Transition to "Melee Attack"
             animator.SetTrigger("Attack");
-        }   
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

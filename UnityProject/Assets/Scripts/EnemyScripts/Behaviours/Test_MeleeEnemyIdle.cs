@@ -10,6 +10,8 @@ public class Test_MeleeEnemyIdle : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _MeleeEnemy = animator.GetComponent<Test_MeleeEnemy>();
+
+        _MeleeEnemy.rb.velocity = Vector2.zero;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
