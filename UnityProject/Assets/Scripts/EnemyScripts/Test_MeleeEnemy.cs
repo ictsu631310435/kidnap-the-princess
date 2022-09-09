@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class Test_MeleeEnemy : MonoBehaviour
 {
-    private HealthSystem _healthSys;
+    private HealthHandler _healthSys;
 
     public float moveSpeed;
     public float turnSpeed;
@@ -27,7 +27,7 @@ public class Test_MeleeEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _healthSys = GetComponent<HealthSystem>();
+        _healthSys = GetComponent<HealthHandler>();
         target = FindObjectOfType<PlayerController>().transform;
         _anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -94,7 +94,7 @@ public class Test_MeleeEnemy : MonoBehaviour
         foreach (var collider in hitColliders)
         {
             // Check for HealthSystem
-            if (collider.gameObject.TryGetComponent(out HealthSystem healthSystem))
+            if (collider.gameObject.TryGetComponent(out HealthHandler healthSystem))
             {
                 // Deal damage
                 Debug.Log(gameObject.name + " MeleeAttack " + collider.name);

@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 
     [Tooltip("Player's turning speed.")]
     public float turnSpeed;
-    [HideInInspector] public Vector2 dir; // Rolling Direction
+    [HideInInspector] public Vector3 dir; // Rolling Direction
     public float rollForce;
 
     [Tooltip("The origin of player's attack.")]
@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
         // Get Component
         rb = GetComponent<Rigidbody2D>();
 
-        dir = Vector2.up;
+        dir = Quaternion.RotateTowards(transform.rotation, transform.rotation, turnSpeed) * Vector2.up;
     }
 
     // Update is called once per frame
@@ -66,11 +66,14 @@ public class PlayerController : MonoBehaviour
     {
         Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, moveDir);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, turnSpeed * Time.deltaTime);
+
+        dir = Quaternion.RotateTowards(transform.rotation, toRotation, turnSpeed * Time.deltaTime) * Vector2.up;
     }
 
     // Method for Rolling Character
     public void Roll()
     {
+        //rb.velocity = dir * rollForce;
         rb.AddForce(dir * rollForce);
     }
 
@@ -82,11 +85,11 @@ public class PlayerController : MonoBehaviour
         foreach (var collider in hitColliders)
         {
             // Check for HealthSystem
-            if (collider.gameObject.TryGetComponent(out HealthSystem healthSystem))
+            if (collider.gameObject.TryGetComponent(out HealthHandler health))
             {
                 // Deal damage
                 Debug.Log(gameObject.name + " MeleeAttack " + collider.name);
-                healthSystem.ChangeHealth(-1);
+                health.ChangeHealth(-1);
             }
         }
     }

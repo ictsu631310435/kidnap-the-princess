@@ -23,8 +23,6 @@ public class PlayerWalkBehaviour : StateMachineBehaviour
             _playerCtrl.Turn(); // Turn Character to MovementDirection
             _playerCtrl.Move(); // Move Character
 
-            _playerCtrl.dir = _playerCtrl.moveDir;
-
             // Player inputs Roll, Transition to Roll State
             if (Input.GetButtonDown("Roll"))
             {
