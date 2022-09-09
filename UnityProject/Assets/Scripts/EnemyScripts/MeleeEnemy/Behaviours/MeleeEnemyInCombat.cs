@@ -15,6 +15,8 @@ public class MeleeEnemyInCombat : StateMachineBehaviour
         _meleeEnemy = animator.GetComponent<MeleeEnemy>();
         _aiPath = animator.GetComponent<AIPath>();
         _aiDestination = animator.GetComponent<AIDestinationSetter>();
+
+        _meleeEnemy.nextAttackTime = Time.time + _meleeEnemy.timeBtwAttacks;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -32,7 +34,11 @@ public class MeleeEnemyInCombat : StateMachineBehaviour
             {
                 Debug.Log("Attack");
                 _meleeEnemy.nextAttackTime = Time.time + _meleeEnemy.timeBtwAttacks;
-                //animator.SetTrigger("Attack");
+                animator.SetTrigger("Attack");
+            }
+            else
+            {
+                _meleeEnemy.Turn();
             }
         }
     }

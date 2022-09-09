@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Class for controlling Spawner
-public class SpawnSystem : MonoBehaviour
+// Class for controlling Enemy Spawner
+public class EnemySpawner : MonoBehaviour
 {
     #region Data Members
-    [Tooltip("Drections that character can turn to.")]
+    [Tooltip("Directions that character will face when spawn.")]
     public Vector3[] dir;
 
     [Tooltip("Target that will be spawned.")]

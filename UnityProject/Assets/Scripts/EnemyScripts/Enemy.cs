@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public abstract class Enemy : MonoBehaviour
 {
     public float detectRange;
     public bool chaseOnSpawned;
+
     public Transform attackPoint;
     public float attackRange;
     public LayerMask playerLayer;
@@ -13,6 +15,9 @@ public abstract class Enemy : MonoBehaviour
     [HideInInspector] public float nextAttackTime;
     [HideInInspector] public Transform player;
     [HideInInspector] public float playerDistance;
+    
+    public float turnSpeed;
+    [HideInInspector] public AIPath aiPath;
 
     void OnDrawGizmos()
     {
@@ -31,6 +36,14 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
+    public void Turn()
+    {
+        Vector2 heading = player.position - transform.position;
+        Vector2 direction = heading.normalized;
+
+        Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, direction);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, turnSpeed * Time.deltaTime);
+    }
     public void Hurt(int currentHealth)
     {
         if (currentHealth <= 0)

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class MeleeEnemy : Enemy
 {
@@ -8,6 +9,8 @@ public class MeleeEnemy : Enemy
     void Start()
     {
         player = FindObjectOfType<PlayerController>().transform;
+        aiPath = GetComponent<AIPath>();
+        aiPath.rotationSpeed = turnSpeed;
     }
 
     // Update is called once per frame
