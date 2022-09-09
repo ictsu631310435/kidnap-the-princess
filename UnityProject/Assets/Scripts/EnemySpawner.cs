@@ -6,27 +6,29 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     #region Data Members
-    [Tooltip("Directions that character will face when spawn.")]
+    [Tooltip("Directions that enemy will face when spawn.")]
     public Vector3[] dir;
-
-    [Tooltip("Target that will be spawned.")]
-    public GameObject target;
-
-    [Tooltip("Random Spawning Direction.")]
+    [Tooltip("Enemy that will be spawned.")]
+    public GameObject enemy;
+    [Tooltip("Randomize spawning direction.")]
     public bool randomDirection;
-
-    [Tooltip("Target's direction when spawned (Index of defined directions array).")]
+    [Tooltip("Enemy's direction when spawned (Index of defined directions array).")]
     public int spawnDir;
+    private Quaternion _spawnRot; // Enemy's rotation when spawned
 
-    private Quaternion _spawnRot; // Target's rotation when spawned
+    private bool _isSpawned; // Is enemy spawned
 
-    private bool _isSpawned; // Is target spawned
+    public bool chasePlayerOnSpawned;
+
+    [Tooltip("Number of enemies.")]
+    public int numEnemy;
+    public float timeBtwSpawns;
 
     public enum SpawnOn
     {
         Start, Event
     }
-    [Tooltip("When will target be spawned.")]
+    [Tooltip("When will enemy be spawned.")]
     public SpawnOn spawnOn;
     #endregion
 
@@ -37,27 +39,39 @@ public class EnemySpawner : MonoBehaviour
         // SpawnOnStart
         if (spawnOn == SpawnOn.Start)
         {
-            Spawn();
+            StartCoroutine(SpawnCoroutine());
         }
     }
     #endregion
 
     #region Methods
-    // Method for spawning target
+    // Method for starting SpawnCoroutine
     public void Spawn()
     {
-        // Check if there is target and target hasn't spawned yet
-        if (target != null && !_isSpawned)
-        {
-            _spawnRot = GetDirection(); // Get target's spawn direction
-            // Instantiate target's clone at this object's position and spawnDir
-            Instantiate(target, transform.position, _spawnRot);
-            _isSpawned = true;
-            Destroy(this.gameObject); // Destroy this gameObject after spawned target
-        }
+        StartCoroutine(SpawnCoroutine());
     }
 
-    // Method for get target's spawn direction
+    // Method for spawning enemy
+    private IEnumerator SpawnCoroutine()
+    {
+        // Check if there is enemy and enemy hasn't spawned yet
+        if (enemy != null)
+        {
+            while (numEnemy > 0)
+            {
+                _spawnRot = GetDirection(); // Get enemy's spawn direction
+                // Instantiate enemy's clone at this object's position and spawnDir
+                GameObject enemyClone = Instantiate(enemy, transform.position, _spawnRot);
+                enemy.GetComponent<Enemy>().chasePlayerOnSpawned = chasePlayerOnSpawned;
+                numEnemy--;
+
+                yield return new WaitForSeconds(timeBtwSpawns);
+            }
+        }
+        Destroy(this.gameObject); // Destroy this gameObject after spawned all enemies
+    }
+
+    // Method for get enemy's spawn direction
     private Quaternion GetDirection()
     {
         if (randomDirection)
@@ -66,7 +80,7 @@ public class EnemySpawner : MonoBehaviour
             return Quaternion.Euler(dir[spawnDir]);
     }
 
-    // Method for randomize target's spawn direction
+    // Method for randomize enemy's spawn direction
     private Quaternion RandomizeDirection()
     {
         // Randomize integer from 0 to (dir[]'s Lenght - 1)

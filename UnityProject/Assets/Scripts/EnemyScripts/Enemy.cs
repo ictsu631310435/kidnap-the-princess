@@ -6,7 +6,7 @@ using Pathfinding;
 public abstract class Enemy : MonoBehaviour
 {
     public float detectRange;
-    public bool chaseOnSpawned;
+    public bool chasePlayerOnSpawned;
 
     public Transform attackPoint;
     public float attackRange;

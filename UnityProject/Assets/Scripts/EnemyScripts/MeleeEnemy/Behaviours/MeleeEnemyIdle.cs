@@ -25,7 +25,7 @@ public class MeleeEnemyIdle : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (_meleeEnemy.chaseOnSpawned || _meleeEnemy.playerDistance <= _meleeEnemy.detectRange)
+        if (_meleeEnemy.chasePlayerOnSpawned || _meleeEnemy.playerDistance <= _meleeEnemy.detectRange)
         {
             _aiDestination.target = _meleeEnemy.player;    
         }
