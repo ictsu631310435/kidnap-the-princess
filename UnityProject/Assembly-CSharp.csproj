@@ -59,6 +59,7 @@
     <Compile Include="Assets\Scripts\EnemyScripts\MeleeEnemy\Behaviours\MeleeEnemyIdle.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\MeleeEnemy\Behaviours\MeleeEnemyInCombat.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\Enemy.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\Behaviours\PlayerMeleeTransition.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Behaviours\PlayerWalkBehaviour.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\MeleeEnemy\Behaviours\MeleeEnemyChase.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Behaviours\PlayerRollBehaviour.cs" />

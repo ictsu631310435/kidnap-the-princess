@@ -27,13 +27,16 @@ public class PlayerWalkBehaviour : StateMachineBehaviour
             if (Input.GetButtonDown("Roll"))
             {
                 // SetTrigger for State Transition to "Melee Attack"
-                animator.SetTrigger("Roll");
+                animator.SetTrigger("RollTrigger");
             }
             // Player inputs attack, Transition to Attack State
             else if (Input.GetButtonDown("MeleeAttack"))
             {
+                // Reset Blend Tree's values
+                animator.SetFloat("MeleeBlend", 0);
+                animator.SetFloat("TransitionBlend", 0);
                 // SetTrigger for State Transition to "Melee Attack"
-                animator.SetTrigger("Attack");
+                animator.SetTrigger("MeleeTrigger");
             }
         }
         // Player has stopped walking

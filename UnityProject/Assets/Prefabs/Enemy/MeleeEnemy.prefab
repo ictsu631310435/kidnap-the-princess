@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectRange: 10
-  chasePlayerOnSpawned: 0
+  chasePlayerOnSpawned: 1
   attackPoint: {fileID: 8922856267099646146}
   attackRange: 1
   playerLayer:
@@ -297,7 +297,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 8922856266008625261}
   m_BodyType: 0
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
