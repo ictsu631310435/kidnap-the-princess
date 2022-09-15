@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1536
     height: 780.8
   m_ShowMode: 4
-  m_Title: Hierarchy
+  m_Title: Game
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 18259
+  controlID: 18
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 18260
+  controlID: 19
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 18361
+  controlID: 486
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -189,8 +189,8 @@ MonoBehaviour:
     y: 0
     width: 1027.2
     height: 365.6
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 15}
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 18261
+  controlID: 77
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -285,7 +285,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: InspectorWindow
+  m_Name: ConsoleWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -294,14 +294,14 @@ MonoBehaviour:
     y: 378.4
     width: 260
     height: 352.4
-  m_MinSize: {x: 277, y: 71}
+  m_MinSize: {x: 102, y: 121}
   m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 14}
+  m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 14}
   - {fileID: 20}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -359,10 +359,10 @@ MonoBehaviour:
   m_ObjectsLockedBeforeSerialization: []
   m_InstanceIDsLockedBeforeSerialization: 
   m_PreviewResizer:
-    m_CachedPref: 160
+    m_CachedPref: -160
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: -1
+  m_LastInspectedObjectInstanceID: -28306
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
@@ -402,8 +402,8 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: -100, y: -25.600006}
+      snapOffset: {x: -100, y: -25.600006}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 3
       id: Tool Settings
       index: 0
@@ -413,9 +413,9 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: -141, y: 149}
+      snapOffset: {x: -141, y: -171}
       snapOffsetDelta: {x: 0, y: 0}
-      snapCorner: 1
+      snapCorner: 3
       id: unity-grid-and-snap-toolbar
       index: 1
       layout: 1
@@ -424,7 +424,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 0, y: 0}
+      snapOffset: {x: 0, y: 24.8}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: unity-scene-view-toolbar
@@ -611,14 +611,14 @@ MonoBehaviour:
   m_OverrideSceneCullingMask: 6917529027641081856
   m_SceneIsLit: 1
   m_SceneLighting: 1
-  m_2DMode: 1
+  m_2DMode: 0
   m_isRotationLocked: 0
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.22595115, y: -8.777177, z: -14.14431}
+    m_Target: {x: -1.2102517, y: -8.967607, z: -4.845984}
     speed: 2
-    m_Value: {x: -0.22595115, y: -8.777177, z: -14.14431}
+    m_Value: {x: -1.2102517, y: -8.967607, z: -4.845984}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -665,17 +665,17 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0, y: 0, z: 0, w: 1}
+    m_Target: {x: -0.06684767, y: 0.004489923, z: 0.00030079836, w: 0.99775344}
     speed: 2
-    m_Value: {x: 0, y: 0, z: 0, w: 1}
+    m_Value: {x: -0.066847645, y: 0.0044899215, z: 0.00030079825, w: 0.9977531}
   m_Size:
-    m_Target: 4.093936
+    m_Target: 8.989256
     speed: 2
-    m_Value: 4.093936
+    m_Value: 8.989256
   m_Ortho:
-    m_Target: 1
+    m_Target: 0
     speed: 2
-    m_Value: 1
+    m_Value: 0
   m_CameraSettings:
     m_Speed: 1
     m_SpeedNormalized: 0.5
@@ -728,9 +728,25 @@ MonoBehaviour:
     m_KeySerializationHelper:
     - {fileID: 7447156069397115595, guid: e5e70f95822370146b0042448d72abf0, type: 2}
     - {fileID: -1427930048311001576, guid: 1914f78d028993e43b054b1325dfa57a, type: 2}
-    - {fileID: -8545443782537808771, guid: e5e70f95822370146b0042448d72abf0, type: 2}
-    - {fileID: 5188112145439108068, guid: e5e70f95822370146b0042448d72abf0, type: 2}
+    - {fileID: 4818078786174893985, guid: e5e70f95822370146b0042448d72abf0, type: 2}
+    - {fileID: -113349942170943500, guid: e5e70f95822370146b0042448d72abf0, type: 2}
     m_ValueSerializationHelper:
+    - e00: 0.74196327
+      e01: 0
+      e02: 0
+      e03: 75.600006
+      e10: 0
+      e11: 0.74196327
+      e12: 0
+      e13: 112.351105
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
     - e00: 0.9147072
       e01: 0
       e02: 0
@@ -738,7 +754,7 @@ MonoBehaviour:
       e10: 0
       e11: 0.9147072
       e12: 0
-      e13: 59.25644
+      e13: 49.48198
       e20: 0
       e21: 0
       e22: 1
@@ -747,14 +763,14 @@ MonoBehaviour:
       e31: 0
       e32: 0
       e33: 1
-    - e00: 0.8686316
+    - e00: 0.80663306
       e01: 0
       e02: 0
-      e03: -28.43158
+      e03: -12.607147
       e10: 0
-      e11: 0.8686316
+      e11: 0.80663306
       e12: 0
-      e13: 35.534737
+      e13: 151.18318
       e20: 0
       e21: 0
       e22: 1
@@ -763,30 +779,14 @@ MonoBehaviour:
       e31: 0
       e32: 0
       e33: 1
-    - e00: 1.207432
+    - e00: 0.80663306
       e01: 0
       e02: 0
-      e03: 67.79441
+      e03: 38.590576
       e10: 0
-      e11: 1.207432
+      e11: 0.80663306
       e12: 0
-      e13: 45.01005
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    - e00: 0.93400735
-      e01: 0
-      e02: 0
-      e03: 218.78406
-      e10: 0
-      e11: 0.93400735
-      e12: 0
-      e13: 119.01768
+      e13: 89.00319
       e20: 0
       e21: 0
       e22: 1
@@ -965,7 +965,7 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: ac640000
       m_LastClickedID: 0
       m_ExpandedIDs: 0efbffff
       m_RenameOverlay:
@@ -1060,22 +1060,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Animations/PlayerAnimations
+    - Assets/Scripts/PlayerScripts/Behaviours
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Animations/PlayerAnimations
+  - Assets/Scripts/PlayerScripts/Behaviours
   m_LastFoldersGridSize: -1
   m_LastProjectPath: F:\Unity Project\KidnapThePrincess
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 70650000
-    m_LastClickedID: 25968
-    m_ExpandedIDs: 00000000386500003a6500003c6500003e650000406500004265000044650000466500004865000000ca9a3b
+    m_SelectedIDs: 32740000
+    m_LastClickedID: 29746
+    m_ExpandedIDs: 000000003a6500003c6500003e65000040650000426500004465000046650000486500004a650000646500006665000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1103,7 +1103,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000386500003a6500003c6500003e650000406500004265000044650000466500004865000000ca9a3b
+    m_ExpandedIDs: 000000003a6500003c6500003e65000040650000426500004465000046650000486500004a650000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1130,7 +1130,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: d05f00000000000012640000
     m_RenameOverlay:
       m_UserAcceptedRename: 0

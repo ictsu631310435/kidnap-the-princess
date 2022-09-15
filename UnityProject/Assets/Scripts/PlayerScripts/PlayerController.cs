@@ -25,7 +25,6 @@ public class PlayerController : MonoBehaviour
     public float meleeRange;
     [Tooltip("The layer that enemies are in.")]
     public LayerMask enemyLayer;
-    public int meleeCombo;
     #endregion
 
     #region Unity Callbacks

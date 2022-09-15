@@ -141,6 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectRange: 10
   chasePlayerOnSpawned: 1
+  combatRange: 2
   attackPoint: {fileID: 8922856267099646146}
   attackRange: 1
   playerLayer:
@@ -228,7 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 5
-  radius: 1
+  radius: 0.5
   height: 2
   canMove: 1
   maxSpeed: 2
@@ -250,9 +251,9 @@ MonoBehaviour:
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
   rotationSpeed: 360
-  slowdownDistance: 1
+  slowdownDistance: 0.6
   pickNextWaypointDist: 2
-  endReachedDistance: 2
+  endReachedDistance: 0.2
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0

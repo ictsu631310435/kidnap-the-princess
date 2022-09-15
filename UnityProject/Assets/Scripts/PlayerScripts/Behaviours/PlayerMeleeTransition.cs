@@ -20,12 +20,8 @@ public class PlayerMeleeTransition : StateMachineBehaviour
         // Player inputs MeleeAttack, Transition to Attack State
         if(Input.GetButtonDown("MeleeAttack"))
         {
-            // Set Blend Tree's values
-            _playerCtrl.meleeCombo++;
-            animator.SetTrigger("MeleeTrigger");
-            animator.SetFloat("MeleeBlend", _playerCtrl.meleeCombo * 0.5f);
             // SetTrigger for State Transition to "Melee Attack"
-            animator.SetFloat("TransitionBlend", _playerCtrl.meleeCombo);
+            animator.SetTrigger("MeleeTrigger");
         }
     }
 

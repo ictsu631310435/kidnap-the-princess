@@ -22,6 +22,11 @@ public class MeleeEnemyChase : StateMachineBehaviour
     {
         if (_meleeEnemy.playerDistance <= _meleeEnemy.detectRange)
         {
+            if (_aiDestination.target == null)
+            {
+                _aiDestination.target = _meleeEnemy.player;
+            }
+
             if (_aiPath.reachedDestination)
             {
                 Debug.Log("Stop chase: Reached destination");
@@ -30,7 +35,10 @@ public class MeleeEnemyChase : StateMachineBehaviour
         }
         else
         {
-            _aiDestination.target = null;
+            if (_aiDestination.target != null)
+            {
+                _aiDestination.target = null;
+            }
 
             if (_aiPath.reachedDestination)
             {

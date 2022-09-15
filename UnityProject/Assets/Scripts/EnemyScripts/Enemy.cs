@@ -7,6 +7,7 @@ public abstract class Enemy : MonoBehaviour
 {
     public float detectRange;
     public bool chasePlayerOnSpawned;
+    public float combatRange;
 
     public Transform attackPoint;
     public float attackRange;
@@ -18,15 +19,41 @@ public abstract class Enemy : MonoBehaviour
     
     public float turnSpeed;
     [HideInInspector] public AIPath aiPath;
+    [HideInInspector] public AIDestinationSetter aiDestination;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        // Get Components
+        player = FindObjectOfType<PlayerController>().transform;
+        aiPath = GetComponent<AIPath>();
+        aiDestination = GetComponent<AIDestinationSetter>();
+        
+        // Set Variables'values
+        aiPath.rotationSpeed = turnSpeed;
+        aiPath.slowdownDistance = combatRange * 3;
+        aiPath.endReachedDistance = combatRange;
+        // Set destination to Player's position if want to chase Player after spawned
+        if (chasePlayerOnSpawned)
+        {
+            aiDestination.target = player;
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        playerDistance = Vector2.Distance(transform.position, player.position);
+    }
 
     void OnDrawGizmos()
     {
         // Draw sightRange
         Gizmos.DrawWireSphere(transform.position, detectRange);
 
-        // Draw attackDistance
-        //Gizmos.color = Color.yellow;
-        //Gizmos.DrawWireSphere(transform.position, attackDistance);
+        // Draw combatRange
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, combatRange);
 
         // Draw attackRange
         if (attackPoint != null)

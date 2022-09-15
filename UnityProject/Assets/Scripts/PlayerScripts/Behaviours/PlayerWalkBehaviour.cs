@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Class for handling Player's Walk State
-public class PlayerWalkBehaviour : StateMachineBehaviour
+public class PlayerWalk : StateMachineBehaviour
 {
     private PlayerController _playerCtrl; // PlayerController script
 
@@ -32,9 +32,6 @@ public class PlayerWalkBehaviour : StateMachineBehaviour
             // Player inputs attack, Transition to Attack State
             else if (Input.GetButtonDown("MeleeAttack"))
             {
-                // Reset Blend Tree's values
-                animator.SetFloat("MeleeBlend", 0);
-                animator.SetFloat("TransitionBlend", 0);
                 // SetTrigger for State Transition to "Melee Attack"
                 animator.SetTrigger("MeleeTrigger");
             }

@@ -12,8 +12,6 @@ public class PlayerIdleBehaviour : StateMachineBehaviour
     {
         // Get Component
         _playerCtrl = animator.gameObject.GetComponent<PlayerController>();
-        // Reset Melee Attack Combo
-        _playerCtrl.meleeCombo = 0;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -37,9 +35,6 @@ public class PlayerIdleBehaviour : StateMachineBehaviour
         // Player inputs MeleeAttack, Transition to Attack State
         else if(Input.GetButtonDown("MeleeAttack"))
         {
-            // Reset Blend Tree's values
-            animator.SetFloat("MeleeBlend", 0);
-            animator.SetFloat("TransitionBlend", 0);
             // SetTrigger for State Transition to "Melee Attack"
             animator.SetTrigger("MeleeTrigger");
         }

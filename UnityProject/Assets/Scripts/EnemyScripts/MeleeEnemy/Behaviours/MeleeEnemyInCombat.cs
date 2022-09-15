@@ -13,8 +13,7 @@ public class MeleeEnemyInCombat : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _meleeEnemy = animator.GetComponent<MeleeEnemy>();
-        _aiPath = animator.GetComponent<AIPath>();
-        _aiDestination = animator.GetComponent<AIDestinationSetter>();
+        _aiDestination = _meleeEnemy.aiDestination;
 
         _meleeEnemy.nextAttackTime = Time.time + _meleeEnemy.timeBtwAttacks;
     }
