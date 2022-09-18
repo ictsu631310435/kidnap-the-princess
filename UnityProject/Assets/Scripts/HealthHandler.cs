@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-// Class for handling Health
+// Script for handling Health
 public class HealthHandler : MonoBehaviour
 {
     #region Data Members
@@ -11,7 +11,7 @@ public class HealthHandler : MonoBehaviour
     [field: SerializeField] public int CurrentHealth { get; private set; } // Other can readonly
 
     // Events
-    public UnityEvent<int> OnHealthSet;
+    public UnityEvent<int> OnHealthInitialized;
     public UnityEvent<int> OnHealthChanged;
     public UnityEvent OnHealthDepleted;
     #endregion
@@ -23,7 +23,7 @@ public class HealthHandler : MonoBehaviour
         CurrentHealth = maxHealth;
 
         // Invoke HealthSet event
-        OnHealthSet?.Invoke(CurrentHealth);
+        OnHealthInitialized?.Invoke(maxHealth);
     }
 
 

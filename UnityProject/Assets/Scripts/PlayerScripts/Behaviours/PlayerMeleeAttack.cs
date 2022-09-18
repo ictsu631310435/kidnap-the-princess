@@ -2,31 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Class for handling Player's Roll State
-public class PlayerRollBehaviour : StateMachineBehaviour
+// Script for handling Player's Melee Attack state
+public class PlayerMeleeAttack : StateMachineBehaviour
 {
-    private PlayerController _playerCtrl; // PlayerController script
+    #region Data Members
+    private PlayerController _playerCtrl;
+    #endregion
 
+    #region Unity Callbacks
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // Get Component
         _playerCtrl = animator.gameObject.GetComponent<PlayerController>();
 
+        // Stop Player's Movement
         _playerCtrl.rb.velocity = Vector2.zero;
-        _playerCtrl.Roll();
+
+        // Detect Melee Attack Hit
+        _playerCtrl.DetectMeleeHit();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-
-    }
+    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //    
+    //}
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
-    //
+    //    
     //}
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
@@ -40,4 +46,5 @@ public class PlayerRollBehaviour : StateMachineBehaviour
     //{
     //    // Implement code that sets up animation IK (inverse kinematics)
     //}
+    #endregion
 }

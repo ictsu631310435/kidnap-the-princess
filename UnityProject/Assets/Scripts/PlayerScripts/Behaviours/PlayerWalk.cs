@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Class for handling Player's Walk State
+// Script for handling Player's Walk state
 public class PlayerWalk : StateMachineBehaviour
 {
-    private PlayerController _playerCtrl; // PlayerController script
+    #region Data Members
+    private PlayerController _playerCtrl;
+    #endregion
 
+    #region Unity Callbacks
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -20,26 +23,26 @@ public class PlayerWalk : StateMachineBehaviour
         // Check if Player is still walking
         if (_playerCtrl.moveDir != Vector2.zero)
         {
-            _playerCtrl.Turn(); // Turn Character to MovementDirection
+            _playerCtrl.Turn(); // Turn Character to Direction of Movement
             _playerCtrl.Move(); // Move Character
 
-            // Player inputs Roll, Transition to Roll State
+            // Player inputs "Roll", Transition to "Roll" state
             if (Input.GetButtonDown("Roll"))
             {
-                // SetTrigger for State Transition to "Melee Attack"
+                // Set trigger for state Transition to "Melee Attack"
                 animator.SetTrigger("RollTrigger");
             }
-            // Player inputs attack, Transition to Attack State
+            // Player inputs "MeleeAttack", Transition to "Melee Attack" state
             else if (Input.GetButtonDown("MeleeAttack"))
             {
-                // SetTrigger for State Transition to "Melee Attack"
+                // Set trigger for state Transition to "Melee Attack"
                 animator.SetTrigger("MeleeTrigger");
             }
         }
         // Player has stopped walking
         else
         {
-            // SetBool for State Transition to "Idle"
+            // Set bool for state Transition to "Idle"
             animator.SetBool("isWalking", false);
         }
     }
@@ -62,4 +65,5 @@ public class PlayerWalk : StateMachineBehaviour
     //{
     //    // Implement code that sets up animation IK (inverse kinematics)
     //}
+    #endregion
 }

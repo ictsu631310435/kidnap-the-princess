@@ -5,13 +5,17 @@ using Pathfinding;
 
 public class MeleeEnemyInCombat : StateMachineBehaviour
 {
+    #region Data Members
     private MeleeEnemy _meleeEnemy;
     private AIPath _aiPath;
     private AIDestinationSetter _aiDestination;
+    #endregion
 
+    #region Unity Callbacks
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        // Get Components
         _meleeEnemy = animator.GetComponent<MeleeEnemy>();
         _aiDestination = _meleeEnemy.aiDestination;
 
@@ -59,4 +63,5 @@ public class MeleeEnemyInCombat : StateMachineBehaviour
     //{
     //    // Implement code that sets up animation IK (inverse kinematics)
     //}
+    #endregion
 }

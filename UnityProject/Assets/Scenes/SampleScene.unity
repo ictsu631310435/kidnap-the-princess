@@ -1330,7 +1330,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5212923501287813673, guid: 5fe3e027fc19f924897c923e6b07f4f1, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5212923501287813674, guid: 5fe3e027fc19f924897c923e6b07f4f1, type: 3}
       propertyPath: OnPlayerEntered.m_PersistentCalls.m_Calls.Array.size
@@ -2093,6 +2093,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spawner (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 203050994433845333, guid: 863f4264876ac864483c30c0ad8848f5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 863f4264876ac864483c30c0ad8848f5, type: 3}
 --- !u!1001 &1189120780
@@ -2568,7 +2572,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAAA4Ieyy4RWJWQIAABcFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VEuP2jAQ/ivI51IlwArorQWW7YEFLa16ycUkE2Lh2JHt8BT/vTPOi1LtKfZ838x883BuTChbQOy0WRqRrHQC7FuP0Zl96XXgG5z5XqutuELDmQuegwNDPO5pH9wJjVBInlYjakT8Xe0l8QM0lkqk2uSLZA8zbZ1Fc8qlBYSMduSt0HTrsTN++lNyueBpMKbTFU/ToHfHYwyKErfUhtjQKlapYsnzAhJS3ZGHDXtY0RTWUzOCry8UXUspbK2FuUvhy90WGRigYpOmcFSG1wzEPnP1pfVdp6kFV2sy/DIXBjtUBWU/tMsoUs7toRJ25LKkNMPJyIuqgq7+w/uhh1Oj87cmbxhQDpeJ+PDBLzG37qGvj+Z5Jzz0/TlxeeA7CX8yUO96aXSpEgSdKcm1tDCYd9e2tFkG8aGzV1KfjGXx+XSohruv/jyTIt/5xo8qw1Zq324/ezA4mp8o2G+GrUOglVT8tvCL7x9XqAZehbEOobpKRfJ2ujREZQvfM6qmdDNtFJjHCAUoLt1lg3Hc8wyfsM+9Xjk9mDp7jTWP4MnFmzt+EDxBG31qp2UzfVqBzdalk0JB12oC3rFRM61UtWKPJTVu29KkPH5w25ci+Xe32Hg0nqRhPOWj3XgyHaf9QTANUwgno91oDMPdC/PLJxTWyeWmElq3B8emuuAKF635j/SWhhd+3RPDT0txzbXtmEKlehsbALWuIrTCwWASfJfJIhHYoC04J5QfOLtFTOr4AEnUBop8pYuzMzzqokSsEEftyBKxmf9rRIzM7TJvDBwFnCh5E+zO7n8BUEsDBBQAAAgIAAA4IeyALfgdbQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM011FQSi9KLMgoBooYgjilmSkgdrSSuYm5RZphsmWiSZK5haV5mq6RgaVhWqqhhUmSiXmqcZKpUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAAA4Ieyy4RWJWQIAABcFAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAAA4IeyALfgdbQAAAHgAAAAJACQAAAAAAAAAAAAAAKYCAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAXgMAAAAA
+    dataString: UEsDBBQAAAgIAAA4IezP7Y88XAIAABYFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VEtz2jAQ/iuMzk3HBjJAby0Q0kMCE5rpxRdhr7EGWfJIMo9k+O/dlZ91pydL+327++1D/mRC2QJip83GiORFJ8C+jRid2ZdRBz7DlR+12osPaDgrwXNwYIjHPe2NO6ERCsnTakSNiL+royR+gMZSiVSbfJ0cYamts2hOubSAkNGOvBWaPkfsip+HBbnc8DSe0ekDT4tgdMdjDIoSt9SG2NAqVqliyfMCElLdkScNe1LRFNZTM4KvjxRdSylsrYW5W+HL3RcZGKBik6ZwVIbXDMQxc/Wl9d2mqQVXazL8thIGO1QFZT+0yyhSzu2pEnbmsqQ0k/nUi6qCvvyDP4QeTo3On5u8YUA5XCbi0xu/xdy6Xl/75lUnPPT9uXB54gcJvzNQr3pjdKkSBJ0pybW0MF5117a0ZQbxqbNXUgfGsvj/dKiGu6/+upQiP/jGTyvDXmrfbj97MDianyjYb4atQ6CVVLxb+MWP/RWqgSdhrEOorlKRvIMuDVHZ2veMqindUhsF3lyLLkBx6W47DOOGIxxgvbQD5InTe6mT11jzBgYu3tzxg2AA7fSlHZbN9OUFbLYtnRQKOtEEvGKfllqpasP6PWnc9qVJedxzO5Yi+Xu12Gw6m6dhvODTw2y+mKUP42ARphDOp4fpDCaHR+Z3Tyisk8tdJbRuD05NdcEV7lnzGxltDC/8tieGXzbiI9e9lguV6n1sANS2itAKB4NJ8Fkm60Rgg/bgnFB+3uwzYlLHJ0iiNlDkK11fneFRFyVihThrR5aILf1PI2Jkbnd5Z+As4ELJm2B3dv8DUEsDBBQAAAgIAAA4IeyALfgdbQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM011FQSi9KLMgoBooYgjilmSkgdrSSuYm5RZphsmWiSZK5haV5mq6RgaVhWqqhhUmSiXmqcZKpUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAAA4IezP7Y88XAIAABYFAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAAA4IeyALfgdbQAAAHgAAAAJACQAAAAAAAAAAAAAAKkCAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAYQMAAAAA
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -2581,7 +2585,7 @@ MonoBehaviour:
   manualDebugFloorRoof: 0
   showSearchTree: 0
   unwalkableNodeDebugSize: 0.3
-  logPathResults: 1
+  logPathResults: 0
   maxNearestNodeDistance: 100
   scanOnStartup: 1
   fullGetNearestSearch: 0
@@ -2903,7 +2907,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 203050994433845333, guid: 863f4264876ac864483c30c0ad8848f5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 863f4264876ac864483c30c0ad8848f5, type: 3}
@@ -3598,7 +3602,6 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
-  meleeCombo: 0
 --- !u!4 &2007356947
 Transform:
   m_ObjectHideFlags: 0
@@ -3689,7 +3692,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   <CurrentHealth>k__BackingField: 0
-  OnHealthSet:
+  OnHealthInitialized:
     m_PersistentCalls:
       m_Calls: []
   OnHealthChanged:

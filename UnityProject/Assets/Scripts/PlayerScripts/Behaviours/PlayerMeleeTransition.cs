@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Class for handling Player's Idle State
+// Script for handling Player's Melee Attack Transition state
 public class PlayerMeleeTransition : StateMachineBehaviour
 {
-    private PlayerController _playerCtrl; // PlayerController scrip
+    #region Data Members
+    private PlayerController _playerCtrl;
+    #endregion
 
+    #region Unity Callbacks
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -17,10 +20,10 @@ public class PlayerMeleeTransition : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        // Player inputs MeleeAttack, Transition to Attack State
+        // Player inputs "MeleeAttack", Transition to Attack state
         if(Input.GetButtonDown("MeleeAttack"))
         {
-            // SetTrigger for State Transition to "Melee Attack"
+            // Set trigger for state Transition to "Melee Attack"
             animator.SetTrigger("MeleeTrigger");
         }
     }
@@ -42,4 +45,5 @@ public class PlayerMeleeTransition : StateMachineBehaviour
     //{
     //    // Implement code that sets up animation IK (inverse kinematics)
     //}
+    #endregion
 }

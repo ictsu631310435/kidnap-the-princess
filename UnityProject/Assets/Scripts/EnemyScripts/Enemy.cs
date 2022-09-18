@@ -21,18 +21,20 @@ public abstract class Enemy : MonoBehaviour
     [HideInInspector] public AIPath aiPath;
     [HideInInspector] public AIDestinationSetter aiDestination;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         // Get Components
         player = FindObjectOfType<PlayerController>().transform;
         aiPath = GetComponent<AIPath>();
         aiDestination = GetComponent<AIDestinationSetter>();
-        
+    }
+
+    // Start is called before the first frame update
+    public void Start()
+    {  
         // Set Variables'values
         aiPath.rotationSpeed = turnSpeed;
-        aiPath.slowdownDistance = combatRange * 3;
-        aiPath.endReachedDistance = combatRange;
+        
         // Set destination to Player's position if want to chase Player after spawned
         if (chasePlayerOnSpawned)
         {

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Class for controlling Player's Character
+// Script for controlling Player's Character
 public class PlayerController : MonoBehaviour
 {
     #region Data Members
@@ -78,10 +78,10 @@ public class PlayerController : MonoBehaviour
     }
 
     // Method for Melee Hit Detection
-    public void DetectMeleeHit(Transform attackPoint, float range, LayerMask targetLayer)
+    public void DetectMeleeHit()
     {
         // Array of all Colliders in targetLayer caught in Range.
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(attackPoint.position, range, targetLayer);
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(attackPoint.position, meleeRange, enemyLayer);
         foreach (var collider in hitColliders)
         {
             // Check for HealthSystem

@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Class for handling Player's Idle State
-public class PlayerIdleBehaviour : StateMachineBehaviour
+// Script for handling Player's Idle state
+public class PlayerIdle : StateMachineBehaviour
 {
-    private PlayerController _playerCtrl; // PlayerController scrip
+    #region Data Members
+    private PlayerController _playerCtrl;
+    #endregion
 
+    #region Unity Callbacks
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -20,22 +23,22 @@ public class PlayerIdleBehaviour : StateMachineBehaviour
         // Stop Player's Movement
         _playerCtrl.rb.velocity = Vector2.zero;
 
-        // Player inputs Movement, Transition to Walk State
+        // Player inputs "Movement", Transition to "Walk" state
         if (_playerCtrl.moveDir != Vector2.zero)
         {
-            // SetBool for State Transition to "Walk"
+            // Set bool for state Transition to "Walk"
             animator.SetBool("isWalking", true);
         }
-        // Player inputs Roll, Transition to Roll State
+        // Player inputs "Roll", Transition to Roll State
         else if (Input.GetButtonDown("Roll"))
         {
-            // SetTrigger for State Transition to "Melee Attack"
+            // Set trigger for state Transition to "Melee Attack"
             animator.SetTrigger("RollTrigger");
         }
-        // Player inputs MeleeAttack, Transition to Attack State
+        // Player inputs "MeleeAttack", Transition to Attack State
         else if(Input.GetButtonDown("MeleeAttack"))
         {
-            // SetTrigger for State Transition to "Melee Attack"
+            // Set trigger for state Transition to "Melee Attack"
             animator.SetTrigger("MeleeTrigger");
         }
     }
@@ -57,4 +60,5 @@ public class PlayerIdleBehaviour : StateMachineBehaviour
     //{
     //    // Implement code that sets up animation IK (inverse kinematics)
     //}
+    #endregion
 }

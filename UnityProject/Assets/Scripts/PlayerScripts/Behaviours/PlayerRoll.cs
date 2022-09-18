@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Class for handling Player's Melee Attack State
-public class PlayerMeleeAttackBehaviour : StateMachineBehaviour
+// Script for handling Player's Roll state
+public class PlayerRoll : StateMachineBehaviour
 {
     private PlayerController _playerCtrl; // PlayerController script
 
@@ -15,21 +15,20 @@ public class PlayerMeleeAttackBehaviour : StateMachineBehaviour
 
         // Stop Player's Movement
         _playerCtrl.rb.velocity = Vector2.zero;
-
-        // Detect Melee Hit
-        _playerCtrl.DetectMeleeHit(_playerCtrl.attackPoint, _playerCtrl.meleeRange, _playerCtrl.enemyLayer);
+        // Call roll method
+        _playerCtrl.Roll();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
-    //    
+    //
     //}
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
-    //    
+    //
     //}
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

@@ -62,7 +62,11 @@ public class EnemySpawner : MonoBehaviour
                 _spawnRot = GetDirection(); // Get enemy's spawn direction
                 // Instantiate enemy's clone at this object's position and spawnDir
                 GameObject enemyClone = Instantiate(enemy, transform.position, _spawnRot);
-                enemy.GetComponent<Enemy>().chasePlayerOnSpawned = chasePlayerOnSpawned;
+                // Set chasePlayerOnSpawned value
+                if (enemyClone.TryGetComponent(out Enemy _enemyComp))
+                {
+                    _enemyComp.chasePlayerOnSpawned = chasePlayerOnSpawned;
+                }
                 numEnemy--;
 
                 yield return new WaitForSeconds(timeBtwSpawns);

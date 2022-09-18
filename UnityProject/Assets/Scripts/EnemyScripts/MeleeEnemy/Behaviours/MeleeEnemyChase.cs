@@ -3,18 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
+// Script for handling Melee Enemy's Chase state
 public class MeleeEnemyChase : StateMachineBehaviour
 {
+    #region Data Members
     private MeleeEnemy _meleeEnemy;
     private AIPath _aiPath;
     private AIDestinationSetter _aiDestination;
+    #endregion
 
+    #region Unity Callbacks
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        // Get Components
         _meleeEnemy = animator.GetComponent<MeleeEnemy>();
         _aiPath = animator.GetComponent<AIPath>();
         _aiDestination = animator.GetComponent<AIDestinationSetter>();
+
+        if (_meleeEnemy.inCombat)
+        {
+            _aiPath.slowdownDistance = _meleeEnemy.combatRange * 3;
+            _aiPath.endReachedDistance = _meleeEnemy.combatRange;
+        }
+        else
+        {
+            _aiPath.slowdownDistance = _meleeEnemy.standbyRange * 3;
+            _aiPath.endReachedDistance = _meleeEnemy.standbyRange;
+        }
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -29,8 +45,16 @@ public class MeleeEnemyChase : StateMachineBehaviour
 
             if (_aiPath.reachedDestination)
             {
-                Debug.Log("Stop chase: Reached destination");
-                animator.SetBool("inCombat", true);
+                if (_meleeEnemy.inCombat)
+                {
+                    Debug.Log("Stop chase: in Attack Range");
+                    animator.SetBool("inCombat", true);
+                }
+                else
+                {
+                    Debug.Log("Stop chase: Reached destination");
+                    animator.SetBool("onStandby", true);
+                }
             }
         }
         else
@@ -38,6 +62,8 @@ public class MeleeEnemyChase : StateMachineBehaviour
             if (_aiDestination.target != null)
             {
                 _aiDestination.target = null;
+
+                _meleeEnemy.inCombat = false;
             }
 
             if (_aiPath.reachedDestination)
@@ -67,4 +93,5 @@ public class MeleeEnemyChase : StateMachineBehaviour
     //{
     //    // Implement code that sets up animation IK (inverse kinematics)
     //}
+    #endregion
 }
