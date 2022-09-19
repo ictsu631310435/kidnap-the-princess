@@ -10,8 +10,9 @@ public abstract class Enemy : MonoBehaviour
     public float combatRange;
 
     public Transform attackPoint;
-    public float attackRange;
+    public float meleeRange;
     public LayerMask playerLayer;
+    public int attackDamage;
     public float timeBtwAttacks;
     [HideInInspector] public float nextAttackTime;
     [HideInInspector] public Transform player;
@@ -57,11 +58,11 @@ public abstract class Enemy : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, combatRange);
 
-        // Draw attackRange
-        if (attackPoint != null)
+        // Draw meleeRange
+        if (attackPoint != null && meleeRange > 0)
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+            Gizmos.DrawWireSphere(attackPoint.position, meleeRange);
         }
     }
 
@@ -73,6 +74,7 @@ public abstract class Enemy : MonoBehaviour
         Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, direction);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, turnSpeed * Time.deltaTime);
     }
+
     public void Hurt(int currentHealth)
     {
         if (currentHealth <= 0)
@@ -80,13 +82,13 @@ public abstract class Enemy : MonoBehaviour
             Die();
             return;
         }
-
-        Debug.Log(gameObject.name + " Hurt");
     }
 
-    private void Die()
+    public void Die()
     {
-        Debug.Log(gameObject.name + " Died");
+        PlayerController _playerCtrl = FindObjectOfType<PlayerController>();
+        _playerCtrl.GetComponent<HealthHandler>().ChangeHealth(+1);
+
         Destroy(gameObject);
     }
 }

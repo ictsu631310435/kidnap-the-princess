@@ -19,8 +19,8 @@ public class PlayerMeleeAttack : StateMachineBehaviour
         // Stop Player's Movement
         _playerCtrl.rb.velocity = Vector2.zero;
 
-        // Detect Melee Attack Hit
-        _playerCtrl.DetectMeleeHit();
+        // Melee Attack logic
+        _playerCtrl.MeleeAttack();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

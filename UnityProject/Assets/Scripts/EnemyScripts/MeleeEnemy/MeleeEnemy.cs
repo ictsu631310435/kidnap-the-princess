@@ -7,6 +7,7 @@ using Pathfinding;
 public class MeleeEnemy : Enemy
 {
     #region Data Members
+    [Header("Melee Enemy's Extentions")]
     public float standbyRange;
     public bool inCombat;
     public LayerMask friendLayer;
@@ -45,6 +46,22 @@ public class MeleeEnemy : Enemy
             if (one.TryGetComponent(out MeleeEnemy _meleeEnemy) && _meleeEnemy.inCombat)
             {
                 inCombatNum++; // Add number
+            }
+        }
+    }
+
+    // Method for attacking (melee)
+    public void Attack()
+    {
+        // Array of all Colliders in targetLayer caught in Range.
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(attackPoint.position, meleeRange, playerLayer);
+        foreach (var collider in hitColliders)
+        {
+            // Check for HealthSystem
+            if (collider.gameObject.TryGetComponent(out HealthHandler health))
+            {
+                // Deal damage
+                health.ChangeHealth(-attackDamage);
             }
         }
     }

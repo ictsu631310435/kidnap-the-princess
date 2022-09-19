@@ -63,6 +63,7 @@
     <Compile Include="Assets\Scripts\PlayerScripts\Behaviours\PlayerWalk.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\MeleeEnemy\Behaviours\MeleeEnemyChase.cs" />
     <Compile Include="Assets\Scripts\UIScripts\Billboard.cs" />
+    <Compile Include="Assets\Scripts\EnemyScripts\MeleeEnemy\Behaviours\MeleeEnemyAttack.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Behaviours\PlayerRoll.cs" />
     <Compile Include="Assets\Scripts\HealthHandler.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerController.cs" />
@@ -71,7 +72,6 @@
     <Compile Include="Assets\Scripts\EnemyScripts\MeleeEnemy\Behaviours\MeleeEnemyStandby.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\MeleeEnemy\MeleeEnemy.cs" />
     <Compile Include="Assets\Scripts\EnemySpawner.cs" />
-    <Compile Include="Assets\Scripts\UIScripts\PlayerHealthUI.cs" />
     <Compile Include="Assets\Scripts\MaterialFlashHandler.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Behaviours\PlayerMeleeAttack.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Behaviours\PlayerIdle.cs" />

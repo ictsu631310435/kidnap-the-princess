@@ -77,8 +77,8 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(dir * rollForce);
     }
 
-    // Method for Melee Hit Detection
-    public void DetectMeleeHit()
+    // Method for Melee Attack
+    public void MeleeAttack()
     {
         // Array of all Colliders in targetLayer caught in Range.
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(attackPoint.position, meleeRange, enemyLayer);

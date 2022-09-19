@@ -16,6 +16,7 @@ public class HealthHandler : MonoBehaviour
     public UnityEvent OnHealthDepleted;
     #endregion
 
+    #region Unity Callbacks
     // Start is called before the first frame update
     void Start()
     {
@@ -25,8 +26,10 @@ public class HealthHandler : MonoBehaviour
         // Invoke HealthSet event
         OnHealthInitialized?.Invoke(maxHealth);
     }
+    #endregion
 
-
+    #region Methods
+    // Method for change health's value
     public void ChangeHealth(int amount)
     {
         CurrentHealth += amount;
@@ -42,4 +45,5 @@ public class HealthHandler : MonoBehaviour
             OnHealthDepleted?.Invoke();
         }
     }
+    #endregion
 }

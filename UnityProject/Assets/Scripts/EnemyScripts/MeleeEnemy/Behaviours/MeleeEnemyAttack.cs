@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class MeleeEnemyInCombat : StateMachineBehaviour
+// Scripts for handling MeleeEnemy's Idle state
+public class MeleeEnemyAttack : StateMachineBehaviour
 {
     #region Data Members
     private MeleeEnemy _meleeEnemy;
-    private AIPath _aiPath;
-    private AIDestinationSetter _aiDestination;
     #endregion
 
     #region Unity Callbacks
@@ -17,40 +16,21 @@ public class MeleeEnemyInCombat : StateMachineBehaviour
     {
         // Get Components
         _meleeEnemy = animator.GetComponent<MeleeEnemy>();
-        _aiDestination = _meleeEnemy.aiDestination;
 
-        _meleeEnemy.nextAttackTime = Time.time + _meleeEnemy.timeBtwAttacks;
+        _meleeEnemy.Attack();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        if (_meleeEnemy.playerDistance > _meleeEnemy.combatRange)
-        {
-            Debug.Log("Player out of combatRange");
-            _aiDestination.target = _meleeEnemy.player;
-            animator.SetBool("isChasing", true);
-        }
-        else
-        {
-            if (Time.time > _meleeEnemy.nextAttackTime)
-            {
-                Debug.Log("Attack");
-                _meleeEnemy.nextAttackTime = Time.time + _meleeEnemy.timeBtwAttacks;
-                animator.SetTrigger("Attack");
-            }
-            else
-            {
-                _meleeEnemy.Turn();
-            }
-        }
-    }
+    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //
+    //}
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        animator.SetBool("inCombat", false);
-    }
+    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //    
+    //}
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
