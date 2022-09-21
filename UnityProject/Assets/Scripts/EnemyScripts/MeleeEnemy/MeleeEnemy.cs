@@ -13,6 +13,12 @@ public class MeleeEnemy : Enemy
     public LayerMask friendLayer;
     public int inCombatNum;
     public int maxInCombat;
+
+    public GameObject waypointPrefab;
+    [HideInInspector] public Transform waypoint;
+    [HideInInspector] public float nextReposTime;
+    public float minTimeBtwRepos;
+    public float maxTimeBtwRepos;
     #endregion
 
     #region Unity Callbacks
@@ -26,8 +32,12 @@ public class MeleeEnemy : Enemy
         aiPath.slowdownDistance = standbyRange * 3;
         aiPath.endReachedDistance = standbyRange;
 
+        waypoint = Instantiate(waypointPrefab).transform;
+        waypoint.position = transform.position;
+
+
         // Detect friends in combat every 1 second
-        InvokeRepeating("DetectFighting", 0f, 1f);
+        InvokeRepeating("DetectFighting", 0f, 0.5f);
     }
     #endregion
 
@@ -51,19 +61,26 @@ public class MeleeEnemy : Enemy
     }
 
     // Method for attacking (melee)
-    public void Attack()
+    public override void Attack()
     {
         // Array of all Colliders in targetLayer caught in Range.
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(attackPoint.position, meleeRange, playerLayer);
         foreach (var collider in hitColliders)
         {
             // Check for HealthSystem
-            if (collider.gameObject.TryGetComponent(out HealthHandler health))
+            if (collider.gameObject.TryGetComponent(out HealthHandler _health))
             {
                 // Deal damage
-                health.ChangeHealth(-attackDamage);
+                _health.ChangeHealth(-attackDamage);
             }
         }
+    }
+
+    public override void Die() 
+    {
+        Destroy(waypoint.gameObject);
+
+        base.Die();
     }
     #endregion
 }

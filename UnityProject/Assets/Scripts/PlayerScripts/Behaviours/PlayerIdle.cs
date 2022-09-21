@@ -21,7 +21,7 @@ public class PlayerIdle : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // Stop Player's Movement
-        _playerCtrl.rb.velocity = Vector2.zero;
+        //_playerCtrl.rb.velocity = Vector2.zero;
 
         // Player inputs "Movement", Transition to "Walk" state
         if (_playerCtrl.moveDir != Vector2.zero)
@@ -40,6 +40,11 @@ public class PlayerIdle : StateMachineBehaviour
         {
             // Set trigger for state Transition to "Melee Attack"
             animator.SetTrigger("MeleeTrigger");
+        }
+        else if (_playerCtrl.rb.velocity != Vector2.zero)
+        {
+            // Stop Player's Movement
+            _playerCtrl.rb.velocity = Vector2.zero;
         }
     }
 

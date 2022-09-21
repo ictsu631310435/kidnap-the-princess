@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
+// Base Script for Enemy
 public abstract class Enemy : MonoBehaviour
 {
+    #region Data Members
+    [Tooltip("Detection range")]
     public float detectRange;
     public bool chasePlayerOnSpawned;
     public float combatRange;
-
+    [Tooltip("Origin of attack")]
     public Transform attackPoint;
     public float meleeRange;
     public LayerMask playerLayer;
     public int attackDamage;
+    [Tooltip("Time between attacks")]
     public float timeBtwAttacks;
     [HideInInspector] public float nextAttackTime;
     [HideInInspector] public Transform player;
@@ -21,6 +25,7 @@ public abstract class Enemy : MonoBehaviour
     public float turnSpeed;
     [HideInInspector] public AIPath aiPath;
     [HideInInspector] public AIDestinationSetter aiDestination;
+    #endregion
 
     void Awake()
     {
@@ -49,6 +54,7 @@ public abstract class Enemy : MonoBehaviour
         playerDistance = Vector2.Distance(transform.position, player.position);
     }
 
+#if UNITY_EDITOR
     void OnDrawGizmos()
     {
         // Draw sightRange
@@ -65,6 +71,7 @@ public abstract class Enemy : MonoBehaviour
             Gizmos.DrawWireSphere(attackPoint.position, meleeRange);
         }
     }
+#endif
 
     public void Turn()
     {
@@ -75,6 +82,25 @@ public abstract class Enemy : MonoBehaviour
         transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, turnSpeed * Time.deltaTime);
     }
 
+    public Vector3 RandomPosAroundPlayer(float minRange, float maxRange)
+    {
+        // Get a random point inside circle with radius(maxRange)
+        Vector3 _rPos = Random.insideUnitCircle * maxRange;
+        // Player's position + rPos = New position
+        Vector3 _newPos = player.position + _rPos;
+
+        // If newPos is lower than minimum, get new value until equal or exceed minimum
+        while (Vector3.Distance(_newPos, player.position) < minRange || Vector3.Distance(_newPos, transform.position) > maxRange)
+        {
+            _rPos = (Random.insideUnitCircle * maxRange);
+            _newPos = player.position + _rPos;
+        }
+
+        return _newPos;
+    }
+
+    public abstract void Attack();
+
     public void Hurt(int currentHealth)
     {
         if (currentHealth <= 0)
@@ -84,10 +110,10 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    public void Die()
+    public virtual void Die()
     {
-        PlayerController _playerCtrl = FindObjectOfType<PlayerController>();
-        _playerCtrl.GetComponent<HealthHandler>().ChangeHealth(+1);
+        //PlayerController _playerCtrl = FindObjectOfType<PlayerController>();
+        //_playerCtrl.GetComponent<HealthHandler>().ChangeHealth(+1);
 
         Destroy(gameObject);
     }

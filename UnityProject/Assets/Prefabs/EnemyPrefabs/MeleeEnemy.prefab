@@ -178,6 +178,11 @@ MonoBehaviour:
     m_Bits: 128
   inCombatNum: 0
   maxInCombat: 2
+  waypointPrefab: {fileID: 6944279775557682488, guid: fec266ac34d188945b05bac559480561, type: 3}
+  waypoint: {fileID: 0}
+  nextReposTime: 0
+  minTimeBtwRepos: 1
+  maxTimeBtwRepos: 5
 --- !u!114 &8922856266008625269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,7 +298,7 @@ MonoBehaviour:
   radius: 0.5
   height: 2
   canMove: 1
-  maxSpeed: 2
+  maxSpeed: 2.5
   gravity: {x: 0, y: 0, z: 0}
   groundMask:
     serializedVersion: 2

@@ -35,13 +35,32 @@ public class MeleeEnemyStandby : StateMachineBehaviour
                 _aiPath.slowdownDistance = _meleeEnemy.combatRange * 3;
                 _aiPath.endReachedDistance = _meleeEnemy.combatRange;
 
+                _aiDestination.target = _meleeEnemy.player;
+
                 Debug.Log("Start Chase: Get in to fight");
                 animator.SetBool("isChasing", true);
             }
         }
         else
         {
+            _aiDestination.target = _meleeEnemy.player;
+
             Debug.Log("Start Chase: Player out of standby range");
+            animator.SetBool("isChasing", true);
+        }
+
+        // Reposition? i dunno. maybe deleted later
+        if (_meleeEnemy.inCombatNum >= _meleeEnemy.maxInCombat && Time.time > _meleeEnemy.nextReposTime)
+        {
+            _meleeEnemy.nextReposTime = Time.time + Random.Range(_meleeEnemy.minTimeBtwRepos, _meleeEnemy.maxTimeBtwRepos);
+
+            _aiPath.slowdownDistance = _meleeEnemy.combatRange * 3;
+            _aiPath.endReachedDistance = _meleeEnemy.combatRange;
+
+            _meleeEnemy.waypoint.position = _meleeEnemy.RandomPosAroundPlayer(_meleeEnemy.standbyRange, _meleeEnemy.detectRange);
+            _aiDestination.target = _meleeEnemy.waypoint;
+
+            Debug.Log("Reposition");
             animator.SetBool("isChasing", true);
         }
     }
@@ -51,7 +70,7 @@ public class MeleeEnemyStandby : StateMachineBehaviour
     {
         animator.SetBool("onStandby", false);
 
-        _aiDestination.target = _meleeEnemy.player;
+        //_aiDestination.target = _meleeEnemy.player;
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

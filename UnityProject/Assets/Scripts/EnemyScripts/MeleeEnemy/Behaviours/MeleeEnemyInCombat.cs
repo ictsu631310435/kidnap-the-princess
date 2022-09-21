@@ -35,7 +35,6 @@ public class MeleeEnemyInCombat : StateMachineBehaviour
         {
             if (Time.time > _meleeEnemy.nextAttackTime)
             {
-                Debug.Log("Attack");
                 _meleeEnemy.nextAttackTime = Time.time + _meleeEnemy.timeBtwAttacks;
                 animator.SetTrigger("Attack");
             }
