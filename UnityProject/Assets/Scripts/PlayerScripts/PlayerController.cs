@@ -85,11 +85,16 @@ public class PlayerController : MonoBehaviour
         foreach (var collider in hitColliders)
         {
             // Check for HealthSystem
-            if (collider.gameObject.TryGetComponent(out HealthHandler health))
+            if (collider.gameObject.TryGetComponent(out HealthHandler _health))
             {
                 // Deal damage
                 Debug.Log(gameObject.name + " MeleeAttack " + collider.name);
-                health.ChangeHealth(-1);
+                _health.ChangeHealth(-1);
+            }
+            if (collider.gameObject.TryGetComponent(out Enemy _enemy))
+            {
+                Vector3 _knockDir = (_enemy.transform.position - transform.position).normalized;
+                _enemy.GetKnockBack(_knockDir, 1000);
             }
         }
     }

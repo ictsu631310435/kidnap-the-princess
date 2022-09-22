@@ -10,10 +10,10 @@ public abstract class Enemy : MonoBehaviour
     [Tooltip("Detection range")]
     public float detectRange;
     public bool chasePlayerOnSpawned;
-    public float combatRange;
+    public float attackRange;
     [Tooltip("Origin of attack")]
     public Transform attackPoint;
-    public float meleeRange;
+    public float attackRadius;
     public LayerMask playerLayer;
     public int attackDamage;
     [Tooltip("Time between attacks")]
@@ -25,14 +25,21 @@ public abstract class Enemy : MonoBehaviour
     public float turnSpeed;
     [HideInInspector] public AIPath aiPath;
     [HideInInspector] public AIDestinationSetter aiDestination;
+
+    [HideInInspector] public Rigidbody2D rb;
     #endregion
 
+
+    #region Unity Callbacks
+    // Awake is called when the script instance is being loaded
     void Awake()
     {
         // Get Components
         player = FindObjectOfType<PlayerController>().transform;
         aiPath = GetComponent<AIPath>();
         aiDestination = GetComponent<AIDestinationSetter>();
+
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Start is called before the first frame update
@@ -57,22 +64,32 @@ public abstract class Enemy : MonoBehaviour
 #if UNITY_EDITOR
     void OnDrawGizmos()
     {
-        // Draw sightRange
-        Gizmos.DrawWireSphere(transform.position, detectRange);
+        // Draw detectRange
+        if (detectRange > 0)
+        {
+            Gizmos.DrawWireSphere(transform.position, detectRange);
+        }
 
         // Draw combatRange
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, combatRange);
+        if (attackRange > 0)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(transform.position, attackRange);
+        }
 
-        // Draw meleeRange
-        if (attackPoint != null && meleeRange > 0)
+        // Draw attackRadius
+        if (attackPoint != null && attackRadius > 0)
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(attackPoint.position, meleeRange);
+            Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
         }
     }
 #endif
+    #endregion
 
+    #region Methods
+
+    // Method for Turning Character
     public void Turn()
     {
         Vector2 heading = player.position - transform.position;
@@ -82,6 +99,7 @@ public abstract class Enemy : MonoBehaviour
         transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, turnSpeed * Time.deltaTime);
     }
 
+    // Method for getting random position around player
     public Vector3 RandomPosAroundPlayer(float minRange, float maxRange)
     {
         // Get a random point inside circle with radius(maxRange)
@@ -99,7 +117,13 @@ public abstract class Enemy : MonoBehaviour
         return _newPos;
     }
 
+    // Base method for attacking
     public abstract void Attack();
+
+    public void GetKnockBack(Vector3 direction, float force)
+    {
+        rb.AddForce(direction * force);
+    }
 
     public void Hurt(int currentHealth)
     {
@@ -117,4 +141,5 @@ public abstract class Enemy : MonoBehaviour
 
         Destroy(gameObject);
     }
+    #endregion
 }

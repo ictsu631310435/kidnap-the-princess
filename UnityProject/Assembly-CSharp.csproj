@@ -75,6 +75,9 @@
     <Compile Include="Assets\Scripts\MaterialFlashHandler.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Behaviours\PlayerMeleeAttack.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Behaviours\PlayerIdle.cs" />
+    <Compile Include="Assets\Scripts\StatusEffectScripts\StatusEffectHandler.cs" />
+    <Compile Include="Assets\Scripts\StatusEffectScripts\StatusEffect.cs" />
+    <Compile Include="Assets\Scripts\StatusEffectScripts\KnockBack.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

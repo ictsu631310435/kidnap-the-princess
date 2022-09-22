@@ -32,8 +32,8 @@ public class MeleeEnemyStandby : StateMachineBehaviour
             if (_meleeEnemy.inCombatNum < _meleeEnemy.maxInCombat)
             {
                 _meleeEnemy.inCombat = true;
-                _aiPath.slowdownDistance = _meleeEnemy.combatRange * 3;
-                _aiPath.endReachedDistance = _meleeEnemy.combatRange;
+                _aiPath.slowdownDistance = _meleeEnemy.attackRange * 3;
+                _aiPath.endReachedDistance = _meleeEnemy.attackRange;
 
                 _aiDestination.target = _meleeEnemy.player;
 
@@ -54,8 +54,8 @@ public class MeleeEnemyStandby : StateMachineBehaviour
         {
             _meleeEnemy.nextReposTime = Time.time + Random.Range(_meleeEnemy.minTimeBtwRepos, _meleeEnemy.maxTimeBtwRepos);
 
-            _aiPath.slowdownDistance = _meleeEnemy.combatRange * 3;
-            _aiPath.endReachedDistance = _meleeEnemy.combatRange;
+            _aiPath.slowdownDistance = _meleeEnemy.attackRange * 3;
+            _aiPath.endReachedDistance = _meleeEnemy.attackRange;
 
             _meleeEnemy.waypoint.position = _meleeEnemy.RandomPosAroundPlayer(_meleeEnemy.standbyRange, _meleeEnemy.detectRange);
             _aiDestination.target = _meleeEnemy.waypoint;

@@ -157,9 +157,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectRange: 10
   chasePlayerOnSpawned: 0
-  combatRange: 2
+  attackRange: 3
   attackPoint: {fileID: 8922856267099646146}
-  meleeRange: 1
+  attackRadius: 1
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -171,6 +171,7 @@ MonoBehaviour:
   turnSpeed: 360
   aiPath: {fileID: 0}
   aiDestination: {fileID: 0}
+  rb: {fileID: 0}
   standbyRange: 6
   inCombat: 0
   friendLayer:

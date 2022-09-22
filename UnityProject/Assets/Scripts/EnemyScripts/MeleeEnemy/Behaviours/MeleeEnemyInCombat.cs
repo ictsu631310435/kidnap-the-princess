@@ -25,7 +25,7 @@ public class MeleeEnemyInCombat : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (_meleeEnemy.playerDistance > _meleeEnemy.combatRange)
+        if (_meleeEnemy.playerDistance > _meleeEnemy.attackRange)
         {
             Debug.Log("Player out of combatRange");
             _aiDestination.target = _meleeEnemy.player;

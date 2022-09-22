@@ -53,7 +53,7 @@ public class MeleeEnemy : Enemy
         foreach (var one in others)
         {
             // Get MeleeEnemy in combat
-            if (one.TryGetComponent(out MeleeEnemy _meleeEnemy) && _meleeEnemy.inCombat)
+            if (one.TryGetComponent(out MeleeEnemy meleeEnemy) && meleeEnemy.inCombat)
             {
                 inCombatNum++; // Add number
             }
@@ -64,7 +64,7 @@ public class MeleeEnemy : Enemy
     public override void Attack()
     {
         // Array of all Colliders in targetLayer caught in Range.
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(attackPoint.position, meleeRange, playerLayer);
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, playerLayer);
         foreach (var collider in hitColliders)
         {
             // Check for HealthSystem

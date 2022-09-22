@@ -23,8 +23,8 @@ public class MeleeEnemyChase : StateMachineBehaviour
 
         if (_meleeEnemy.inCombat)
         {
-            _aiPath.slowdownDistance = _meleeEnemy.combatRange * 3;
-            _aiPath.endReachedDistance = _meleeEnemy.combatRange;
+            _aiPath.slowdownDistance = _meleeEnemy.attackRange * 3;
+            _aiPath.endReachedDistance = _meleeEnemy.attackRange;
         }
         else
         {
