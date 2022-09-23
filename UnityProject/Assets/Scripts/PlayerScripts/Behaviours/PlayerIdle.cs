@@ -7,6 +7,7 @@ public class PlayerIdle : StateMachineBehaviour
 {
     #region Data Members
     private PlayerController _playerCtrl;
+    private StatusEffectHandler _effectHandler;
     #endregion
 
     #region Unity Callbacks
@@ -15,33 +16,38 @@ public class PlayerIdle : StateMachineBehaviour
     {
         // Get Component
         _playerCtrl = animator.gameObject.GetComponent<PlayerController>();
+        _effectHandler = animator.gameObject.GetComponent<StatusEffectHandler>();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        // Stop Player's Movement
-        //_playerCtrl.rb.velocity = Vector2.zero;
-
         // Player inputs "Movement", Transition to "Walk" state
-        if (_playerCtrl.moveDir != Vector2.zero)
+        if (_playerCtrl.moveDir != Vector2.zero && _playerCtrl.canMove)
         {
             // Set bool for state Transition to "Walk"
             animator.SetBool("isWalking", true);
         }
         // Player inputs "Roll", Transition to Roll State
-        else if (Input.GetButtonDown("Roll"))
+        else if (Input.GetButtonDown("Roll") && _playerCtrl.canMove)
         {
             // Set trigger for state Transition to "Melee Attack"
-            animator.SetTrigger("RollTrigger");
+            animator.SetTrigger("Roll");
         }
-        // Player inputs "MeleeAttack", Transition to Attack State
-        else if(Input.GetButtonDown("MeleeAttack"))
+        // Player inputs "MeleeAttack", Transition to Melee Attack state
+        else if(Input.GetButtonDown("MeleeAttack") && _playerCtrl.canAttack)
         {
             // Set trigger for state Transition to "Melee Attack"
-            animator.SetTrigger("MeleeTrigger");
+            animator.SetTrigger("MeleeAtk");
         }
-        else if (_playerCtrl.rb.velocity != Vector2.zero)
+        // Player inputs "RangedAttack", Transition to Ranged Attack state
+        else if (Input.GetButtonDown("RangedAttack") && _playerCtrl.canAttack)
+        {
+            // Set trigger for state Transition to "Ranged Attack"
+            animator.SetTrigger("RangedAtk");
+        }
+        // Player do not inputs anything and not effected by StatusEffect
+        else if (_effectHandler.currentEffect.Count == 0)
         {
             // Stop Player's Movement
             _playerCtrl.rb.velocity = Vector2.zero;

@@ -13,8 +13,6 @@ public class PlayerRoll : StateMachineBehaviour
         // Get Component
         _playerCtrl = animator.gameObject.GetComponent<PlayerController>();
 
-        // Stop Player's Movement
-        _playerCtrl.rb.velocity = Vector2.zero;
         // Call roll method
         _playerCtrl.Roll();
     }

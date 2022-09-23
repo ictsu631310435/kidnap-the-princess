@@ -25,6 +25,10 @@ public class PlayerController : MonoBehaviour
     public float meleeRange;
     [Tooltip("The layer that enemies are in.")]
     public LayerMask enemyLayer;
+    public int attackDamage;
+
+    [HideInInspector] public bool canMove;
+    [HideInInspector] public bool canAttack;
     #endregion
 
     #region Unity Callbacks
@@ -35,6 +39,8 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         dir = Quaternion.RotateTowards(transform.rotation, transform.rotation, turnSpeed) * Vector2.up;
+        canMove = true;
+        canAttack = true;
     }
 
     // Update is called once per frame
@@ -43,8 +49,16 @@ public class PlayerController : MonoBehaviour
         // Get Player's MovementInput
         _moveX = Input.GetAxis("Horizontal"); // X Axis Input
         _moveY = Input.GetAxis("Vertical"); // Y Axis Input
-        // Turn MovementInput into MovementDirection
-        moveDir = new Vector2(_moveX, _moveY).normalized;
+        if (canMove)
+        {
+            // Turn MovementInput into MovementDirection
+            moveDir = new Vector2(_moveX, _moveY).normalized;
+        }
+        else
+        {
+            moveDir = Vector2.zero;
+        }
+        
     }
 
     void OnDrawGizmos()
@@ -78,23 +92,23 @@ public class PlayerController : MonoBehaviour
     }
 
     // Method for Melee Attack
-    public void MeleeAttack()
+    public void MeleeAttack(StatusEffect inflictEffect)
     {
         // Array of all Colliders in targetLayer caught in Range.
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(attackPoint.position, meleeRange, enemyLayer);
         foreach (var collider in hitColliders)
         {
-            // Check for HealthSystem
+            // Check for HealthHandler
             if (collider.gameObject.TryGetComponent(out HealthHandler _health))
             {
                 // Deal damage
-                Debug.Log(gameObject.name + " MeleeAttack " + collider.name);
-                _health.ChangeHealth(-1);
+                _health.ChangeHealth(-attackDamage);
             }
-            if (collider.gameObject.TryGetComponent(out Enemy _enemy))
+            // Check for StatusEffectHandler
+            if (collider.gameObject.TryGetComponent(out StatusEffectHandler _effectHandler))
             {
-                Vector3 _knockDir = (_enemy.transform.position - transform.position).normalized;
-                _enemy.GetKnockBack(_knockDir, 1000);
+                // Apply inflictEffect
+                _effectHandler.ApplyEffect(inflictEffect, gameObject);
             }
         }
     }

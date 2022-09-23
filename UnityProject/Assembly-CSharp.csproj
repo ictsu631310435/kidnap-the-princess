@@ -67,17 +67,17 @@
     <Compile Include="Assets\Scripts\PlayerScripts\Behaviours\PlayerRoll.cs" />
     <Compile Include="Assets\Scripts\HealthHandler.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\StatusEffectScripts\StatusEffect.cs" />
     <Compile Include="Assets\Scripts\UIScripts\HealthBar.cs" />
     <Compile Include="Assets\Scripts\TriggerByPlayer.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\MeleeEnemy\Behaviours\MeleeEnemyStandby.cs" />
+    <Compile Include="Assets\Scripts\StatusEffectScripts\StatusEffectHandler.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\MeleeEnemy\MeleeEnemy.cs" />
     <Compile Include="Assets\Scripts\EnemySpawner.cs" />
+    <Compile Include="Assets\Scripts\StatusEffectScripts\KnockBack.cs" />
     <Compile Include="Assets\Scripts\MaterialFlashHandler.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Behaviours\PlayerMeleeAttack.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Behaviours\PlayerIdle.cs" />
-    <Compile Include="Assets\Scripts\StatusEffectScripts\StatusEffectHandler.cs" />
-    <Compile Include="Assets\Scripts\StatusEffectScripts\StatusEffect.cs" />
-    <Compile Include="Assets\Scripts\StatusEffectScripts\KnockBack.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

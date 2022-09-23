@@ -8,6 +8,8 @@ public class MeleeEnemyAttack : StateMachineBehaviour
 {
     #region Data Members
     private MeleeEnemy _meleeEnemy;
+
+    public StatusEffect inflictEffect;
     #endregion
 
     #region Unity Callbacks
@@ -17,7 +19,7 @@ public class MeleeEnemyAttack : StateMachineBehaviour
         // Get Components
         _meleeEnemy = animator.GetComponent<MeleeEnemy>();
 
-        _meleeEnemy.Attack();
+        _meleeEnemy.Attack(inflictEffect);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

@@ -16,9 +16,6 @@ public class StatusEffectHandler : MonoBehaviour
 
     public List<EffectStats> currentEffect;
 
-    public StatusEffect[] testEffect;
-    public GameObject testSource;
-
     private float _newDuration;
     private float _newTickTime;
 
@@ -29,15 +26,6 @@ public class StatusEffectHandler : MonoBehaviour
         if (currentEffect != null)
         {
             HandleEffects();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha1) && testEffect[0] != null)
-        {
-            ApplyEffect(testEffect[0], testSource);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2) && testEffect[1] != null)
-        {
-            ApplyEffect(testEffect[1], testSource);
         }
     }
 

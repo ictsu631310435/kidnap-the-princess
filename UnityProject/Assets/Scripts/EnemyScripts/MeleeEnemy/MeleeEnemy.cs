@@ -61,7 +61,7 @@ public class MeleeEnemy : Enemy
     }
 
     // Method for attacking (melee)
-    public override void Attack()
+    public override void Attack(StatusEffect inflictEffect)
     {
         // Array of all Colliders in targetLayer caught in Range.
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, playerLayer);
@@ -72,6 +72,12 @@ public class MeleeEnemy : Enemy
             {
                 // Deal damage
                 _health.ChangeHealth(-attackDamage);
+            }
+            // Check for StatusEffectHandler
+            if (collider.gameObject.TryGetComponent(out StatusEffectHandler _effectHandler))
+            {
+                // Apply inflictEffect
+                _effectHandler.ApplyEffect(inflictEffect, gameObject);
             }
         }
     }

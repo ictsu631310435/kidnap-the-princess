@@ -24,7 +24,7 @@ public class PlayerMeleeTransition : StateMachineBehaviour
         if(Input.GetButtonDown("MeleeAttack"))
         {
             // Set trigger for state Transition to "Melee Attack"
-            animator.SetTrigger("MeleeTrigger");
+            animator.SetTrigger("MeleeAtk");
         }
     }
 

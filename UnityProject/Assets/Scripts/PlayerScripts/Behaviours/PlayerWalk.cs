@@ -21,22 +21,28 @@ public class PlayerWalk : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // Check if Player is still walking
-        if (_playerCtrl.moveDir != Vector2.zero)
+        if (_playerCtrl.moveDir != Vector2.zero && _playerCtrl.canMove)
         {
             _playerCtrl.Turn(); // Turn Character to Direction of Movement
             _playerCtrl.Move(); // Move Character
 
             // Player inputs "Roll", Transition to "Roll" state
-            if (Input.GetButtonDown("Roll"))
+            if (Input.GetButtonDown("Roll") && _playerCtrl.canMove)
             {
                 // Set trigger for state Transition to "Melee Attack"
-                animator.SetTrigger("RollTrigger");
+                animator.SetTrigger("Roll");
             }
             // Player inputs "MeleeAttack", Transition to "Melee Attack" state
-            else if (Input.GetButtonDown("MeleeAttack"))
+            else if (Input.GetButtonDown("MeleeAttack") && _playerCtrl.canAttack)
             {
                 // Set trigger for state Transition to "Melee Attack"
-                animator.SetTrigger("MeleeTrigger");
+                animator.SetTrigger("MeleeAtk");
+            }
+            // Player inputs "RangedAttack", Transition to Ranged Attack state
+            else if (Input.GetButtonDown("RangedAttack") && _playerCtrl.canAttack)
+            {
+                // Set trigger for state Transition to "Ranged Attack"
+                animator.SetTrigger("RangedAtk");
             }
         }
         // Player has stopped walking
@@ -50,6 +56,8 @@ public class PlayerWalk : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        // Stop Player's Movement
+        _playerCtrl.rb.velocity = Vector2.zero;
         // Make sure isWalking = false when Exit this State
         animator.SetBool("isWalking", false);
     }

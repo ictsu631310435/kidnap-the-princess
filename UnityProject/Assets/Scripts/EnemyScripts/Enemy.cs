@@ -118,7 +118,7 @@ public abstract class Enemy : MonoBehaviour
     }
 
     // Base method for attacking
-    public abstract void Attack();
+    public abstract void Attack(StatusEffect inflictEffect);
 
     public void GetKnockBack(Vector3 direction, float force)
     {

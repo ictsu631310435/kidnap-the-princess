@@ -7,6 +7,8 @@ public class PlayerMeleeAttack : StateMachineBehaviour
 {
     #region Data Members
     private PlayerController _playerCtrl;
+
+    public StatusEffect inflictEffect;
     #endregion
 
     #region Unity Callbacks
@@ -16,11 +18,8 @@ public class PlayerMeleeAttack : StateMachineBehaviour
         // Get Component
         _playerCtrl = animator.gameObject.GetComponent<PlayerController>();
 
-        // Stop Player's Movement
-        _playerCtrl.rb.velocity = Vector2.zero;
-
-        // Melee Attack logic
-        _playerCtrl.MeleeAttack();
+        // Call MeleeAttack method
+        _playerCtrl.MeleeAttack(inflictEffect);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
