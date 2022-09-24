@@ -15,4 +15,4 @@ MonoBehaviour:
   name: Knock back
   duration: 0.25
   tickRate: 0
-  force: 100
+  force: 3
