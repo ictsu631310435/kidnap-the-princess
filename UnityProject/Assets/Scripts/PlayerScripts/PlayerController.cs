@@ -12,20 +12,25 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Player's movement speed.")]
     public float moveSpeed;
 
-    [HideInInspector] public Rigidbody2D rb;
-
     [Tooltip("Player's turning speed.")]
     public float turnSpeed;
-    [HideInInspector] public Vector3 dir; // Rolling Direction
+    [HideInInspector] public Vector3 dir; // Player Direction
     public float rollForce;
 
+    [Header("Combat Settings")]
     [Tooltip("The origin of player's attack.")]
     public Transform attackPoint;
-    [Tooltip("Player's melee attack range.")]
-    public float meleeRange;
     [Tooltip("The layer that enemies are in.")]
     public LayerMask enemyLayer;
     public int attackDamage;
+
+    [Header("Melee Combat")]
+    [Tooltip("Player's melee attack range.")]
+    public float meleeRange;
+
+    [Header("Ranged Combat")]
+    public GameObject projectile;
+    public float launchForce;
 
     [HideInInspector] public bool canMove;
     [HideInInspector] public bool canAttack;
@@ -35,9 +40,6 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Get Component
-        rb = GetComponent<Rigidbody2D>();
-
         dir = Quaternion.RotateTowards(transform.rotation, transform.rotation, turnSpeed) * Vector2.up;
         canMove = true;
         canAttack = true;
@@ -49,6 +51,7 @@ public class PlayerController : MonoBehaviour
         // Get Player's MovementInput
         _moveX = Input.GetAxis("Horizontal"); // X Axis Input
         _moveY = Input.GetAxis("Vertical"); // Y Axis Input
+
         if (canMove)
         {
             // Turn MovementInput into MovementDirection
@@ -69,12 +72,6 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region Methods
-    // Method for Moving Character
-    public void Move()
-    {
-        rb.velocity = moveDir * moveSpeed;
-    }
-
     // Method for Turning Character
     public void Turn()
     {
@@ -82,13 +79,6 @@ public class PlayerController : MonoBehaviour
         transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, turnSpeed * Time.deltaTime);
 
         dir = Quaternion.RotateTowards(transform.rotation, toRotation, turnSpeed * Time.deltaTime) * Vector2.up;
-    }
-
-    // Method for Rolling Character
-    public void Roll()
-    {
-        //rb.velocity = dir * rollForce;
-        rb.AddForce(dir * rollForce);
     }
 
     // Method for Melee Attack
@@ -111,6 +101,13 @@ public class PlayerController : MonoBehaviour
                 _effectHandler.ApplyEffect(inflictEffect, gameObject);
             }
         }
+    }
+
+    public void RangedAttack()
+    {
+        GameObject _bullet = Instantiate(projectile, attackPoint.position, transform.rotation);
+
+        _bullet.GetComponent<Projectile>().Initialize(gameObject, enemyLayer);
     }
     #endregion
 }

@@ -32,9 +32,11 @@ public class MeleeEnemy : Enemy
         aiPath.slowdownDistance = standbyRange * 3;
         aiPath.endReachedDistance = standbyRange;
 
+        // Create a waypoint
         waypoint = Instantiate(waypointPrefab).transform;
         waypoint.position = transform.position;
-
+        // Rename to have ID attached
+        waypoint.name += waypoint.GetInstanceID();
 
         // Detect friends in combat every 1 second
         InvokeRepeating("DetectFighting", 0f, 0.5f);

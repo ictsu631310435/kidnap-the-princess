@@ -7,6 +7,7 @@ public class PlayerIdle : StateMachineBehaviour
 {
     #region Data Members
     private PlayerController _playerCtrl;
+    private Rigidbody2D _rigidbody;
     private StatusEffectHandler _effectHandler;
     #endregion
 
@@ -16,6 +17,7 @@ public class PlayerIdle : StateMachineBehaviour
     {
         // Get Component
         _playerCtrl = animator.gameObject.GetComponent<PlayerController>();
+        _rigidbody = animator.gameObject.GetComponent<Rigidbody2D>();
         _effectHandler = animator.gameObject.GetComponent<StatusEffectHandler>();
     }
 
@@ -50,7 +52,7 @@ public class PlayerIdle : StateMachineBehaviour
         else if (_effectHandler.currentEffect.Count == 0)
         {
             // Stop Player's Movement
-            _playerCtrl.rb.velocity = Vector2.zero;
+            _rigidbody.velocity = Vector2.zero;
         }
     }
 

@@ -7,6 +7,7 @@ public class PlayerWalk : StateMachineBehaviour
 {
     #region Data Members
     private PlayerController _playerCtrl;
+    private Rigidbody2D _rigidbody;
     #endregion
 
     #region Unity Callbacks
@@ -15,6 +16,7 @@ public class PlayerWalk : StateMachineBehaviour
     {
         // Get Component
         _playerCtrl = animator.gameObject.GetComponent<PlayerController>();
+        _rigidbody = animator.gameObject.GetComponent<Rigidbody2D>();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -24,7 +26,8 @@ public class PlayerWalk : StateMachineBehaviour
         if (_playerCtrl.moveDir != Vector2.zero && _playerCtrl.canMove)
         {
             _playerCtrl.Turn(); // Turn Character to Direction of Movement
-            _playerCtrl.Move(); // Move Character
+            // Move Character using velocity
+            _rigidbody.velocity = _playerCtrl.moveDir * _playerCtrl.moveSpeed;
 
             // Player inputs "Roll", Transition to "Roll" state
             if (Input.GetButtonDown("Roll") && _playerCtrl.canMove)
@@ -57,7 +60,7 @@ public class PlayerWalk : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // Stop Player's Movement
-        _playerCtrl.rb.velocity = Vector2.zero;
+        _rigidbody.velocity = Vector2.zero;
         // Make sure isWalking = false when Exit this State
         animator.SetBool("isWalking", false);
     }

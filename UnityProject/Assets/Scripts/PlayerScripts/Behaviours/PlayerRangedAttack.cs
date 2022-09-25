@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Script for handling Player's Roll state
-public class PlayerRoll : StateMachineBehaviour
+// Script for handling Player's Melee Attack state
+public class PlayerRangedAttack : StateMachineBehaviour
 {
     #region Data Members
     private PlayerController _playerCtrl;
-    private Rigidbody2D _rigidbody;
     #endregion
 
     #region Unity Callbacks
@@ -16,22 +15,22 @@ public class PlayerRoll : StateMachineBehaviour
     {
         // Get Component
         _playerCtrl = animator.gameObject.GetComponent<PlayerController>();
-        _rigidbody = animator.gameObject.GetComponent<Rigidbody2D>();
 
-        // Move player by add force impulse
-        _rigidbody.AddForce(_playerCtrl.dir * _playerCtrl.rollForce, ForceMode2D.Impulse); ;
+        // Call RangedAttack method
+        _playerCtrl.Invoke("RangedAttack", 0.5f);
+        //_playerCtrl.RangedAttack();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
-    //
+    //    
     //}
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
-    //
+    //    
     //}
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
