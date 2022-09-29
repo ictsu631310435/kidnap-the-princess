@@ -25,7 +25,7 @@ public class MeleeEnemy : Enemy
     // Start is called before the first frame update
     new void Start()
     {
-        // Set base script's Start
+        // Call base script's Start
         base.Start();
 
         // Set Variables'values that differ from base script
@@ -43,7 +43,7 @@ public class MeleeEnemy : Enemy
     }
     #endregion
 
-    #region Method
+    #region Methods
     // Method for detecting friends in combat
     public void DetectFighting()
     {
@@ -63,7 +63,7 @@ public class MeleeEnemy : Enemy
     }
 
     // Method for attacking (melee)
-    public override void Attack(StatusEffect inflictEffect)
+    public override void Attack(StatusEffect statusEffect)
     {
         // Array of all Colliders in targetLayer caught in Range.
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, playerLayer);
@@ -79,7 +79,7 @@ public class MeleeEnemy : Enemy
             if (collider.gameObject.TryGetComponent(out StatusEffectHandler _effectHandler))
             {
                 // Apply inflictEffect
-                _effectHandler.ApplyEffect(inflictEffect, gameObject);
+                _effectHandler.ApplyEffect(statusEffect, gameObject);
             }
         }
     }
@@ -89,6 +89,12 @@ public class MeleeEnemy : Enemy
         Destroy(waypoint.gameObject);
 
         base.Die();
+    }
+
+    // Unused
+    public override void Attack()
+    {
+        throw new System.NotImplementedException();
     }
     #endregion
 }

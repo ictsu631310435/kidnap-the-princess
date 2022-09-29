@@ -22,10 +22,17 @@ public class PlayerWalk : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        // Check if Player is still walking
-        if (_playerCtrl.moveDir != Vector2.zero && _playerCtrl.canMove)
+        // Check if Player is stopped walking
+        if (_playerCtrl.moveDir == Vector2.zero || !_playerCtrl.canMove)
         {
-            _playerCtrl.Turn(); // Turn Character to Direction of Movement
+            // Set bool for state Transition to "Idle"
+            animator.SetBool("isWalking", false);
+        }
+        // Player is still walking
+        else
+        {
+            // Turn Character to Direction of Movement
+            _playerCtrl.Turn();
             // Move Character using velocity
             _rigidbody.velocity = _playerCtrl.moveDir * _playerCtrl.moveSpeed;
 
@@ -48,12 +55,6 @@ public class PlayerWalk : StateMachineBehaviour
                 animator.SetTrigger("RangedAtk");
             }
         }
-        // Player has stopped walking
-        else
-        {
-            // Set bool for state Transition to "Idle"
-            animator.SetBool("isWalking", false);
-        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
@@ -61,6 +62,7 @@ public class PlayerWalk : StateMachineBehaviour
     {
         // Stop Player's Movement
         _rigidbody.velocity = Vector2.zero;
+
         // Make sure isWalking = false when Exit this State
         animator.SetBool("isWalking", false);
     }

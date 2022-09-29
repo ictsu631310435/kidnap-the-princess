@@ -56,31 +56,35 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\EnemyScripts\MeleeEnemy\Behaviours\MeleeEnemyIdle.cs" />
-    <Compile Include="Assets\Scripts\EnemyScripts\MeleeEnemy\Behaviours\MeleeEnemyInCombat.cs" />
-    <Compile Include="Assets\Scripts\EnemyScripts\Enemy.cs" />
+    <Compile Include="Assets\Scripts\EnemyScripts\_BaseEnemy\Behaviours\EnemyChase.cs" />
+    <Compile Include="Assets\Scripts\EnemyScripts\_BaseEnemy\Enemy.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Behaviours\PlayerMeleeTransition.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Behaviours\PlayerWalk.cs" />
+    <Compile Include="Assets\Scripts\EnemyScripts\_BaseEnemy\Behaviours\EnemyIdle.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\MeleeEnemy\Behaviours\MeleeEnemyChase.cs" />
     <Compile Include="Assets\Scripts\UIScripts\Billboard.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\MeleeEnemy\Behaviours\MeleeEnemyAttack.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Behaviours\PlayerRoll.cs" />
     <Compile Include="Assets\Scripts\HealthHandler.cs" />
+    <Compile Include="Assets\Scripts\EnemyScripts\RangedEnemy.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\RollCollider.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\StatusEffectScripts\StatusEffect.cs" />
+    <Compile Include="Assets\Scripts\EnemyScripts\_BaseEnemy\Behaviours\EnemyInCombat.cs" />
     <Compile Include="Assets\Scripts\UIScripts\HealthBar.cs" />
     <Compile Include="Assets\Scripts\Projectile.cs" />
     <Compile Include="Assets\Scripts\TriggerByPlayer.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\MeleeEnemy\Behaviours\MeleeEnemyStandby.cs" />
     <Compile Include="Assets\Scripts\StatusEffectScripts\StatusEffectHandler.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Behaviours\PlayerRangedAttack.cs" />
+    <Compile Include="Assets\Scripts\StatusEffectScripts\Stun.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\MeleeEnemy\MeleeEnemy.cs" />
     <Compile Include="Assets\Scripts\EnemySpawner.cs" />
     <Compile Include="Assets\Scripts\StatusEffectScripts\KnockBack.cs" />
+    <Compile Include="Assets\Scripts\EnemyScripts\_BaseEnemy\Behaviours\EnemyAttack.cs" />
     <Compile Include="Assets\Scripts\MaterialFlashHandler.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Behaviours\PlayerMeleeAttack.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Behaviours\PlayerIdle.cs" />
-    <Compile Include="Assets\Scripts\StatusEffectScripts\Stun.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

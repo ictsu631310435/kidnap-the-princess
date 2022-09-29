@@ -7,7 +7,7 @@ using Pathfinding;
 public class MeleeEnemyChase : StateMachineBehaviour
 {
     #region Data Members
-    private MeleeEnemy _meleeEnemy;
+    private MeleeEnemy _enemy;
     private AIPath _aiPath;
     private AIDestinationSetter _aiDestination;
     #endregion
@@ -17,35 +17,35 @@ public class MeleeEnemyChase : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // Get Components
-        _meleeEnemy = animator.GetComponent<MeleeEnemy>();
-        _aiPath = animator.GetComponent<AIPath>();
-        _aiDestination = animator.GetComponent<AIDestinationSetter>();
+        _enemy = animator.GetComponent<MeleeEnemy>() as MeleeEnemy;
+        _aiPath = _enemy.aiPath;
+        _aiDestination = _enemy.aiDestination;
 
-        if (_meleeEnemy.inCombat)
+        if (_enemy.inCombat)
         {
-            _aiPath.slowdownDistance = _meleeEnemy.attackRange * 3;
-            _aiPath.endReachedDistance = _meleeEnemy.attackRange;
+            _aiPath.slowdownDistance = _enemy.attackRange * 3;
+            _aiPath.endReachedDistance = _enemy.attackRange;
         }
         else
         {
-            _aiPath.slowdownDistance = _meleeEnemy.standbyRange * 3;
-            _aiPath.endReachedDistance = _meleeEnemy.standbyRange;
+            _aiPath.slowdownDistance = _enemy.standbyRange * 3;
+            _aiPath.endReachedDistance = _enemy.standbyRange;
         }
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (_meleeEnemy.playerDistance <= _meleeEnemy.detectRange)
+        if (_enemy.playerDistance <= _enemy.detectRange)
         {
             if (_aiDestination.target == null)
             {
-                _aiDestination.target = _meleeEnemy.player;
+                _aiDestination.target = _enemy.player;
             }
 
             if (_aiPath.reachedDestination)
             {
-                if (_meleeEnemy.inCombat)
+                if (_enemy.inCombat)
                 {
                     Debug.Log("Stop chase: in Attack Range");
                     animator.SetBool("inCombat", true);
@@ -63,7 +63,7 @@ public class MeleeEnemyChase : StateMachineBehaviour
             {
                 _aiDestination.target = null;
 
-                _meleeEnemy.inCombat = false;
+                _enemy.inCombat = false;
             }
 
             if (_aiPath.reachedDestination)
@@ -81,17 +81,5 @@ public class MeleeEnemyChase : StateMachineBehaviour
 
         _aiDestination.target = null;
     }
-
-    // OnStateMove is called right after Animator.OnAnimatorMove()
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that processes and affects root motion
-    //}
-
-    // OnStateIK is called right after Animator.OnAnimatorIK()
-    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that sets up animation IK (inverse kinematics)
-    //}
     #endregion
 }

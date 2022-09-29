@@ -6,21 +6,23 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     #region Data Members
+    [Header("Movement Settings")]
     private float _moveX; // Horizontal Movement Input
     private float _moveY; // Vertical Movement Input
     [HideInInspector] public Vector2 moveDir; // Movement Direction
-    [Tooltip("Player's movement speed.")]
     public float moveSpeed;
 
-    [Tooltip("Player's turning speed.")]
     public float turnSpeed;
-    [HideInInspector] public Vector3 dir; // Player Direction
-    public float rollForce;
+    [HideInInspector] public Vector3 direction;
+
+    [Header("Roll")]
+    public float rollDistance;
+    public float rollSpeed;
+    public GameObject rollCollider;
 
     [Header("Combat Settings")]
     [Tooltip("The origin of player's attack.")]
     public Transform attackPoint;
-    [Tooltip("The layer that enemies are in.")]
     public LayerMask enemyLayer;
     public int attackDamage;
 
@@ -30,7 +32,6 @@ public class PlayerController : MonoBehaviour
 
     [Header("Ranged Combat")]
     public GameObject projectile;
-    public float launchForce;
 
     [HideInInspector] public bool canMove;
     [HideInInspector] public bool canAttack;
@@ -40,7 +41,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        dir = Quaternion.RotateTowards(transform.rotation, transform.rotation, turnSpeed) * Vector2.up;
+        direction = transform.rotation * Vector2.up;
         canMove = true;
         canAttack = true;
     }
@@ -75,10 +76,12 @@ public class PlayerController : MonoBehaviour
     // Method for Turning Character
     public void Turn()
     {
+        // Caculate rotation that player is going to
         Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, moveDir);
+        // Rotate player towards toRotation
         transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, turnSpeed * Time.deltaTime);
-
-        dir = Quaternion.RotateTowards(transform.rotation, toRotation, turnSpeed * Time.deltaTime) * Vector2.up;
+        // Caculate player's facing direction
+        direction = transform.rotation * Vector2.up;
     }
 
     // Method for Melee Attack
@@ -107,7 +110,7 @@ public class PlayerController : MonoBehaviour
     {
         GameObject _bullet = Instantiate(projectile, attackPoint.position, transform.rotation);
 
-        _bullet.GetComponent<Projectile>().Initialize(gameObject, enemyLayer);
+        _bullet.GetComponent<Projectile>().Initialize(gameObject);
     }
     #endregion
 }

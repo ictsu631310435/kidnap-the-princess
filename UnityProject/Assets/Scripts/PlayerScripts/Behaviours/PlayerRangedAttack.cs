@@ -7,6 +7,8 @@ public class PlayerRangedAttack : StateMachineBehaviour
 {
     #region Data Members
     private PlayerController _playerCtrl;
+    [Tooltip("Delay time before shoot projectile.")]
+    public float delayTime;
     #endregion
 
     #region Unity Callbacks
@@ -17,8 +19,7 @@ public class PlayerRangedAttack : StateMachineBehaviour
         _playerCtrl = animator.gameObject.GetComponent<PlayerController>();
 
         // Call RangedAttack method
-        _playerCtrl.Invoke("RangedAttack", 0.5f);
-        //_playerCtrl.RangedAttack();
+        _playerCtrl.Invoke("RangedAttack", delayTime);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
