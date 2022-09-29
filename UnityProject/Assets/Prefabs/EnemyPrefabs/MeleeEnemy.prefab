@@ -165,7 +165,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   attackDamage: 1
-  timeBtwAttacks: 2
+  timeBtwAttacks: 1
   nextAttackTime: 0
   player: {fileID: 0}
   playerDistance: 0
@@ -300,7 +300,7 @@ MonoBehaviour:
   radius: 0.5
   height: 2
   canMove: 1
-  maxSpeed: 2.5
+  maxSpeed: 3
   gravity: {x: 0, y: 0, z: 0}
   groundMask:
     serializedVersion: 2
