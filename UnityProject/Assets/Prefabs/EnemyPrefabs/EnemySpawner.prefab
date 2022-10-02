@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 203050994433845331}
   - component: {fileID: 203050994433845330}
   m_Layer: 0
-  m_Name: Spawner
+  m_Name: EnemySpawner
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -46,17 +46,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dir:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 45}
-  - {x: 0, y: 0, z: 90}
-  - {x: 0, y: 0, z: 135}
-  - {x: 0, y: 0, z: 180}
-  - {x: 0, y: 0, z: 225}
-  - {x: 0, y: 0, z: 270}
-  - {x: 0, y: 0, z: 315}
+  - {x: 0, y: 0, z: -45}
+  - {x: 0, y: 0, z: -90}
+  - {x: 0, y: 0, z: -135}
+  - {x: 0, y: 0, z: -180}
+  - {x: 0, y: 0, z: -225}
+  - {x: 0, y: 0, z: -270}
+  - {x: 0, y: 0, z: -315}
   enemy: {fileID: 0}
-  randomDirection: 1
+  randomDirection: 0
   spawnDir: 0
-  chasePlayerOnSpawned: 1
+  chasePlayerOnSpawned: 0
   numEnemy: 1
   timeBtwSpawns: 0
   spawnOn: 0
+  delaySpawn: 0

@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\StatusEffectScripts\StatusEffect.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\_BaseEnemy\Behaviours\EnemyInCombat.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\UIScripts\HealthBar.cs" />
     <Compile Include="Assets\Scripts\Projectile.cs" />
     <Compile Include="Assets\Scripts\TriggerByPlayer.cs" />
@@ -79,7 +80,7 @@
     <Compile Include="Assets\Scripts\PlayerScripts\Behaviours\PlayerRangedAttack.cs" />
     <Compile Include="Assets\Scripts\StatusEffectScripts\Stun.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\MeleeEnemy\MeleeEnemy.cs" />
-    <Compile Include="Assets\Scripts\EnemySpawner.cs" />
+    <Compile Include="Assets\Scripts\EnemyScripts\EnemySpawner.cs" />
     <Compile Include="Assets\Scripts\StatusEffectScripts\KnockBack.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\_BaseEnemy\Behaviours\EnemyAttack.cs" />
     <Compile Include="Assets\Scripts\MaterialFlashHandler.cs" />

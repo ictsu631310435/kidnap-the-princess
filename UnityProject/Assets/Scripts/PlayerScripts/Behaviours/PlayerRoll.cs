@@ -9,7 +9,7 @@ public class PlayerRoll : StateMachineBehaviour
     private PlayerController _playerCtrl;
     private Rigidbody2D _rigidbody;
 
-    private Vector3 _target;
+    private Vector3 _startPoint;
     #endregion
 
     #region Unity Callbacks
@@ -21,7 +21,7 @@ public class PlayerRoll : StateMachineBehaviour
         _rigidbody = animator.gameObject.GetComponent<Rigidbody2D>();
 
         // Calculate target location
-        _target = _playerCtrl.transform.position + (_playerCtrl.direction * _playerCtrl.rollDistance);
+        _startPoint = _playerCtrl.transform.position;
 
         _rigidbody.AddForce(_playerCtrl.direction * _playerCtrl.rollSpeed, ForceMode2D.Impulse);
         _playerCtrl.rollCollider.SetActive(true);
@@ -30,10 +30,10 @@ public class PlayerRoll : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        //if (_playerCtrl.transform.position == _target)
-        //{
-            //_rigidbody.velocity = Vector2.zero;
-        //}
+        if (Vector2.Distance(_startPoint, _playerCtrl.transform.position) >= _playerCtrl.rollDistance)
+        {
+            _rigidbody.velocity = Vector2.zero;
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

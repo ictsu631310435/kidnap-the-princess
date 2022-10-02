@@ -22,39 +22,42 @@ public class PlayerWalk : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        // Check if Player is stopped walking
-        if (_playerCtrl.moveDir == Vector2.zero || !_playerCtrl.canMove)
+        if (!GameManager.Instance.gamePaused)
         {
-            // Set bool for state Transition to "Idle"
-            animator.SetBool("isWalking", false);
-        }
-        // Player is still walking
-        else
-        {
-            // Turn Character to Direction of Movement
-            _playerCtrl.Turn();
-            // Move Character using velocity
-            _rigidbody.velocity = _playerCtrl.moveDir * _playerCtrl.moveSpeed;
+            // Check if Player is stopped walking
+            if (_playerCtrl.moveDir == Vector2.zero || !_playerCtrl.canMove)
+            {
+                // Set bool for state Transition to "Idle"
+                animator.SetBool("isWalking", false);
+            }
+            // Player is still walking
+            else
+            {
+                // Turn Character to Direction of Movement
+                _playerCtrl.Turn();
+                // Move Character using velocity
+                _rigidbody.velocity = _playerCtrl.moveDir * _playerCtrl.moveSpeed;
 
-            // Player inputs "Roll", Transition to "Roll" state
-            if (Input.GetButtonDown("Roll") && _playerCtrl.canMove)
-            {
-                // Set trigger for state Transition to "Melee Attack"
-                animator.SetTrigger("Roll");
+                // Player inputs "Roll", Transition to "Roll" state
+                if (Input.GetButtonDown("Roll") && _playerCtrl.canMove)
+                {
+                    // Set trigger for state Transition to "Melee Attack"
+                    animator.SetTrigger("Roll");
+                }
+                // Player inputs "MeleeAttack", Transition to "Melee Attack" state
+                else if (Input.GetButtonDown("MeleeAttack") && _playerCtrl.canAttack)
+                {
+                    // Set trigger for state Transition to "Melee Attack"
+                    animator.SetTrigger("MeleeAtk");
+                }
+                // Player inputs "RangedAttack", Transition to Ranged Attack state
+                else if (Input.GetButtonDown("RangedAttack") && _playerCtrl.canAttack)
+                {
+                    // Set trigger for state Transition to "Ranged Attack"
+                    animator.SetTrigger("RangedAtk");
+                }
             }
-            // Player inputs "MeleeAttack", Transition to "Melee Attack" state
-            else if (Input.GetButtonDown("MeleeAttack") && _playerCtrl.canAttack)
-            {
-                // Set trigger for state Transition to "Melee Attack"
-                animator.SetTrigger("MeleeAtk");
-            }
-            // Player inputs "RangedAttack", Transition to Ranged Attack state
-            else if (Input.GetButtonDown("RangedAttack") && _playerCtrl.canAttack)
-            {
-                // Set trigger for state Transition to "Ranged Attack"
-                animator.SetTrigger("RangedAtk");
-            }
-        }
+        }   
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

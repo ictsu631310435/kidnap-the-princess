@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class RollCollider : MonoBehaviour
 {
+    #region Data Members
     private Collider2D _collider;
     public LayerMask enemyLayer;
     public StatusEffect inflictEffect;
     private PlayerController _player;
+    #endregion
 
+    #region Unity Callbacks
     // Awake is called when the script instance is being loaded
     void Awake()
     {
@@ -16,18 +19,7 @@ public class RollCollider : MonoBehaviour
         _player = GetComponentInParent<PlayerController>();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    // OnTriggerEnter2D is called when the Collider2D collision enter the trigger
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (_collider.IsTouchingLayers(enemyLayer) && collision.TryGetComponent(out StatusEffectHandler _effectHandler))
@@ -35,4 +27,5 @@ public class RollCollider : MonoBehaviour
             _effectHandler.ApplyEffect(inflictEffect, _player.gameObject);
         }
     }
+    #endregion
 }

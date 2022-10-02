@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     #region Data Members
-    [Tooltip("Directions that enemy will face when spawn.")]
+    [Tooltip("Directions that enemy can face when spawn.")]
     public Vector3[] dir;
     [Tooltip("Enemy that will be spawned.")]
     public GameObject enemy;
@@ -30,6 +30,7 @@ public class EnemySpawner : MonoBehaviour
     }
     [Tooltip("When will enemy be spawned.")]
     public SpawnOn spawnOn;
+    public bool delaySpawn;
     #endregion
 
     #region Unity Callbacks
@@ -54,12 +55,20 @@ public class EnemySpawner : MonoBehaviour
     // Method for spawning enemy
     private IEnumerator SpawnCoroutine()
     {
-        // Check if there is enemy and enemy hasn't spawned yet
+        // Check if there is enemy
         if (enemy != null)
         {
+            if (delaySpawn)
+            {
+                // Wait for (timeBtwSpawns) seconds
+                yield return new WaitForSeconds(timeBtwSpawns);
+            }
+
+            // Spawn enemy until numEnemy == 0
             while (numEnemy > 0)
             {
-                _spawnRot = GetDirection(); // Get enemy's spawn direction
+                // Get enemy's spawn direction
+                _spawnRot = GetDirection();
 
                 // Create an enemy's clone at this object's position and spawnDir
                 GameObject _clone = Instantiate(enemy, transform.position, _spawnRot);
@@ -67,36 +76,37 @@ public class EnemySpawner : MonoBehaviour
                 _clone.name += _clone.GetInstanceID();
 
                 // Set chasePlayerOnSpawned value
-                if (_clone.TryGetComponent(out Enemy _enemyComp))
+                if (_clone.TryGetComponent(out Enemy _enemy))
                 {
-                    _enemyComp.chasePlayerOnSpawned = chasePlayerOnSpawned;
+                    _enemy.chasePlayerOnSpawned = chasePlayerOnSpawned;
                 }
 
+                // Subtract numEnemy after spawned an enemy 
                 numEnemy--;
 
+                // Wait for (timeBtwSpawns) seconds
                 yield return new WaitForSeconds(timeBtwSpawns);
             }
         }
-        Destroy(this.gameObject); // Destroy this gameObject after spawned all enemies
+        // Destroy gameObject after finished
+        Destroy(gameObject);
     }
 
     // Method for get enemy's spawn direction
     private Quaternion GetDirection()
     {
         if (randomDirection)
-            return RandomizeDirection();
+        {
+            // Randomize integer from 0 to (dir[]'s Lenght - 1)
+            int n = Random.Range(0, dir.Length - 1);
+            // Return rotation converted from randomized spawn direction
+            return Quaternion.Euler(dir[n]);
+        }
         else
+        {
+            // Return rotation converted from spawn direction
             return Quaternion.Euler(dir[spawnDir]);
-    }
-
-    // Method for randomize enemy's spawn direction
-    private Quaternion RandomizeDirection()
-    {
-        // Randomize integer from 0 to (dir[]'s Lenght - 1)
-        int n = Random.Range(0, dir.Length - 1);
-
-        // Return spawn direction
-        return Quaternion.Euler(dir[n]);
+        }
     }
     #endregion
 }

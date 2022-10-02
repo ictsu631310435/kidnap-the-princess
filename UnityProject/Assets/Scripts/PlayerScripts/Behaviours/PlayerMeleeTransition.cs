@@ -21,7 +21,7 @@ public class PlayerMeleeTransition : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // Player inputs "MeleeAttack", Transition to Attack state
-        if(Input.GetButtonDown("MeleeAttack"))
+        if (!GameManager.Instance.gamePaused && Input.GetButtonDown("MeleeAttack"))
         {
             // Set trigger for state Transition to "Melee Attack"
             animator.SetTrigger("MeleeAtk");
