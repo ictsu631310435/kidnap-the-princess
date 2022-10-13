@@ -386,5 +386,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 0}
-  delayTime: 0.5
+  delayTime: 0.25
   inflictEffect: {fileID: 0}

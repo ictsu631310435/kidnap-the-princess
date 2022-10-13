@@ -21,6 +21,11 @@ public class EnemyAttack : StateMachineBehaviour
 
         enemy.StartCoroutine(Attack(enemy, delayTime));
     }
+
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        enemy.Turn();
+    }
     #endregion
 
     #region Methods

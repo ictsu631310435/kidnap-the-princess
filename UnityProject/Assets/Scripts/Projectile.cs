@@ -5,6 +5,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public float moveSpeed;
+    private Vector2 _vector;
 
     [HideInInspector] public Collider2D getCollider;
     public LayerMask obstacleLayer;
@@ -29,7 +30,7 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector2.up * moveSpeed * Time.deltaTime);
+        transform.Translate(moveSpeed * Time.deltaTime * _vector);
     }
 
     // OnTriggerEnter2D is called when the Collider2D collision enter the trigger
@@ -62,10 +63,12 @@ public class Projectile : MonoBehaviour
     public void Initialize(GameObject shooter)
     {
         source = shooter;
+        _vector = Vector2.up;
     }
-    public void Initialize(GameObject shooter, LayerMask targetLayer)
+
+    public void Initialize(GameObject shooter, Vector2 projectileVector)
     {
         source = shooter;
-        obstacleLayer += targetLayer;
+        _vector = projectileVector;
     }
 }
