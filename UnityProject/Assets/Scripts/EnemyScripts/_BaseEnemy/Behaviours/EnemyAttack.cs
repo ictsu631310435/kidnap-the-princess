@@ -12,35 +12,24 @@ public class EnemyAttack : StateMachineBehaviour
     public StatusEffect inflictEffect;
     #endregion
 
-    #region Unity Callbacks
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        // Get Component
-        enemy = animator.GetComponent<Enemy>();
-
-        enemy.StartCoroutine(Attack(enemy, delayTime));
-    }
-
-    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        enemy.Turn();
-    }
-    #endregion
-
     #region Methods
     // Method for attacking after time delay
-    public IEnumerator Attack(Enemy enemy, float waitTime)
+    public IEnumerator Attack(float waitTime)
     {
+        // Wait for (waitTime)
         yield return new WaitForSeconds(waitTime);
 
+        // Call Attack method
         enemy.Attack();
     }
 
-    public IEnumerator Attack(Enemy enemy, StatusEffect statusEffect, float waitTime)
+    // Method for attacking after time delay (Apply StatusEffect)
+    public IEnumerator Attack(StatusEffect statusEffect, float waitTime)
     {
+        // Wait for (waitTime)
         yield return new WaitForSeconds(waitTime);
 
+        // Call Attack method
         enemy.Attack(statusEffect);
     }
     #endregion

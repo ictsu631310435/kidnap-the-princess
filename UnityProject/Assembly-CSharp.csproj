@@ -66,10 +66,11 @@
     <Compile Include="Assets\Scripts\EnemyScripts\MeleeEnemy\Behaviours\MeleeEnemyAttack.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Behaviours\PlayerRoll.cs" />
     <Compile Include="Assets\Scripts\HealthHandler.cs" />
-    <Compile Include="Assets\Scripts\EnemyScripts\RangedEnemy.cs" />
+    <Compile Include="Assets\Scripts\EnemyScripts\RangedEnemy\RangedEnemy.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\RollCollider.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\StatusEffectScripts\StatusEffect.cs" />
+    <Compile Include="Assets\Scripts\RoomTransition.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\_BaseEnemy\Behaviours\EnemyInCombat.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\UIScripts\HealthBar.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Assets\Scripts\MaterialFlashHandler.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Behaviours\PlayerMeleeAttack.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Behaviours\PlayerIdle.cs" />
+    <Compile Include="Assets\Scripts\EnemyScripts\RangedEnemy\RangedEnemyAttack.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

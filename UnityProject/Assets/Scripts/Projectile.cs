@@ -36,8 +36,10 @@ public class Projectile : MonoBehaviour
     // OnTriggerEnter2D is called when the Collider2D collision enter the trigger
     void OnTriggerEnter2D(Collider2D collision)
     {
-        // Check if collided with an obstacle or an enemy
-        if (getCollider.IsTouchingLayers(obstacleLayer) || getCollider.IsTouchingLayers(enemyLayer))
+        Debug.Log(LayerMask.LayerToName(source.layer));
+        // Check if collided with an obstacle or an enemy not projectile shooter
+        if (!LayerMask.Equals(collision.gameObject, source) &&
+            (getCollider.IsTouchingLayers(obstacleLayer) || getCollider.IsTouchingLayers(enemyLayer)))
         {
             // If collided with enemy, deal damage and inflict effect
             if (getCollider.IsTouchingLayers(enemyLayer))
@@ -58,6 +60,11 @@ public class Projectile : MonoBehaviour
             // Destroy after collided with an obstacle or an enemy
             Destroy(gameObject);
         }
+
+        //if (collision.gameObject.layer == LayerMask.NameToLayer(LayerMask.LayerToName(source.layer)))
+        //{
+
+        //}
     }
 
     public void Initialize(GameObject shooter)

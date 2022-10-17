@@ -67,7 +67,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   attackDamage: 0
-  timeBtwAttacks: 1.5
+  timeBtwAttacks: 1
   nextAttackTime: 0
   player: {fileID: 0}
   playerDistance: 0
@@ -330,7 +330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  uniqueID: 1903862447889583528
+  uniqueID: 3078552044711340725
   updateError: 1
   checkTime: 0.2
 --- !u!114 &9040485118323239211
@@ -609,7 +609,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  uniqueID: 1547791890100055941
+  uniqueID: 1449075611007146908
   updateError: 1
   checkTime: 0.2
 --- !u!1001 &6635609130996271449
