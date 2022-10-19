@@ -1,6 +1,6 @@
 //Maya ASCII 2019 scene
 //Name: soldierSmooth_base_mesh.ma
-//Last modified: Tue, Oct 18, 2022 12:48:28 AM
+//Last modified: Tue, Oct 18, 2022 01:26:49 AM
 //Codeset: 1252
 requires maya "2019";
 requires "stereoCamera" "10.0";
@@ -15,13 +15,13 @@ fileInfo "license" "education";
 createNode transform -s -n "persp";
 	rename -uid "294AC61A-4EC4-A832-A85D-C182F305E467";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 18.385595413278757 20.572601593279426 21.368369681107708 ;
+	setAttr ".t" -type "double3" 30.196878812708626 28.268649832016781 29.654758173596619 ;
 	setAttr ".r" -type "double3" -24.938352729603928 60.600000000000023 0 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "2E410196-4E05-67A2-413D-EB9E933B8FCC";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 37.421486866167264;
+	setAttr ".coi" 53.685734273073933;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
