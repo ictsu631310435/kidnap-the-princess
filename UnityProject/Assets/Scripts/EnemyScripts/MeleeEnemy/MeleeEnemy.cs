@@ -34,6 +34,7 @@ public class MeleeEnemy : Enemy
 
         // Create a waypoint
         waypoint = Instantiate(waypointPrefab).transform;
+        waypoint.parent = transform.parent;
         waypoint.position = transform.position;
         // Rename to have ID attached
         waypoint.name += waypoint.GetInstanceID();

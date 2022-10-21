@@ -3,13 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
+// Script for Stun StatusEffect
 [CreateAssetMenu(fileName = "New Stun", menuName = "ScriptableObjects/StatusEffect/Stun")]
 public class Stun : StatusEffect
 {
+    #region Methods
+    public Stun()
+    {
+        name = "Stun";
+    }
+
+    #region Inherited
+    // Method for activating effect
+    // With source
     public override void ActivateEffect(GameObject target, GameObject source)
     {
-        Debug.Log("Activate Stun");
-
+        ActivateEffect(target);
+    }
+    // Without source
+    public override void ActivateEffect(GameObject target)
+    {
         if (target.TryGetComponent(out AIPath _aiPath))
         {
             _aiPath.canMove = false;
@@ -28,10 +41,9 @@ public class Stun : StatusEffect
         }
     }
 
+    // Method for deactivating effect
     public override void DeactivateEffect(GameObject target)
     {
-        Debug.Log("Deactivate KnockBack");
-
         if (target.TryGetComponent(out AIPath _aiPath))
         {
             _aiPath.canMove = true;
@@ -48,4 +60,6 @@ public class Stun : StatusEffect
             _rb.freezeRotation = false;
         }
     }
+    #endregion
+    #endregion
 }

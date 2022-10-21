@@ -272,14 +272,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 15
-  getCollider: {fileID: 0}
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 256
-  enemyLayer:
+  targetLayer:
     serializedVersion: 2
     m_Bits: 128
-  damage: 1
+  damage: 2
   inflictEffect: {fileID: 11400000, guid: 31055e64f719c2144a9d23331b7399b4, type: 2}
 --- !u!58 &518514636075375700
 CircleCollider2D:

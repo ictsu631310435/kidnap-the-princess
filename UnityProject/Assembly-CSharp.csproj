@@ -57,11 +57,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\EnemyScripts\_BaseEnemy\Behaviours\EnemyChase.cs" />
+    <Compile Include="Assets\Scripts\CameraSwitcher.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\_BaseEnemy\Enemy.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Behaviours\PlayerMeleeTransition.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Behaviours\PlayerWalk.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\_BaseEnemy\Behaviours\EnemyIdle.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\MeleeEnemy\Behaviours\MeleeEnemyChase.cs" />
+    <Compile Include="Assets\Scripts\EnemyScripts\RangedEnemy\RangedEnemyAttack.cs" />
     <Compile Include="Assets\Scripts\UIScripts\Billboard.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\MeleeEnemy\Behaviours\MeleeEnemyAttack.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Behaviours\PlayerRoll.cs" />
@@ -70,7 +72,7 @@
     <Compile Include="Assets\Scripts\PlayerScripts\RollCollider.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\StatusEffectScripts\StatusEffect.cs" />
-    <Compile Include="Assets\Scripts\RoomTransition.cs" />
+    <Compile Include="Assets\Scripts\Teleporter.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\_BaseEnemy\Behaviours\EnemyInCombat.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\UIScripts\HealthBar.cs" />
@@ -87,7 +89,6 @@
     <Compile Include="Assets\Scripts\MaterialFlashHandler.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Behaviours\PlayerMeleeAttack.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Behaviours\PlayerIdle.cs" />
-    <Compile Include="Assets\Scripts\EnemyScripts\RangedEnemy\RangedEnemyAttack.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

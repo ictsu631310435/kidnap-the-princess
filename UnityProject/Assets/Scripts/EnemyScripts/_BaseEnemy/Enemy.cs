@@ -122,11 +122,6 @@ public abstract class Enemy : MonoBehaviour
     public abstract void Attack();
     public abstract void Attack(StatusEffect statusEffect);
 
-    public void GetKnockBack(Vector3 direction, float force)
-    {
-        rb.AddForce(direction * force);
-    }
-
     public void Hurt(int currentHealth)
     {
         if (currentHealth <= 0)
@@ -141,6 +136,7 @@ public abstract class Enemy : MonoBehaviour
         //PlayerController _playerCtrl = FindObjectOfType<PlayerController>();
         //_playerCtrl.GetComponent<HealthHandler>().ChangeHealth(+1);
 
+        //gameObject.SetActive(false);
         Destroy(gameObject);
     }
     #endregion

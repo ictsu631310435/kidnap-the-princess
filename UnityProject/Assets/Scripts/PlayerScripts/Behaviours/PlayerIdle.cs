@@ -51,7 +51,7 @@ public class PlayerIdle : StateMachineBehaviour
                 animator.SetTrigger("RangedAtk");
             }
             // Player do not inputs anything and not effected by StatusEffect
-            else if (_effectHandler.currentEffect.Count == 0)
+            else if (_effectHandler.activeEffects.Count == 0)
             {
                 // Stop Player's Movement
                 _rigidbody.velocity = Vector2.zero;

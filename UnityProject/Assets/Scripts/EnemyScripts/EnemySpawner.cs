@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Class for controlling Enemy Spawner
+// Script for controlling Enemy Spawner
 public class EnemySpawner : MonoBehaviour
 {
     #region Data Members
@@ -16,7 +16,8 @@ public class EnemySpawner : MonoBehaviour
     public int spawnDir;
     private Quaternion _spawnRot; // Enemy's rotation when spawned
 
-    private bool _isSpawned; // Is enemy spawned
+    [Tooltip("Parent object (not set = not have parent)")]
+    public GameObject parent;
 
     public bool chasePlayerOnSpawned;
 
@@ -74,6 +75,12 @@ public class EnemySpawner : MonoBehaviour
                 GameObject _clone = Instantiate(enemy, transform.position, _spawnRot);
                 // Rename to have ID attached
                 _clone.name += _clone.GetInstanceID();
+
+                // Set parent if parent is not null
+                if (parent != null)
+                {
+                    _clone.transform.parent = parent.transform;
+                }
 
                 // Set chasePlayerOnSpawned value
                 if (_clone.TryGetComponent(out Enemy _enemy))

@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Script for handling GameObject StatusEffect
 public class StatusEffectHandler : MonoBehaviour
 {
-    [Serializable]
-    public struct EffectStats
+    #region Data Members
+    // Structure for holding StatusEffect statistics
+    [Serializable] public struct EffectStats
     {
         public StatusEffect statusEffect;
         public GameObject effectSource;
@@ -14,21 +16,25 @@ public class StatusEffectHandler : MonoBehaviour
         public float nextTickTime;
     }
 
-    public List<EffectStats> currentEffect;
+    public List<EffectStats> activeEffects;
 
     private float _newDuration;
     private float _newTickTime;
+    #endregion
 
+    #region Unity Callbacks
     // Update is called once per frame
     void Update()
     {
         // If list is not empty, call HandleEffects
-        if (currentEffect != null)
+        if (activeEffects != null)
         {
             HandleEffects();
         }
     }
+    #endregion
 
+    #region Methods
     // Method for applying an effect
     public void ApplyEffect(StatusEffect effect, GameObject source)
     {
@@ -42,61 +48,75 @@ public class StatusEffectHandler : MonoBehaviour
         };
 
         // Check if status effect is already existed
-        int index = currentEffect.FindIndex(x => x.statusEffect.name == effect.name);
+        int index = activeEffects.FindIndex(x => x.statusEffect.name == effect.name);
         // If existed, override existing status effect
         if (index != -1)
         {
-            currentEffect[index] = _effectStats;
+            activeEffects[index] = _effectStats;
         }
         // If not, add a new one
         else
         {          
-            currentEffect.Add(_effectStats);
+            activeEffects.Add(_effectStats);
         }
     }
 
     // Method for handling currently active effects
     public void HandleEffects()
     {
+        
         // Loop through entire list
-        for (int i = 0; i < currentEffect.Count; i++)
+        for (int i = 0; i < activeEffects.Count; i++)
         {
             // Initial Activation
-            if (currentEffect[i].effectDuration == currentEffect[i].statusEffect.duration)
+            if (activeEffects[i].effectDuration == activeEffects[i].statusEffect.duration)
             {
                 // Activate Effect
-                currentEffect[i].statusEffect.ActivateEffect(gameObject, currentEffect[i].effectSource);
+                if (activeEffects[i].effectSource != null)
+                {
+                    activeEffects[i].statusEffect.ActivateEffect(gameObject, activeEffects[i].effectSource);
+                }
+                else
+                {
+                    activeEffects[i].statusEffect.ActivateEffect(gameObject);
+                }
+                
                 // Assign value to _newTickTime
-                _newTickTime = currentEffect[i].nextTickTime;
+                _newTickTime = activeEffects[i].nextTickTime;
             }
-            else
             // Tick Activation
-            if (currentEffect[i].statusEffect.tickRate > 0 && currentEffect[i].effectDuration <= currentEffect[i].nextTickTime)
+            else if(activeEffects[i].statusEffect.tickRate > 0 && activeEffects[i].effectDuration <= activeEffects[i].nextTickTime)
             {
                 // Activate Effect
-                currentEffect[i].statusEffect.ActivateEffect(gameObject, currentEffect[i].effectSource);
+                if (activeEffects[i].effectSource != null)
+                {
+                    activeEffects[i].statusEffect.ActivateEffect(gameObject, activeEffects[i].effectSource);
+                }
+                else
+                {
+                    activeEffects[i].statusEffect.ActivateEffect(gameObject);
+                }
                 // Calculate nextTickTime and assign value to _newTickTime
-                _newTickTime = currentEffect[i].nextTickTime - currentEffect[i].statusEffect.tickRate;
-            }
-
-            // Remove Effect when Expire 
-            if (currentEffect[i].effectDuration <= 0)
-            {
-                RemoveEffect(i);
-                continue;
+                _newTickTime = activeEffects[i].nextTickTime - activeEffects[i].statusEffect.tickRate;
             }
 
             // Update effectDuration and nextTickTime
-            _newDuration = currentEffect[i].effectDuration - Time.deltaTime;
+            _newDuration = activeEffects[i].effectDuration - Time.deltaTime;
             EffectStats _newCurrentEffect = new()
             {
-                statusEffect = currentEffect[i].statusEffect,
-                effectSource = currentEffect[i].effectSource,
+                statusEffect = activeEffects[i].statusEffect,
+                effectSource = activeEffects[i].effectSource,
                 effectDuration = _newDuration,
                 nextTickTime = _newTickTime
             };
             // Override current one with an updated one
-            currentEffect[i] = _newCurrentEffect;
+            activeEffects[i] = _newCurrentEffect;
+
+            // Remove an Effect when it expired 
+            if (activeEffects[i].effectDuration <= 0)
+            {
+                RemoveEffect(i);
+            }
         }
     }
 
@@ -104,8 +124,9 @@ public class StatusEffectHandler : MonoBehaviour
     public void RemoveEffect(int indexToRemove)
     {
         // Deactivate Effect
-        currentEffect[indexToRemove].statusEffect.DeactivateEffect(gameObject);
+        activeEffects[indexToRemove].statusEffect.DeactivateEffect(gameObject);
         // Remove Effect from list
-        currentEffect.RemoveAt(indexToRemove);
+        activeEffects.RemoveAt(indexToRemove);
     }
+    #endregion
 }

@@ -2,47 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Script for handling projectile
 public class Projectile : MonoBehaviour
 {
+    #region Data Members
     public float moveSpeed;
     private Vector2 _vector;
 
-    [HideInInspector] public Collider2D getCollider;
     public LayerMask obstacleLayer;
-    public LayerMask enemyLayer;
+    public LayerMask targetLayer;
 
     public int damage;
 
     public StatusEffect inflictEffect;
-    private GameObject source;
+    private GameObject _shooter;
+    #endregion
 
-    void Awake()
-    {
-        getCollider = GetComponent<Collider2D>();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
+    #region Unity Callbacks
     // Update is called once per frame
     void Update()
     {
+        // Move the projectile (moveSpeed) unit/second
         transform.Translate(moveSpeed * Time.deltaTime * _vector);
     }
 
     // OnTriggerEnter2D is called when the Collider2D collision enter the trigger
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(LayerMask.LayerToName(source.layer));
-        // Check if collided with an obstacle or an enemy not projectile shooter
-        if (!LayerMask.Equals(collision.gameObject, source) &&
-            (getCollider.IsTouchingLayers(obstacleLayer) || getCollider.IsTouchingLayers(enemyLayer)))
+        /* Check if collided with an obstacle or an enemy
+           (Need to convert layer to layermask using the binary left-shift operator to left-shift 1 by the layer)*/
+        if (1 << collision.gameObject.layer == obstacleLayer.value || 1 << collision.gameObject.layer == targetLayer.value)
         {
             // If collided with enemy, deal damage and inflict effect
-            if (getCollider.IsTouchingLayers(enemyLayer))
+            if (1 << collision.gameObject.layer == targetLayer.value)
             {
                 // Check for HealthHandler
                 if (collision.TryGetComponent(out HealthHandler _health))
@@ -54,28 +46,28 @@ public class Projectile : MonoBehaviour
                 if (collision.TryGetComponent(out StatusEffectHandler _effectHandler))
                 {
                     // Inflict effect
-                    _effectHandler.ApplyEffect(inflictEffect, source);
+                    _effectHandler.ApplyEffect(inflictEffect, _shooter);
                 }
             }
             // Destroy after collided with an obstacle or an enemy
             Destroy(gameObject);
         }
-
-        //if (collision.gameObject.layer == LayerMask.NameToLayer(LayerMask.LayerToName(source.layer)))
-        //{
-
-        //}
     }
+    #endregion
 
+    #region Methods
+    // Method for the shooter to initialize values
+    // With default projectile vector
     public void Initialize(GameObject shooter)
     {
-        source = shooter;
+        _shooter = shooter;
         _vector = Vector2.up;
     }
-
+    // With custom projectile vector
     public void Initialize(GameObject shooter, Vector2 projectileVector)
     {
-        source = shooter;
+        _shooter = shooter;
         _vector = projectileVector;
     }
+    #endregion
 }
