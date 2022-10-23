@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Script for handling Player's Roll state
-public class PlayerRoll : StateMachineBehaviour
+// Script for handling Player's Dash state
+public class PlayerDash : StateMachineBehaviour
 {
     #region Data Members
     private PlayerController _playerCtrl;
@@ -20,17 +20,23 @@ public class PlayerRoll : StateMachineBehaviour
         _playerCtrl = animator.gameObject.GetComponent<PlayerController>();
         _rigidbody = animator.gameObject.GetComponent<Rigidbody2D>();
 
-        // Calculate target location
+        // Calculate start location
         _startPoint = _playerCtrl.transform.position;
 
-        _rigidbody.AddForce(_playerCtrl.direction * _playerCtrl.rollSpeed, ForceMode2D.Impulse);
-        _playerCtrl.rollCollider.SetActive(true);
+        // Dash by AddForce 
+        _rigidbody.AddForce(_playerCtrl.direction * _playerCtrl.dashSpeed, ForceMode2D.Impulse);
+        // Enable dashCollider for pushing Enemy
+        _playerCtrl.dashCollider.SetActive(true);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (Vector2.Distance(_startPoint, _playerCtrl.transform.position) >= _playerCtrl.rollDistance)
+        // Calculate Player's distance from _startPoint
+        float _distanceFromStart = Vector2.Distance(_startPoint, _playerCtrl.transform.position);
+
+        // If dashed enough distance, stop dashing
+        if (_distanceFromStart >= _playerCtrl.dashDistance && _rigidbody.velocity != Vector2.zero)
         {
             _rigidbody.velocity = Vector2.zero;
         }
@@ -39,7 +45,8 @@ public class PlayerRoll : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        _playerCtrl.rollCollider.SetActive(false);
+        // Disable dashCollider when exit state
+        _playerCtrl.dashCollider.SetActive(false);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

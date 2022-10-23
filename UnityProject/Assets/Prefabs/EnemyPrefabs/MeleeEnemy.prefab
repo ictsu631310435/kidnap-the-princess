@@ -310,7 +310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73fd329cc07052642b77c804fd8baab4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentEffect: []
+  activeEffects: []
 --- !u!1 &8922856267099646145
 GameObject:
   m_ObjectHideFlags: 0
@@ -860,6 +860,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8922856266008625264}
     m_Modifications:
+    - target: {fileID: 5561980262163279853, guid: 0f0a2c7ab3c9a30418f3711e8faee2a6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7734071977741309141, guid: 0f0a2c7ab3c9a30418f3711e8faee2a6, type: 3}
       propertyPath: m_Name
       value: PathfindingObstacle
@@ -908,7 +912,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5309357220134940523, guid: 0f0a2c7ab3c9a30418f3711e8faee2a6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0f0a2c7ab3c9a30418f3711e8faee2a6, type: 3}
 --- !u!1 &14329301602871012 stripped
 GameObject:
@@ -931,22 +936,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.75
---- !u!114 &8933997468447739403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 14329301602871012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 183748dd497aa473a98ff0cd8cb67fc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  uniqueID: 1547791890100055941
-  updateError: 1
-  checkTime: 0.2
 --- !u!4 &2155573920304491177 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8542266499805583512, guid: 0f0a2c7ab3c9a30418f3711e8faee2a6, type: 3}

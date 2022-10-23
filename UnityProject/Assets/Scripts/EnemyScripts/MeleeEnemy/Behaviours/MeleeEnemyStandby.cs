@@ -8,7 +8,6 @@ public class MeleeEnemyStandby : StateMachineBehaviour
 {
     #region Data Members
     private MeleeEnemy _meleeEnemy;
-    private Rigidbody2D _rb;
     private AIPath _aiPath;
     private AIDestinationSetter _aiDestination;
     #endregion
@@ -19,7 +18,6 @@ public class MeleeEnemyStandby : StateMachineBehaviour
     {
         // Get Components
         _meleeEnemy = animator.GetComponent<MeleeEnemy>();
-        _rb = animator.GetComponent<Rigidbody2D>();
         _aiPath = animator.GetComponent<AIPath>();
         _aiDestination = _meleeEnemy.aiDestination;
     }
@@ -27,40 +25,53 @@ public class MeleeEnemyStandby : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        // If player in standbyRange, try to check if can enter combat or not
         if (_meleeEnemy.playerDistance <= _meleeEnemy.standbyRange)
         {
+            // If can enter combat, enter Chase state to get in attackRange
             if (_meleeEnemy.inCombatNum < _meleeEnemy.maxInCombat)
             {
                 _meleeEnemy.inCombat = true;
+                // Slow down and stop when Player in attackRange
                 _aiPath.slowdownDistance = _meleeEnemy.attackRange * 3;
                 _aiPath.endReachedDistance = _meleeEnemy.attackRange;
 
+                // Set target to Player
                 _aiDestination.target = _meleeEnemy.player;
 
-                Debug.Log("Start Chase: Get in to fight");
+                //Debug.Log("Start Chase: Get in to fight");
+                // Set bool for state transition to "Chase"
                 animator.SetBool("isChasing", true);
             }
         }
+        // If Player out of standbyRange, enter Chase state to get in range
         else
         {
+            // Set target to Player
             _aiDestination.target = _meleeEnemy.player;
 
-            Debug.Log("Start Chase: Player out of standby range");
+            //Debug.Log("Start Chase: Player out of standby range");
+            // Set bool for state transition to "Chase"
             animator.SetBool("isChasing", true);
         }
 
-        // Reposition? i dunno. maybe deleted later
+        // If can not enter combat, reposition (chase after waypoint)
         if (_meleeEnemy.inCombatNum >= _meleeEnemy.maxInCombat && Time.time > _meleeEnemy.nextReposTime)
         {
+            // Set time delay between each reposition
             _meleeEnemy.nextReposTime = Time.time + Random.Range(_meleeEnemy.minTimeBtwRepos, _meleeEnemy.maxTimeBtwRepos);
 
+            // Slow down and stop when destination in attackRange
             _aiPath.slowdownDistance = _meleeEnemy.attackRange * 3;
             _aiPath.endReachedDistance = _meleeEnemy.attackRange;
 
+            // Get reposition waypoint position
             _meleeEnemy.waypoint.position = _meleeEnemy.RandomPosAroundPlayer(_meleeEnemy.standbyRange, _meleeEnemy.detectRange);
+            // Set target to reposition waypoint 
             _aiDestination.target = _meleeEnemy.waypoint;
 
-            Debug.Log("Reposition");
+            //Debug.Log("Reposition");
+            // Set bool for state transition to "Chase"
             animator.SetBool("isChasing", true);
         }
     }
@@ -68,9 +79,8 @@ public class MeleeEnemyStandby : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        // Make sure onStandby = false when exit state
         animator.SetBool("onStandby", false);
-
-        //_aiDestination.target = _meleeEnemy.player;
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

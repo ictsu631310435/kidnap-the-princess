@@ -44,12 +44,13 @@ public abstract class Enemy : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {  
-        // Set Variables'values
+        // Set variables values
         aiPath.rotationSpeed = turnSpeed;
+        // Slow down and stop when Player in attackRange 
         aiPath.slowdownDistance = attackRange * 3;
         aiPath.endReachedDistance = attackRange;
 
-        // Set destination to Player's position if want to chase Player after spawned
+        // Set target to Player if set to chase Player after spawned
         if (chasePlayerOnSpawned)
         {
             aiDestination.target = player;
@@ -59,6 +60,7 @@ public abstract class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Get Player distance
         playerDistance = Vector2.Distance(transform.position, player.position);
     }
 
@@ -96,7 +98,9 @@ public abstract class Enemy : MonoBehaviour
         Vector2 heading = player.position - transform.position;
         Vector2 direction = heading.normalized;
 
+        // Caculate rotation that Character is going to
         Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, direction);
+        // Rotate Character rotation toward toRotation
         transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, turnSpeed * Time.deltaTime);
     }
 
@@ -119,7 +123,10 @@ public abstract class Enemy : MonoBehaviour
     }
 
     // Base method for attacking
+    // Without applying StatusEffect
     public abstract void Attack();
+    //
+    // With applying StatusEffect
     public abstract void Attack(StatusEffect statusEffect);
 
     public void Hurt(int currentHealth)

@@ -3,35 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-// Base Scripts for handling Enemy's Chase state
-public class EnemyChase : StateMachineBehaviour
+// Script for handling Hero Enemy's Chase state
+public class HeroEnemyChase : EnemyChase
 {
-    #region Data Members
-    [HideInInspector] public Enemy enemy;
-    [HideInInspector] public AIPath aiPath;
-    [HideInInspector] public AIDestinationSetter aiDestination;
-    #endregion
+    private HeroEnemy _heroEnemy;
 
     #region Unity Callbacks
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // Get Components
-        enemy = animator.GetComponent<Enemy>();
-        aiPath = enemy.aiPath;
-        aiDestination = enemy.aiDestination;
+        _heroEnemy = animator.GetComponent<HeroEnemy>();
+        aiPath = _heroEnemy.aiPath;
+        aiDestination = _heroEnemy.aiDestination;
+
+        // Set time for next attack
+        _heroEnemy.nextAttackTime = Time.time + _heroEnemy.timeBtwRangedAttacks;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // Player in detectRange, chase after target
-        if (enemy.playerDistance <= enemy.detectRange)
+        if (_heroEnemy.playerDistance <= _heroEnemy.detectRange)
         {
             // If target is not set, set target to Player
             if (aiDestination.target == null)
             {
-                aiDestination.target = enemy.player;
+                aiDestination.target = _heroEnemy.player;
+            }
+
+            if (_heroEnemy.playerDistance <= _heroEnemy.rangedAttackRange && Time.time > _heroEnemy.nextAttackTime)
+            {
+                aiDestination.target = animator.gameObject.transform;
+                // Set bool for state transition to "Attack"
+                animator.SetTrigger("Attack");
             }
 
             // Reached destination enter "inCombat" state
@@ -59,15 +65,6 @@ public class EnemyChase : StateMachineBehaviour
                 animator.SetBool("isChasing", false);
             }
         }
-    }
-
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        // Make sure isChasing = false when exit state
-        animator.SetBool("isChasing", false);
-        // Make sure to not set target to anything when exit state
-        aiDestination.target = null;
     }
     #endregion
 }

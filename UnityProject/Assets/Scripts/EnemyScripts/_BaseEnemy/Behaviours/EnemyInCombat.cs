@@ -17,29 +17,38 @@ public class EnemyInCombat : StateMachineBehaviour
     {
         // Get Components
         enemy = animator.GetComponent<Enemy>();
-
         _aiDestination = enemy.aiDestination;
+
+        // Set time for next attack
         enemy.nextAttackTime = Time.time + enemy.timeBtwAttacks;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        // If player out of attackRange, chase after Player
         if (enemy.playerDistance > enemy.attackRange)
         {
-            Debug.Log("Player out of combatRange");
+            //Debug.Log("Player out of combatRange");
+            // Set target to Player
             _aiDestination.target = enemy.player;
+            // Set bool for state transition to "Chase"
             animator.SetBool("isChasing", true);
         }
+        // If player in attackRange, try to attack
         else
         {
+            // If reached time to attack, attack
             if (Time.time > enemy.nextAttackTime)
             {
-                enemy.nextAttackTime = Time.time + enemy.timeBtwAttacks;
+                //enemy.nextAttackTime = Time.time + enemy.timeBtwAttacks;
+                // Set bool for state transition to "Attack"
                 animator.SetTrigger("Attack");
             }
+            // If not, turn to face Player
             else
             {
+                // Turn to Player
                 enemy.Turn();
             }
         }
@@ -48,6 +57,7 @@ public class EnemyInCombat : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        // Make sure inCombat = false when exit state
         animator.SetBool("inCombat", false);
     }
     #endregion

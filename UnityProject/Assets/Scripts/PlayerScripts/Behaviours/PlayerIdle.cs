@@ -15,7 +15,7 @@ public class PlayerIdle : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        // Get Component
+        // Get Components
         _playerCtrl = animator.gameObject.GetComponent<PlayerController>();
         _rigidbody = animator.gameObject.GetComponent<Rigidbody2D>();
         _effectHandler = animator.gameObject.GetComponent<StatusEffectHandler>();
@@ -33,10 +33,10 @@ public class PlayerIdle : StateMachineBehaviour
                 animator.SetBool("isWalking", true);
             }
             // Player inputs "Roll", Transition to Roll State
-            else if (Input.GetButtonDown("Roll") && _playerCtrl.canMove)
+            else if (Input.GetButtonDown("Dash") && _playerCtrl.canMove)
             {
                 // Set trigger for state Transition to "Melee Attack"
-                animator.SetTrigger("Roll");
+                animator.SetTrigger("Dash");
             }
             // Player inputs "MeleeAttack", Transition to Melee Attack state
             else if (Input.GetButtonDown("MeleeAttack") && _playerCtrl.canAttack)

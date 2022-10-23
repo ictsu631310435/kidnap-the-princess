@@ -9,6 +9,7 @@ public class RangedEnemy : Enemy
     [Header("Ranged Enemy's Extentions")]
     public GameObject projectile;
     public float[] angleOffsets;
+    // angleOffsets array index
     public int _n;
     #endregion
 
@@ -19,6 +20,7 @@ public class RangedEnemy : Enemy
         // Call base script's Start
         base.Start();
 
+        // Initialize angleOffsets array index
         _n = 0;
     }
     #endregion
@@ -27,14 +29,19 @@ public class RangedEnemy : Enemy
     // Method for attacking (Ranged)
     public override void Attack()
     {
+        // Create projectile clone at attackPoint
         GameObject _bullet = Instantiate(projectile, attackPoint.position, transform.rotation);
+        // Get projectile vector
         Vector2 _pVector = new Vector2(angleOffsets[_n], 1);
+        // Initialize projectile
         _bullet.GetComponent<Projectile>().Initialize(gameObject, _pVector);
 
+        // If still in array length, increase index
         if (_n < angleOffsets.Length - 1)
         {
             _n++;
         }
+        // If exceed array length, reset index
         else
         {
             _n = 0;

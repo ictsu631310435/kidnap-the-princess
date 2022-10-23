@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Pathfinding;
 
 // Script for controlling Melee Enemy
 public class MeleeEnemy : Enemy
@@ -28,7 +27,7 @@ public class MeleeEnemy : Enemy
         // Call base script's Start
         base.Start();
 
-        // Set Variables'values that differ from base script
+        // Slowdown and stop when Player in standbyRange
         aiPath.slowdownDistance = standbyRange * 3;
         aiPath.endReachedDistance = standbyRange;
 
@@ -63,7 +62,7 @@ public class MeleeEnemy : Enemy
         }
     }
 
-    // Method for attacking (melee)
+    // Method for attacking (Melee)
     public override void Attack(StatusEffect statusEffect)
     {
         // Array of all Colliders in targetLayer caught in Range.

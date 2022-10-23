@@ -6,19 +6,20 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     #region Data Members
-    [Header("Movement Settings")]
     private float _moveX; // Horizontal Movement Input
     private float _moveY; // Vertical Movement Input
     [HideInInspector] public Vector2 moveDir; // Movement Direction
-    public float moveSpeed;
 
+    [Header("Movement Settings")]
+    public float moveSpeed;
     public float turnSpeed;
+
     [HideInInspector] public Vector3 direction;
 
-    [Header("Roll")]
-    public float rollDistance;
-    public float rollSpeed;
-    public GameObject rollCollider;
+    [Header("Dash")]
+    public float dashDistance;
+    public float dashSpeed;
+    public GameObject dashCollider;
 
     [Header("Combat Settings")]
     [Tooltip("The origin of player's attack.")]
@@ -76,11 +77,11 @@ public class PlayerController : MonoBehaviour
     // Method for Turning Character
     public void Turn()
     {
-        // Caculate rotation that player is going to
+        // Caculate rotation that Player is going to
         Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, moveDir);
-        // Rotate player towards toRotation
+        // Rotate Player rotation towards toRotation
         transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, turnSpeed * Time.deltaTime);
-        // Caculate player's facing direction
+        // Caculate Player's facing direction
         direction = transform.rotation * Vector2.up;
     }
 
@@ -106,10 +107,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Method for Ranged Attack
     public void RangedAttack()
     {
+        // Create projectile clone at attackPoint
         GameObject _bullet = Instantiate(projectile, attackPoint.position, transform.rotation);
-
+        // Initialize projectile
         _bullet.GetComponent<Projectile>().Initialize(gameObject);
     }
     #endregion

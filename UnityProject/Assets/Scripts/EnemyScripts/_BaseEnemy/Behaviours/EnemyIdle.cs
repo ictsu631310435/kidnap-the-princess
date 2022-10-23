@@ -17,7 +17,6 @@ public class EnemyIdle : StateMachineBehaviour
     {
         // Get Components
         enemy = animator.GetComponent<Enemy>();
-
         _aiDestination = enemy.aiDestination;
     }
 
@@ -27,6 +26,7 @@ public class EnemyIdle : StateMachineBehaviour
         // If Player is inside detection range, target Player
         if (enemy.playerDistance <= enemy.detectRange)
         {
+            // Set target to Player
             _aiDestination.target = enemy.player;
         }
         // If targeted Player, transition to "Chase" state

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Script for handling projectile
+// Script for controlling projectile
 public class Projectile : MonoBehaviour
 {
     #region Data Members
