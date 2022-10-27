@@ -7,7 +7,6 @@ public class Projectile : MonoBehaviour
 {
     #region Data Members
     public float moveSpeed;
-    private Vector2 _vector;
 
     public LayerMask obstacleLayer;
     public LayerMask targetLayer;
@@ -23,7 +22,7 @@ public class Projectile : MonoBehaviour
     void Update()
     {
         // Move the projectile (moveSpeed) unit/second
-        transform.Translate(moveSpeed * Time.deltaTime * _vector);
+        transform.Translate(moveSpeed * Time.deltaTime * Vector2.up);
     }
 
     // OnTriggerEnter2D is called when the Collider2D collision enter the trigger
@@ -57,17 +56,18 @@ public class Projectile : MonoBehaviour
 
     #region Methods
     // Method for the shooter to initialize values
-    // With default projectile vector
+    // Without offset angle
     public void Initialize(GameObject shooter)
     {
         _shooter = shooter;
-        _vector = Vector2.up;
     }
-    // With custom projectile vector
-    public void Initialize(GameObject shooter, Vector2 projectileVector)
+    // With offset angle
+    public void Initialize(GameObject shooter, float offsetAngle)
     {
         _shooter = shooter;
-        _vector = projectileVector;
+
+        float zAngle = transform.rotation.eulerAngles.z;
+        transform.rotation = Quaternion.Euler(0, 0, zAngle + offsetAngle);
     }
     #endregion
 }

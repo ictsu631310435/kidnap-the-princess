@@ -8,6 +8,9 @@ public class TitleManager : MonoBehaviour
 {
     public string levelSceneName;
 
+    public GameObject settingsPanel;
+    public GameObject creditPanel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,9 +20,36 @@ public class TitleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("RangedAttack"))
+        if (Input.GetButtonDown("Cancel"))
         {
-            SceneManager.LoadScene(levelSceneName);
+            if (settingsPanel.activeSelf)
+            {
+                settingsPanel.SetActive(false);
+            }
+            else if (creditPanel.activeSelf)
+            {
+                creditPanel.SetActive(false);
+            }
         }
+    }
+
+    public void StartButton() 
+    {
+        SceneManager.LoadScene(levelSceneName);
+    }
+
+    public void SetActiveSettings(bool value)
+    {
+        settingsPanel.SetActive(value);
+    }
+
+    public void SetActiveCredit(bool value)
+    {
+        creditPanel.SetActive(value);
+    }
+
+    public void QuitButton()
+    {
+        Application.Quit();
     }
 }

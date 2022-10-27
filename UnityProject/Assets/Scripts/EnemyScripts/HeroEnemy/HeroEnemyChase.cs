@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Pathfinding;
 
 // Script for handling Hero Enemy's Chase state
 public class HeroEnemyChase : EnemyChase
@@ -27,8 +26,8 @@ public class HeroEnemyChase : EnemyChase
         // Player in detectRange, chase after target
         if (_heroEnemy.playerDistance <= _heroEnemy.detectRange)
         {
-            // If target is not set, set target to Player
-            if (aiDestination.target == null)
+            // If target is Player, set target to Player
+            if (aiDestination.target != _heroEnemy.player)
             {
                 aiDestination.target = _heroEnemy.player;
             }

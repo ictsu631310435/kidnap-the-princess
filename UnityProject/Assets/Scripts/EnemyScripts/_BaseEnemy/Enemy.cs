@@ -129,13 +129,10 @@ public abstract class Enemy : MonoBehaviour
     // With applying StatusEffect
     public abstract void Attack(StatusEffect statusEffect);
 
-    public void Hurt(int currentHealth)
+    // Method for targeting Player
+    public void PlayerAggro()
     {
-        if (currentHealth <= 0)
-        {
-            Die();
-            return;
-        }
+        aiDestination.target = player;
     }
 
     public virtual void Die()

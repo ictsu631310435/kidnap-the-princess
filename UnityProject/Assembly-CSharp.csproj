@@ -56,19 +56,19 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\EnemyScripts\_BaseEnemy\Behaviours\EnemyChase.cs" />
+    <Compile Include="Assets\Scripts\EnemyScripts\_BaseEnemy\EnemyChase.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\HeroEnemy\HeroEnemy.cs" />
     <Compile Include="Assets\Scripts\CameraSwitcher.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\_BaseEnemy\Enemy.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Behaviours\PlayerMeleeTransition.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Behaviours\PlayerWalk.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\HeroEnemy\HeroEnemyChase.cs" />
-    <Compile Include="Assets\Scripts\EnemyScripts\_BaseEnemy\Behaviours\EnemyIdle.cs" />
-    <Compile Include="Assets\Scripts\EnemyScripts\MeleeEnemy\Behaviours\MeleeEnemyChase.cs" />
+    <Compile Include="Assets\Scripts\EnemyScripts\_BaseEnemy\EnemyIdle.cs" />
+    <Compile Include="Assets\Scripts\EnemyScripts\MeleeEnemy\MeleeEnemyChase.cs" />
     <Compile Include="Assets\Scripts\TitleManager.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\RangedEnemy\RangedEnemyAttack.cs" />
     <Compile Include="Assets\Scripts\UIScripts\Billboard.cs" />
-    <Compile Include="Assets\Scripts\EnemyScripts\MeleeEnemy\Behaviours\MeleeEnemyAttack.cs" />
+    <Compile Include="Assets\Scripts\EnemyScripts\MeleeEnemy\MeleeEnemyAttack.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Behaviours\PlayerDash.cs" />
     <Compile Include="Assets\Scripts\HealthHandler.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\RangedEnemy\RangedEnemy.cs" />
@@ -76,19 +76,19 @@
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\StatusEffectScripts\StatusEffect.cs" />
     <Compile Include="Assets\Scripts\Teleporter.cs" />
-    <Compile Include="Assets\Scripts\EnemyScripts\_BaseEnemy\Behaviours\EnemyInCombat.cs" />
+    <Compile Include="Assets\Scripts\EnemyScripts\_BaseEnemy\EnemyInCombat.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\UIScripts\HealthBar.cs" />
     <Compile Include="Assets\Scripts\Projectile.cs" />
     <Compile Include="Assets\Scripts\TriggerByPlayer.cs" />
-    <Compile Include="Assets\Scripts\EnemyScripts\MeleeEnemy\Behaviours\MeleeEnemyStandby.cs" />
+    <Compile Include="Assets\Scripts\EnemyScripts\MeleeEnemy\MeleeEnemyStandby.cs" />
     <Compile Include="Assets\Scripts\StatusEffectScripts\StatusEffectHandler.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Behaviours\PlayerRangedAttack.cs" />
     <Compile Include="Assets\Scripts\StatusEffectScripts\Stun.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\MeleeEnemy\MeleeEnemy.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\EnemySpawner.cs" />
     <Compile Include="Assets\Scripts\StatusEffectScripts\KnockBack.cs" />
-    <Compile Include="Assets\Scripts\EnemyScripts\_BaseEnemy\Behaviours\EnemyAttack.cs" />
+    <Compile Include="Assets\Scripts\EnemyScripts\_BaseEnemy\EnemyAttack.cs" />
     <Compile Include="Assets\Scripts\MaterialFlashHandler.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Behaviours\PlayerMeleeAttack.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Behaviours\PlayerIdle.cs" />
@@ -344,7 +344,7 @@
       <HintPath>Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
     </Reference>
     <Reference Include="Pathfinding.Ionic.Zip.Reduced">
-      <HintPath>Assets\_Downloads\AstarPathfindingProject\Plugins\DotNetZip\Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
+      <HintPath>Assets\ThirdParty\AstarPathfindingProject\Plugins\DotNetZip\Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Cecil.Pdb">
       <HintPath>Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>

@@ -78,9 +78,8 @@ MonoBehaviour:
   projectile: {fileID: 7828675481890059469, guid: f844ebc992020be4e8db45d3e4944b38, type: 3}
   angleOffsets:
   - 0
-  - -0.15
-  - 0.15
-  _n: 0
+  - -7.5
+  - 7.5
 --- !u!114 &8922856266008625269
 MonoBehaviour:
   m_ObjectHideFlags: 0

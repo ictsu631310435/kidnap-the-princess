@@ -8,9 +8,10 @@ public class RangedEnemy : Enemy
     #region Data Members
     [Header("Ranged Enemy's Extentions")]
     public GameObject projectile;
+    [Tooltip("X offset for projectile vector.")]
+    [Range(-45f, 45f)]
     public float[] angleOffsets;
-    // angleOffsets array index
-    public int _n;
+    private int _n; // xOffsets array index
     #endregion
 
     #region Unity Callbacks
@@ -20,7 +21,7 @@ public class RangedEnemy : Enemy
         // Call base script's Start
         base.Start();
 
-        // Initialize angleOffsets array index
+        // Initialize xOffsets array index
         _n = 0;
     }
     #endregion
@@ -31,10 +32,8 @@ public class RangedEnemy : Enemy
     {
         // Create projectile clone at attackPoint
         GameObject _bullet = Instantiate(projectile, attackPoint.position, transform.rotation);
-        // Get projectile vector
-        Vector2 _pVector = new Vector2(angleOffsets[_n], 1);
         // Initialize projectile
-        _bullet.GetComponent<Projectile>().Initialize(gameObject, _pVector);
+        _bullet.GetComponent<Projectile>().Initialize(gameObject, angleOffsets[_n]);
 
         // If still in array length, increase index
         if (_n < angleOffsets.Length - 1)
