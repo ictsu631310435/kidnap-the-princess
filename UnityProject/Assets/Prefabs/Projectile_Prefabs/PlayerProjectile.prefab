@@ -69,7 +69,7 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.4}
   serializedVersion: 2
   m_Radius: 0.4
 --- !u!50 &-3256273466881331987
@@ -105,12 +105,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 720889795686799322, guid: 2d6d3bb2ec81ce04bada97289ab2ee91, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 720889795686799322, guid: 2d6d3bb2ec81ce04bada97289ab2ee91, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 720889795686799322, guid: 2d6d3bb2ec81ce04bada97289ab2ee91, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 720889795686799322, guid: 2d6d3bb2ec81ce04bada97289ab2ee91, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.42
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 720889795686799322, guid: 2d6d3bb2ec81ce04bada97289ab2ee91, type: 3}
       propertyPath: m_LocalPosition.z
@@ -143,6 +151,14 @@ PrefabInstance:
     - target: {fileID: 720889795686799322, guid: 2d6d3bb2ec81ce04bada97289ab2ee91, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2612680702026836831, guid: 2d6d3bb2ec81ce04bada97289ab2ee91, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2612680702026836831, guid: 2d6d3bb2ec81ce04bada97289ab2ee91, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2777762998056327749, guid: 2d6d3bb2ec81ce04bada97289ab2ee91, type: 3}
       propertyPath: m_Color.b
