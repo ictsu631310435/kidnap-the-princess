@@ -17,6 +17,14 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverPanel;
     public Text gameOverTimeText;
 
+    public string titleSceneName;
+
+    public bool gameCleared;
+    public bool bossSpawned;
+    public bool bossAlive;
+    public GameObject winPanel;
+    public Text winTimeText;
+
     void Awake()
     {
         Instance = this;    
@@ -43,6 +51,18 @@ public class GameManager : MonoBehaviour
             else
             {
                 ResumeGame();
+            }
+        }
+
+        if (gameCleared)
+        {
+            GameClear();
+        }
+        else
+        {
+            if (bossSpawned && !bossAlive)
+            {
+                gameCleared = true;
             }
         }
     }
@@ -86,5 +106,25 @@ public class GameManager : MonoBehaviour
 
         string _sceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(_sceneName);
+    }
+
+    public void BackToTitle()
+    {
+        Time.timeScale = 1;
+
+        SceneManager.LoadScene(titleSceneName);
+    }
+
+    public void SetBossFight()
+    {
+        bossAlive = true;
+        bossSpawned = true;
+    }
+
+    public void GameClear()
+    {
+        Time.timeScale = 0;
+        winPanel.SetActive(true);
+        winTimeText.text = FormatTime(gameTime);
     }
 }

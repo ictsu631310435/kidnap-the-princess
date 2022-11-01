@@ -42,7 +42,7 @@ public abstract class Enemy : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    public void Start()
+    public virtual void Start()
     {  
         // Set variables values
         aiPath.rotationSpeed = turnSpeed;

@@ -13,6 +13,15 @@ public class HeroEnemy : Enemy
     public float timeBtwRangedAttacks;
     #endregion
 
+    #region Unity Callbacks
+    public override void Start()
+    {
+        base.Start();
+
+        GameManager.Instance.SetBossFight();
+    }
+    #endregion
+
     #region Methods
     // Method for attacking (Melee)
     public override void Attack(StatusEffect statusEffect)
@@ -43,6 +52,13 @@ public class HeroEnemy : Enemy
         GameObject _bullet = Instantiate(projectile, attackPoint.position, transform.rotation);
         // Initialize projectile
         _bullet.GetComponent<Projectile>().Initialize(gameObject);
+    }
+
+    public override void Die()
+    {
+        GameManager.Instance.bossAlive = false;
+
+        base.Die();
     }
     #endregion
 }

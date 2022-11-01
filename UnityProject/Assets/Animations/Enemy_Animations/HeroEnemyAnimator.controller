@@ -487,4 +487,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 0}
   delayTime: 0.25
-  inflictEffect: {fileID: 11400000, guid: 31055e64f719c2144a9d23331b7399b4, type: 2}
+  inflictEffect: {fileID: 11400000, guid: 8d8f378ef3c38644a8bca70509dfd496, type: 2}
