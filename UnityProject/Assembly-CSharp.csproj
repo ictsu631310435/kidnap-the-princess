@@ -60,6 +60,7 @@
     <Compile Include="Assets\Scripts\Enemy_Scripts\HeroEnemy\HeroEnemy.cs" />
     <Compile Include="Assets\Scripts\CameraSwitcher.cs" />
     <Compile Include="Assets\Scripts\Enemy_Scripts\_BaseEnemy\Enemy.cs" />
+    <Compile Include="Assets\Scripts\SettingsManager.cs" />
     <Compile Include="Assets\Scripts\Player_Scripts\Behaviours\PlayerMeleeTransition.cs" />
     <Compile Include="Assets\Scripts\Player_Scripts\Behaviours\PlayerWalk.cs" />
     <Compile Include="Assets\Scripts\Enemy_Scripts\HeroEnemy\HeroEnemyChase.cs" />

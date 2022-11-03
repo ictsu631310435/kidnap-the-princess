@@ -56,6 +56,7 @@ public class HeroEnemy : Enemy
 
     public override void Die()
     {
+        // End boss fight
         GameManager.Instance.bossAlive = false;
 
         base.Die();
