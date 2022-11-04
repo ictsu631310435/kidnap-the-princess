@@ -36,6 +36,9 @@ public class PlayerController : MonoBehaviour
 
     [HideInInspector] public bool canMove;
     [HideInInspector] public bool canAttack;
+
+    [Header("Audio")]
+    public AudioHandler audioHandler;
     #endregion
 
     #region Unity Callbacks
@@ -88,6 +91,8 @@ public class PlayerController : MonoBehaviour
     // Method for Melee Attack
     public void MeleeAttack(StatusEffect inflictEffect)
     {
+        audioHandler.Play("Whoosh");
+
         // Array of all Colliders in targetLayer caught in Range.
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(attackPoint.position, meleeRange, enemyLayer);
         foreach (var collider in hitColliders)
