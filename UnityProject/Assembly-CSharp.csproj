@@ -95,6 +95,7 @@
     <Compile Include="Assets\Scripts\MaterialFlashHandler.cs" />
     <Compile Include="Assets\Scripts\Player_Scripts\Behaviours\PlayerMeleeAttack.cs" />
     <Compile Include="Assets\Scripts\Player_Scripts\Behaviours\PlayerIdle.cs" />
+    <Compile Include="Assets\Scripts\Manager_Scripts\TutorialManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

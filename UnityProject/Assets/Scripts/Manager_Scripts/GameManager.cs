@@ -37,7 +37,10 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         // Set instance to this object
-        Instance = this;    
+        Instance = this;
+
+        // Solve timestop after restart level
+        Time.timeScale = 1;
     }
 
     // Update is called once per frame
