@@ -3,30 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Script for managing tutorial
 public class TutorialManager : MonoBehaviour
 {
+    #region Data Members
     public GameObject tutorialPanel;
 
     public RawImage tutorialImage;
 
     public Texture[] tutorialTextures;
     private int spriteIndex;
+    #endregion
 
+    #region Unity Callbacks
     // Start is called before the first frame update
     void Start()
     {
         // Initialize spriteIndex
         spriteIndex = 0;
-        // Pause time for tutorial messages
+        // Stop the game for tutorial messages
         Time.timeScale = 0;
+        GameManager.Instance.gamePaused = true;
     }
+    #endregion
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    #region Methods
     // Method for proceeding tutorial
     public void NextButton()
     {
@@ -48,10 +49,12 @@ public class TutorialManager : MonoBehaviour
     // Method for closing tutorialPanel
     public void CloseTutorial()
     {
-        // Resume time
+        // Resume the game
         Time.timeScale = 1;
+        GameManager.Instance.gamePaused = false;
         // Destroy tutorialPanel and this GameObject
-        //Destroy(tutorialPanel);
-        //Destroy(gameObject);
+        Destroy(tutorialPanel);
+        Destroy(gameObject);
     }
+    #endregion
 }

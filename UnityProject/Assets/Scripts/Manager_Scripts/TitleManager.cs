@@ -9,6 +9,9 @@ public class TitleManager : MonoBehaviour
 {
     #region Data Members
     public GameObject mainMenu;
+
+    public GameObject startPanel;
+    public string introSceneName;
     public string levelSceneName;
 
     public GameObject settingsPanel;
@@ -39,6 +42,22 @@ public class TitleManager : MonoBehaviour
     #region Methods
     // Method for StartButton
     public void StartButton() 
+    {
+        // ClosemainMenu
+        mainMenu.SetActive(false);
+        // Open/close startPanel
+        startPanel.SetActive(true);
+    }
+
+    // Method for WatchIntroButton
+    public void WatchIntroButton()
+    {
+        // Load levelScene
+        SceneManager.LoadScene(introSceneName);
+    }
+
+    // Method for SkipIntroButton
+    public void SkipIntroButton()
     {
         // Load levelScene
         SceneManager.LoadScene(levelSceneName);
