@@ -1,6 +1,6 @@
 //Maya ASCII 2023 scene
-//Name: mage2_Rigging_F2.ma
-//Last modified: Mon, Nov 14, 2022 11:54:35 PM
+//Name: mage2_Rigging_F3.ma
+//Last modified: Tue, Nov 15, 2022 12:32:37 AM
 //Codeset: 1252
 requires maya "2023";
 requires -nodeType "aiOptions" -nodeType "aiAOVDriver" -nodeType "aiAOVFilter" -nodeType "aiStandardSurface"
@@ -13,18 +13,18 @@ fileInfo "product" "Maya 2023";
 fileInfo "version" "2023";
 fileInfo "cutIdentifier" "202208031415-1dee56799d";
 fileInfo "osv" "Windows 11 Home Single Language v2009 (Build: 22000)";
-fileInfo "UUID" "9EC74BD8-4480-2998-AADE-E4AAE8B438A0";
+fileInfo "UUID" "3E3F373C-4AB6-36E3-A726-1F84BDF326EC";
 fileInfo "license" "education";
 createNode transform -s -n "persp";
 	rename -uid "49292CB7-4862-EF5C-59F4-4983850CA8B9";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" -18.328420684992913 24.765361552755401 51.708287153609 ;
-	setAttr ".r" -type "double3" 1058.6616483247283 -2897.7999999979165 1.2526742842166504e-15 ;
+	setAttr ".t" -type "double3" -5.1812348471964089 14.510656532268467 67.644776492743631 ;
+	setAttr ".r" -type "double3" 1065.8616483548724 -2887.8000000031898 0 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "F3CB136A-4FB8-0963-8F66-49A83ED01F9F";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 60;
-	setAttr ".coi" 55.83220607219998;
+	setAttr ".coi" 67.001947980880686;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
@@ -5095,300 +5095,6 @@ createNode parentConstraint -n "C_Root_joint_parentConstraint1" -p "C_Root_joint
 	setAttr ".tg[0].tot" -type "double3" 0 -6.6052125546889329e-08 0 ;
 	setAttr ".rst" -type "double3" 0 4.6589597995179428 0 ;
 	setAttr -k on ".w0";
-createNode joint -n "B_C_Veil_joint" -p "Master_ctrl";
-	rename -uid "5C38B351-46CD-7CCA-C862-2D897EE8A93B";
-	addAttr -ci true -sn "liw" -ln "lockInfluenceWeights" -min 0 -max 1 -at "bool";
-	setAttr ".t" -type "double3" 0 7.316594703065773 -1.7036924775050788 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".radi" 0.5;
-createNode joint -n "B_L_Veil1_joint" -p "B_C_Veil_joint";
-	rename -uid "FDC0F90F-4F59-F251-60EB-8CB7FC0A7BE2";
-	addAttr -ci true -sn "liw" -ln "lockInfluenceWeights" -min 0 -max 1 -at "bool";
-	setAttr ".t" -type "double3" 1.0487966588774185 0.41692223741702428 0.41842931373430714 ;
-	setAttr ".ra" -type "double3" 92.897267117941524 0 0 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jo" -type "double3" -92.897267117942107 0 0 ;
-	setAttr ".radi" 0.5;
-createNode joint -n "B_R_Veil2_End_joint" -p "B_L_Veil1_joint";
-	rename -uid "6059DB43-4177-D70E-DDD0-7EB7C7358680";
-	setAttr ".t" -type "double3" 1.1372104112381909 -1.6755783481294735 0.63682186399067042 ;
-	setAttr ".ra" -type "double3" 92.897267117941524 0 0 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jo" -type "double3" -92.897267117942107 0 0 ;
-	setAttr ".radi" 0.5;
-createNode orientConstraint -n "B_L_Veil1_joint_orientConstraint1" -p "B_L_Veil1_joint";
-	rename -uid "25757B1D-47D8-2E2E-6975-E5983154A12D";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "B_L_Veil_ctrlW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".lr" -type "double3" 92.897267117942121 0 0 ;
-	setAttr ".o" -type "double3" -92.89726711794215 0 0 ;
-	setAttr ".rsrr" -type "double3" -1.9083328088781101e-14 0 0 ;
-	setAttr -k on ".w0";
-createNode joint -n "B_M_Veil1_joint" -p "B_C_Veil_joint";
-	rename -uid "F883EE6F-44E5-90D9-ED78-C9A5ABF2CCEF";
-	addAttr -ci true -sn "liw" -ln "lockInfluenceWeights" -min 0 -max 1 -at "bool";
-	setAttr ".t" -type "double3" 0 -1.3027936059877687 -0.10209162625932566 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".radi" 0.5;
-createNode joint -n "B_M_Veil2_End_joint" -p "B_M_Veil1_joint";
-	rename -uid "CC6FA535-4DFF-596E-D841-07967A311877";
-	setAttr ".t" -type "double3" 0 -1.0721848227861432 -0.070209126155412971 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".radi" 0.5;
-createNode orientConstraint -n "B_M_Veil1_joint_orientConstraint1" -p "B_M_Veil1_joint";
-	rename -uid "85B67423-4EA8-0120-7CD9-82BA2C9885BA";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "B_M_Veil_ctrlW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr -k on ".w0";
-createNode joint -n "B_R_Veil1_joint" -p "B_C_Veil_joint";
-	rename -uid "4CA0D9B6-4162-5022-95CC-AA921684A594";
-	addAttr -ci true -sn "liw" -ln "lockInfluenceWeights" -min 0 -max 1 -at "bool";
-	setAttr ".t" -type "double3" -1.0488 0.41692529693422742 0.41843247750507873 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jo" -type "double3" 87.10273288205785 0 0 ;
-	setAttr ".radi" 0.5;
-createNode joint -n "B_R_Veil2_End_joint" -p "B_R_Veil1_joint";
-	rename -uid "A39F0339-495D-D1C9-9581-7E82AC9176C5";
-	setAttr ".t" -type "double3" -1.1372099999999998 0.55131229902736067 1.7056264315793674 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".radi" 0.5;
-createNode orientConstraint -n "B_R_Veil1_joint_orientConstraint1" -p "B_R_Veil1_joint";
-	rename -uid "68E43211-4BC8-2791-1D71-2E81EDB0A627";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "B_R_Veil_ctrlW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".lr" -type "double3" -87.10273288205785 0 0 ;
-	setAttr ".o" -type "double3" 87.10273288205785 0 0 ;
-	setAttr -k on ".w0";
-createNode joint -n "F_C_Veil_joint" -p "Master_ctrl";
-	rename -uid "F12F1DD4-4BCF-931D-C4FD-9CB9B1481CBC";
-	addAttr -ci true -sn "liw" -ln "lockInfluenceWeights" -min 0 -max 1 -at "bool";
-	setAttr ".t" -type "double3" 0 7.316594703065773 1.6926819503708492 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".radi" 0.5;
-createNode joint -n "F_D_Veil1_joint" -p "F_C_Veil_joint";
-	rename -uid "CEE220E4-4E90-9333-4482-F6962ACB2FF3";
-	addAttr -ci true -sn "liw" -ln "lockInfluenceWeights" -min 0 -max 1 -at "bool";
-	setAttr ".t" -type "double3" 0 -3.1574690978459756 -0.0012279570476048107 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".radi" 0.5;
-createNode joint -n "F_D_Veil2_End_joint" -p "F_D_Veil1_joint";
-	rename -uid "3468DB9F-4C5D-C293-3FC2-4DAAFF7AC1BE";
-	setAttr ".t" -type "double3" 0 -2.4731812632686205 0.46469765444641609 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".radi" 0.5;
-createNode orientConstraint -n "F_D_Veil1_joint_orientConstraint1" -p "F_D_Veil1_joint";
-	rename -uid "859ECCA3-4DA6-9CF2-D73B-ED95AC440A44";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "F_C_Veil_ctrlW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr -k on ".w0";
-createNode joint -n "F_L_Veil1_joint" -p "F_C_Veil_joint";
-	rename -uid "94429534-4F7E-548F-5D02-A692B81F1356";
-	addAttr -ci true -sn "liw" -ln "lockInfluenceWeights" -min 0 -max 1 -at "bool";
-	setAttr ".t" -type "double3" 1.0512522590314475 0.43020935152729045 -0.22806707258761971 ;
-	setAttr ".ra" -type "double3" -90.04624261509322 0 0 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jo" -type "double3" 90.046242615094485 0 0 ;
-	setAttr ".radi" 0.5;
-createNode joint -n "F_L_Veil2_End_joint" -p "F_L_Veil1_joint";
-	rename -uid "2D51C598-44D0-45CA-7F41-CA99C8F19521";
-	setAttr ".t" -type "double3" 1.1356212689629805 -1.6423911921077341 -1.0183241380866273 ;
-	setAttr ".ra" -type "double3" -90.04624261509322 0 0 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jo" -type "double3" 90.046242615094485 0 0 ;
-	setAttr ".radi" 0.5;
-createNode orientConstraint -n "F_L_Veil1_joint_orientConstraint1" -p "F_L_Veil1_joint";
-	rename -uid "6E916B41-4FB3-6147-8222-57A855915967";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "F_L_Veil_ctrlW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".lr" -type "double3" -90.046242615094485 0 0 ;
-	setAttr ".o" -type "double3" 90.046242615094485 0 0 ;
-	setAttr -k on ".w0";
-createNode joint -n "F_R_Veil1_joint" -p "F_C_Veil_joint";
-	rename -uid "5E1943EA-4D05-EEB5-54CE-979B684E695E";
-	addAttr -ci true -sn "liw" -ln "lockInfluenceWeights" -min 0 -max 1 -at "bool";
-	setAttr ".t" -type "double3" -1.05125 0.43020529693422738 -0.22807195037084926 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jo" -type "double3" -89.953757384905529 0 0 ;
-	setAttr ".radi" 0.5;
-createNode joint -n "F_R_Veil2_End_joint" -p "F_R_Veil1_joint";
-	rename -uid "44623D4F-4791-B285-7001-02956EF24DF9";
-	setAttr ".t" -type "double3" -1.1356199999999999 1.0169931186919172 -1.6432113358890552 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".radi" 0.5;
-createNode orientConstraint -n "F_R_Veil1_joint_orientConstraint1" -p "F_R_Veil1_joint";
-	rename -uid "FA25A5B1-4367-0808-3FC9-1281FFBF69C3";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "F_R_Veil_ctrlW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".lr" -type "double3" 89.953757384905543 0 0 ;
-	setAttr ".o" -type "double3" -89.953757384905529 0 0 ;
-	setAttr -k on ".w0";
-createNode joint -n "L_Veil1_joint" -p "Master_ctrl";
-	rename -uid "0A73AA38-46D4-4D54-D9CC-1BBABC9CC5A3";
-	addAttr -ci true -sn "liw" -ln "lockInfluenceWeights" -min 0 -max 1 -at "bool";
-	setAttr ".t" -type "double3" 0.82278534836103612 8.7126780314333558 -0.047023010879062688 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".radi" 0.5;
-createNode joint -n "L_Veil2_End_joint" -p "L_Veil1_joint";
-	rename -uid "76241481-4DD1-6F36-926B-8BA8DD4F334E";
-	setAttr ".t" -type "double3" 2.5565074353275268 -0.45387129828279171 0 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".radi" 0.5;
-createNode joint -n "F_L_Veil_joint" -p "L_Veil1_joint";
-	rename -uid "7482245D-45AA-338B-EA70-DB90FB1C078C";
-	setAttr ".t" -type "double3" 0 -0.24600435709073132 0.58075970634314356 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".radi" 0.5;
-createNode joint -n "B_L_Veil_joint" -p "L_Veil1_joint";
-	rename -uid "54C2B37F-4299-435C-2C17-62AFDE427057";
-	setAttr ".t" -type "double3" -3.4836103612878588e-07 -0.24600803143335526 -0.48671398912093733 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jo" -type "double3" 0 0 180 ;
-	setAttr ".radi" 0.5;
-createNode orientConstraint -n "L_Veil1_joint_orientConstraint1" -p "L_Veil1_joint";
-	rename -uid "582D52E6-4432-9FEE-A8FA-FC8EC868CCF4";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "L_Veil_ctrlW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr -k on ".w0";
-createNode joint -n "R_Veil1_joint" -p "Master_ctrl";
-	rename -uid "605A6431-43DD-7F30-7D1A-6FB0CEED6882";
-	addAttr -ci true -sn "liw" -ln "lockInfluenceWeights" -min 0 -max 1 -at "bool";
-	setAttr ".t" -type "double3" -0.822785 8.71268 -0.047023 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jo" -type "double3" -180 0 0 ;
-	setAttr ".radi" 0.5;
-createNode joint -n "R_Veil2_End_joint" -p "R_Veil1_joint";
-	rename -uid "0599E8A2-49F6-F41E-AC49-1D919709DAA5";
-	setAttr ".t" -type "double3" -2.556505 0.45387000000000022 -5.5511151231257827e-17 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".radi" 0.5;
-createNode joint -n "F_R_Veil_joint" -p "R_Veil1_joint";
-	rename -uid "CB05D47C-4090-8865-E82A-6182C34C6151";
-	setAttr ".t" -type "double3" 0 0.24601000000000006 -0.58076 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".radi" 0.5;
-createNode joint -n "B_R_Veil_joint" -p "R_Veil1_joint";
-	rename -uid "29553C7E-4724-FE40-6A53-08BE26693B52";
-	setAttr ".t" -type "double3" 0 0.24601000000000006 0.48671399999999992 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".jo" -type "double3" 7.016709298534876e-15 -7.0167092985348736e-15 180 ;
-	setAttr ".radi" 0.5;
-createNode orientConstraint -n "R_Veil1_joint_orientConstraint1" -p "R_Veil1_joint";
-	rename -uid "C83C6EB7-4255-FDCA-E2F2-AA8BEF988550";
-	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "R_Veil_ctrlW0" -dv 1 -min 0 -at "double";
-	setAttr -k on ".nds";
-	setAttr -k off ".v";
-	setAttr -k off ".tx";
-	setAttr -k off ".ty";
-	setAttr -k off ".tz";
-	setAttr -k off ".rx";
-	setAttr -k off ".ry";
-	setAttr -k off ".rz";
-	setAttr -k off ".sx";
-	setAttr -k off ".sy";
-	setAttr -k off ".sz";
-	setAttr ".erp" yes;
-	setAttr ".lr" -type "double3" 180 0 0 ;
-	setAttr ".o" -type "double3" -180 0 0 ;
-	setAttr -k on ".w0";
 createNode transform -n "C_Root_ctrl" -p "Master_ctrl";
 	rename -uid "92A5DBAC-488C-9F09-71E9-53BA20387505";
 	setAttr ".rp" -type "double3" 0 4.6589598655700684 0 ;
@@ -6120,200 +5826,16 @@ createNode nurbsCurve -n "R_Foot_ctrlShape" -p "R_Foot_ctrl";
 		-0.90610235929489147 0 -0.6466864248959846
 		-0.37454366596995248 0 -0.3958304847239148
 		;
-createNode transform -n "F_C_Veil_ctrl" -p "Master_ctrl";
-	rename -uid "1EC6F2AB-443B-A547-358F-E8A9C3F7781C";
-	setAttr ".rp" -type "double3" -4.6566128730773926e-10 1.674790620803833 2.1167755126953125 ;
-	setAttr ".sp" -type "double3" -4.6566128730773926e-10 1.674790620803833 2.1167755126953125 ;
-createNode nurbsCurve -n "F_C_Veil_ctrlShape" -p "F_C_Veil_ctrl";
-	rename -uid "34AD0C03-4B5A-5C47-A8E8-1EB291D04DDD";
-	setAttr -k off ".v";
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		0.87006853655601391 2.7165024200848986 3.7167059161389062
-		-4.6566123427436624e-10 1.5616571784776196 3.7167059161389058
-		-0.87006853748733648 2.7165024200848986 3.7167059161389062
-		-0.86610070903861514 3.5433184452590014 3.7167059161389062
-		-0.87006853748733648 4.1557441294814108 3.7167059161389062
-		-4.6566137406563958e-10 4.2764712559099367 3.7167059161389062
-		0.87006853655601391 4.1557441294814099 3.7167059161389062
-		0.86610070810729256 3.5433184452590014 3.7167059161389062
-		0.87006853655601391 2.7165024200848986 3.7167059161389062
-		-4.6566123427436624e-10 1.5616571784776196 3.7167059161389058
-		-0.87006853748733648 2.7165024200848986 3.7167059161389062
-		;
-createNode transform -n "B_L_Veil_ctrl" -p "Master_ctrl";
-	rename -uid "21E9D164-4955-EEE4-E4F2-A5BC723BA9A3";
-	setAttr ".rp" -type "double3" 2.1905248165130615 6.0661568641662598 -0.47210144996643066 ;
-	setAttr ".sp" -type "double3" 2.1905248165130615 6.0661568641662598 -0.47210144996643066 ;
-createNode nurbsCurve -n "B_L_Veil_ctrlShape" -p "B_L_Veil_ctrl";
-	rename -uid "1D8BDF7A-4560-FC5D-C2F9-DB8B66E70986";
-	setAttr -k off ".v";
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		2.2299015399950184 6.277241030722263 -3.6806419668198487
-		1.7477730600429915 6.6000335092116984 -3.6806419668198491
-		1.3486508214885489 7.1396986921939183 -3.6806419668198496
-		0.95394378439794614 7.8548787246305753 -3.6806419668198482
-		1.6783394358117381 7.7742349219969817 -3.6806419668198491
-		2.2280120096522458 7.5527585843402658 -3.6806419668198487
-		2.9226396589687922 7.3001558003840898 -3.6806419668198487
-		2.5321466046058045 6.6862919087801558 -3.6806419668198482
-		2.2299015399950184 6.277241030722263 -3.6806419668198487
-		1.7477730600429915 6.6000335092116984 -3.6806419668198491
-		1.3486508214885489 7.1396986921939183 -3.6806419668198496
-		;
-createNode transform -n "B_R_Veil_ctrl" -p "Master_ctrl";
-	rename -uid "2B57BE93-4A86-90A4-459F-7F96C7F53DEB";
-	setAttr ".rp" -type "double3" -2.1905248165130615 6.0661568641662598 -0.47210144996643066 ;
-	setAttr ".sp" -type "double3" -2.1905248165130615 6.0661568641662598 -0.47210144996643066 ;
-createNode nurbsCurve -n "B_R_Veil_ctrlShape" -p "B_R_Veil_ctrl";
-	rename -uid "6A4885B1-4E65-1A5C-7522-92A87FF08920";
-	setAttr -k off ".v";
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		-2.2299015399950179 6.277241030722263 -3.6806419668198487
-		-1.747773060042991 6.6000335092116984 -3.6806419668198491
-		-1.3486508214885484 7.1396986921939183 -3.6806419668198496
-		-0.95394378439794569 7.8548787246305753 -3.6806419668198482
-		-1.6783394358117376 7.7742349219969817 -3.6806419668198491
-		-2.2280120096522453 7.5527585843402658 -3.6806419668198487
-		-2.9226396589687917 7.3001558003840898 -3.6806419668198487
-		-2.5321466046058041 6.6862919087801558 -3.6806419668198482
-		-2.2299015399950179 6.277241030722263 -3.6806419668198487
-		-1.747773060042991 6.6000335092116984 -3.6806419668198491
-		-1.3486508214885484 7.1396986921939183 -3.6806419668198496
-		;
-createNode transform -n "F_R_Veil_ctrl" -p "Master_ctrl";
-	rename -uid "215378AA-4671-CBFA-8DC9-6989044205D1";
-	setAttr ".rp" -type "double3" -2.1905248165130615 6.0661568641662598 0.47210144996643066 ;
-	setAttr ".sp" -type "double3" -2.1905248165130615 6.0661568641662598 0.47210144996643066 ;
-createNode nurbsCurve -n "F_R_Veil_ctrlShape" -p "F_R_Veil_ctrl";
-	rename -uid "6AEF4DE6-4246-35B5-64D8-4F923970459B";
-	setAttr -k off ".v";
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		-2.2299015399950188 6.277241030722263 3.6806419668198487
-		-1.7477730600429919 6.6000335092116984 3.6806419668198491
-		-1.3486508214885493 7.1396986921939183 3.6806419668198496
-		-0.95394378439794658 7.8548787246305753 3.6806419668198482
-		-1.6783394358117385 7.7742349219969817 3.6806419668198491
-		-2.2280120096522462 7.5527585843402658 3.6806419668198487
-		-2.9226396589687926 7.3001558003840898 3.6806419668198487
-		-2.532146604605805 6.6862919087801558 3.6806419668198482
-		-2.2299015399950188 6.277241030722263 3.6806419668198487
-		-1.7477730600429919 6.6000335092116984 3.6806419668198491
-		-1.3486508214885493 7.1396986921939183 3.6806419668198496
-		;
-createNode transform -n "F_L_Veil_ctrl" -p "Master_ctrl";
-	rename -uid "985AB806-479F-374E-21FB-C5B17A49B8E9";
-	setAttr ".rp" -type "double3" 2.1905248165130615 6.0661568641662598 0.47210144996643066 ;
-	setAttr ".sp" -type "double3" 2.1905248165130615 6.0661568641662598 0.47210144996643066 ;
-createNode nurbsCurve -n "F_L_Veil_ctrlShape" -p "F_L_Veil_ctrl";
-	rename -uid "DB7F1F0F-492F-40DF-2A5E-74B9939E3BFB";
-	setAttr -k off ".v";
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		2.2299015399950184 6.277241030722263 3.6806419668198487
-		1.7477730600429915 6.6000335092116984 3.6806419668198491
-		1.3486508214885489 7.1396986921939183 3.6806419668198496
-		0.95394378439794614 7.8548787246305753 3.6806419668198482
-		1.6783394358117381 7.7742349219969817 3.6806419668198491
-		2.2280120096522458 7.5527585843402658 3.6806419668198487
-		2.9226396589687922 7.3001558003840898 3.6806419668198487
-		2.5321466046058045 6.6862919087801558 3.6806419668198482
-		2.2299015399950184 6.277241030722263 3.6806419668198487
-		1.7477730600429915 6.6000335092116984 3.6806419668198491
-		1.3486508214885489 7.1396986921939183 3.6806419668198496
-		;
-createNode transform -n "B_M_Veil_ctrl" -p "Master_ctrl";
-	rename -uid "A82F69B6-458B-D2D8-63E6-E2B48F7BFB2B";
-	setAttr ".rp" -type "double3" -1.862645149230957e-09 4.9372262954711914 -1.8223412036895752 ;
-	setAttr ".sp" -type "double3" -1.862645149230957e-09 4.9372262954711914 -1.8223412036895752 ;
-createNode nurbsCurve -n "B_M_Veil_ctrlShape" -p "B_M_Veil_ctrl";
-	rename -uid "C6221682-47EF-0BD5-7BEB-EC891F8D6E1B";
-	setAttr -k off ".v";
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		0.47602484582754001 5.1401143288387461 -3.9174865972102939
-		-1.8626451368847851e-09 4.9619631646605855 -3.9174865972102939
-		-0.4760248495528307 5.1401143288387461 -3.9174865972102939
-		-0.67320079749269268 5.5702092855502165 -3.9174865972102939
-		-0.4760248495528307 6.0003042422616861 -3.9174865972102939
-		-1.8626452047283754e-09 6.1784554064398485 -3.9174865972102939
-		0.47602484582754001 6.0003042422616861 -3.9174865972102939
-		0.67320079376740238 5.5702092855502165 -3.9174865972102939
-		0.47602484582754001 5.1401143288387461 -3.9174865972102939
-		-1.8626451368847851e-09 4.9619631646605855 -3.9174865972102939
-		-0.4760248495528307 5.1401143288387461 -3.9174865972102939
-		;
-createNode transform -n "R_Veil_ctrl" -p "Master_ctrl";
-	rename -uid "AD4AF13D-4E11-8216-3A7E-7DBE938AC9E1";
-	setAttr ".rp" -type "double3" -3.3716216087341309 8.2353935241699219 -0.046969965100288391 ;
-	setAttr ".sp" -type "double3" -3.3716216087341309 8.2353935241699219 -0.046969965100288391 ;
-createNode nurbsCurve -n "R_Veil_ctrlShape" -p "R_Veil_ctrl";
-	rename -uid "4BF733B3-4F82-9DBC-A32E-88891E33B9CE";
-	setAttr -k off ".v";
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		-2.8898318613875023 16.181089161300903 -0.46231346954159969
-		-2.1506031278911673 16.441066195359817 -0.63435438212476059
-		-1.4113743943948331 16.70104322941873 -0.46231346954159941
-		-1.1051758272847643 16.808729242831465 -0.046969965100287989
-		-1.4113743943948331 16.70104322941873 0.36837353934102307
-		-2.1506031278911673 16.441066195359817 0.54041445192418425
-		-2.8898318613875023 16.181089161300903 0.3683735393410229
-		-3.1960304284975707 16.073403147888168 -0.046969965100288134
-		-2.8898318613875023 16.181089161300903 -0.46231346954159969
-		-2.1506031278911673 16.441066195359817 -0.63435438212476059
-		-1.4113743943948331 16.70104322941873 -0.46231346954159941
-		;
-createNode transform -n "L_Veil_ctrl" -p "Master_ctrl";
-	rename -uid "BABE80E9-4CF1-82B7-30C4-9A90A11AE93E";
-	setAttr ".rp" -type "double3" 3.3716216087341309 8.2353935241699219 -0.046969965100288391 ;
-	setAttr ".sp" -type "double3" 3.3716216087341309 8.2353935241699219 -0.046969965100288391 ;
-createNode nurbsCurve -n "L_Veil_ctrlShape" -p "L_Veil_ctrl";
-	rename -uid "789C1325-4420-3FD9-740E-DD8C21173D1C";
-	setAttr -k off ".v";
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		2.8898318613875023 16.181089161300903 -0.46231346954159974
-		2.1506031278911673 16.441066195359817 -0.6343543821247607
-		1.4113743943948331 16.70104322941873 -0.46231346954159963
-		1.1051758272847643 16.808729242831465 -0.046969965100288266
-		1.4113743943948331 16.70104322941873 0.36837353934102285
-		2.1506031278911673 16.441066195359817 0.54041445192418414
-		2.8898318613875023 16.181089161300903 0.36837353934102285
-		3.1960304284975707 16.073403147888168 -0.046969965100288155
-		2.8898318613875023 16.181089161300903 -0.46231346954159974
-		2.1506031278911673 16.441066195359817 -0.6343543821247607
-		1.4113743943948331 16.70104322941873 -0.46231346954159963
-		;
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "60F7B7DF-49D5-9DC8-FF74-548AA2DD87AF";
+	rename -uid "445FFF3A-413F-D051-C50E-6DA5F8888D7F";
 	setAttr -s 19 ".lnk";
 	setAttr -s 19 ".slnk";
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "528E94D9-4566-7A72-CDB9-F3961019A864";
+	rename -uid "6BF8C34F-4E1B-C866-255D-2F9808431015";
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "42FC1B6E-4B0F-5F28-9383-71841A7C8C03";
+	rename -uid "71E5FBA6-43FA-3DC5-FA86-B58882686A4E";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "363F8D34-44DB-17AD-5C35-71921E7C5105";
+	rename -uid "F3E1367B-4AFA-B3F6-0BB8-F29EA47A6E07";
 	setAttr ".cdl" 4;
 	setAttr -s 8 ".dli[1:7]"  8 5 1 4 3 6 7;
 	setAttr -s 7 ".dli";
@@ -6321,7 +5843,7 @@ createNode displayLayer -n "defaultLayer";
 	rename -uid "1662E0CE-4A56-93EA-DB35-28AA9D96E2AA";
 	setAttr ".ufem" -type "stringArray" 0  ;
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "B1E00593-478C-15C6-E478-808394FDE41D";
+	rename -uid "714984C4-4572-6BD5-4903-678375F622BA";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "857F4D00-4C5D-48E2-E26B-028CE52DC854";
 	setAttr ".g" yes;
@@ -6553,166 +6075,6 @@ createNode nodeGraphEditorInfo -n "hyperShadePrimaryNodeEditorSavedTabsInfo";
 	setAttr ".tgi[0].ni[3].x" -2283.699462890625;
 	setAttr ".tgi[0].ni[3].y" 2077.568359375;
 	setAttr ".tgi[0].ni[3].nvs" 1923;
-createNode skinCluster -n "skinCluster1";
-	rename -uid "D89260DF-44B6-5980-91AF-52AE2E0BF278";
-	setAttr -s 81 ".wl";
-	setAttr ".wl[0:80].w"
-		1 0 1
-		1 0 1
-		1 0 1
-		1 0 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 0 1
-		1 5 1
-		2 2 0.30000001192092896 5 0.69999998807907104
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 8 1
-		2 5 0.79372549057006836 6 0.20627450942993164
-		2 5 0.69999998807907104 6 0.30000001192092896
-		1 4 1
-		1 4 1
-		1 0 1
-		1 0 1
-		1 2 1
-		1 2 1
-		1 6 1
-		1 6 1
-		1 0 1
-		1 1 1
-		1 1 1
-		1 1 1
-		1 1 1
-		1 5 1
-		1 1 1
-		2 3 0.30000001192092896 5 0.69999998807907104
-		1 5 1
-		2 5 0.80000001192092896 7 0.19999998807907104
-		2 5 0.80000001192092896 7 0.19999998807907104
-		1 4 1
-		1 1 1
-		1 1 1
-		1 3 1
-		1 3 1
-		1 7 1
-		1 1 1
-		1 7 1
-		1 4 1
-		1 4 1
-		1 4 1
-		1 8 1
-		1 8 1
-		1 8 1
-		1 5 1
-		1 5 1
-		1 5 1
-		2 5 0.80000001192092896 6 0.19999998807907104
-		1 8 1
-		1 5 1
-		1 5 1
-		1 4 1
-		1 4 1
-		1 0 1
-		1 0 1
-		1 2 1
-		1 2 1
-		1 6 1
-		1 6 1
-		1 0 1
-		2 5 0.80000001192092896 7 0.19999998807907104
-		1 8 1
-		1 4 1
-		1 5 1
-		1 5 1
-		1 1 1
-		1 1 1
-		1 3 1
-		1 3 1
-		1 7 1
-		1 7 1
-		1 1 1
-		1 4 1
-		1 4 1
-		1 8 1;
-	setAttr -s 9 ".pm";
-	setAttr ".pm[0]" -type "matrix" 1 0 0 0 0 -1 1.2246467991473532e-16 0 0 -1.2246467991473532e-16 -1 0
-		 0.82278499999999999 8.7126800000000006 -0.047023000000001071 1;
-	setAttr ".pm[1]" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 -0.82278534836103612 -8.7126780314333558 0.047023010879062688 1;
-	setAttr ".pm[2]" -type "matrix" 1 0 0 0 0 0.00080708580051003253 0.9999996743062024 0
-		 0 -0.9999996743062024 0.00080708580051003253 0 1.05125 1.4583571907062158 -7.7479795428495741 1;
-	setAttr ".pm[3]" -type "matrix" 1 0 0 0 0 1 -2.2315482794965646e-14 0 0 2.2315482794965646e-14 1 0
-		 -1.0512522590314475 -7.7468040545930963 -1.4646148777830565 1;
-	setAttr ".pm[4]" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 -4.1591256052197974 -1.6914539933232444 1;
-	setAttr ".pm[5]" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 -7.316594703065773 -1.6926819503708492 1;
-	setAttr ".pm[6]" -type "matrix" 1 0 0 0 0 0.050545303313033765 -0.99872176921953282 0
-		 0 0.99872176921953282 0.050545303313033765 0 1.0488000000000002 0.8927240270296839 7.7885986332307517 1;
-	setAttr ".pm[7]" -type "matrix" 1 0 0 0 0 1 1.0325074129013956e-14 0 0 -1.0325074129013956e-14 1 0
-		 -1.0487966588774185 -7.7335169404828106 1.2852631637706917 1;
-	setAttr ".pm[8]" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 -6.0138010970780043 1.8057841037644045 1;
-	setAttr ".gm" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
-	setAttr -s 9 ".ma";
-	setAttr -s 9 ".dpf[0:8]"  4 4 4 4 4 4 4 4 4;
-	setAttr -s 9 ".lw";
-	setAttr -s 9 ".lw";
-	setAttr ".mi" 1;
-	setAttr ".ucm" yes;
-	setAttr -s 9 ".ifcl";
-	setAttr -s 9 ".ifcl";
-createNode dagPose -n "bindPose6";
-	rename -uid "9D4678E5-46EC-4F6C-08B1-3EA79BE1646E";
-	setAttr -s 11 ".wm";
-	setAttr ".wm[0]" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
-	setAttr ".wm[1]" -type "matrix" 1 0 0 0 0 -1 -1.2246467991473532e-16 0 0 1.2246467991473532e-16 -1 0
-		 -0.82278499999999999 8.7126800000000006 -0.047023000000000002 1;
-	setAttr ".wm[2]" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0.82278534836103612 8.7126780314333558 -0.047023010879062688 1;
-	setAttr ".wm[3]" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 7.316594703065773 1.6926819503708492 1;
-	setAttr ".wm[4]" -type "matrix" 1 0 0 0 0 0.00080708580051003231 -0.99999967430620218 0
-		 0 0.99999967430620218 0.00080708580051003231 0 -1.05125 7.7468000000000004 1.46461 1;
-	setAttr ".wm[5]" -type "matrix" 1 0 0 0 0 1 2.2315482794965646e-14 0 0 -2.2315482794965646e-14 1 0
-		 1.0512522590314475 7.7468040545930634 1.4646148777832295 1;
-	setAttr ".wm[6]" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 4.1591256052197974 1.6914539933232444 1;
-	setAttr ".wm[7]" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 7.316594703065773 -1.7036924775050788 1;
-	setAttr ".wm[8]" -type "matrix" 1 0 0 0 0 0.050545303313033751 0.9987217692195326 0
-		 0 -0.9987217692195326 0.050545303313033751 0 -1.0488 7.7335200000000004 -1.2852600000000001 1;
-	setAttr ".wm[9]" -type "matrix" 1 0 0 0 0 1 -1.0325074129013956e-14 0 0 1.0325074129013956e-14 1 0
-		 1.0487966588774185 7.7335169404827973 -1.2852631637707717 1;
-	setAttr ".wm[10]" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 6.0138010970780043 -1.8057841037644045 1;
-	setAttr -s 11 ".xm";
-	setAttr ".xm[0]" -type "matrix" "xform" 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-		 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 1 1 1 yes;
-	setAttr ".xm[1]" -type "matrix" "xform" 1 1 1 0 0 0 0 -0.82278499999999999 8.7126800000000006
-		 -0.047023000000000002 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 -1 0 0 6.123233995736766e-17 1
-		 1 1 yes;
-	setAttr ".xm[2]" -type "matrix" "xform" 1 1 1 0 0 0 0 0.82278534836103612 8.7126780314333558
-		 -0.047023010879062688 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 1 1 1 yes;
-	setAttr ".xm[3]" -type "matrix" "xform" 1 1 1 0 0 0 0 0 7.316594703065773 1.6926819503708492 0
-		 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 1 1 1 yes;
-	setAttr ".xm[4]" -type "matrix" "xform" 1 1 1 2.2204460492503131e-16 0 0 0 -1.05125
-		 0.43020529693422738 -0.22807195037084926 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 -0.7068213756669679 0 0 0.70739207155597594 1
-		 1 1 yes;
-	setAttr ".xm[5]" -type "matrix" "xform" 1 1 1 0 0 0 0 1.0512522590314475 0.43020935152729045
-		 -0.22806707258761971 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -0.70739207155596817 0 0 0.70682137566697567 
-		0.70739207155597605 0 0 0.70682137566696779 1 1 1 yes;
-	setAttr ".xm[6]" -type "matrix" "xform" 1 1 1 0 0 0 0 0 -3.1574690978459756
-		 -0.0012279570476048107 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 1 1 1 yes;
-	setAttr ".xm[7]" -type "matrix" "xform" 1 1 1 0 0 0 0 0 7.316594703065773 -1.7036924775050788 0
-		 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 1 1 1 yes;
-	setAttr ".xm[8]" -type "matrix" "xform" 1 1 1 0 0 0 0 -1.0488 0.41692529693422742
-		 0.41843247750507873 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0.68900460691020282 0 0 0.72475696040570514 1
-		 1 1 yes;
-	setAttr ".xm[9]" -type "matrix" "xform" 1 1 1 -3.3306690738754696e-16 0 0 0 1.0487966588774185
-		 0.41692223741702428 0.41842931373430714 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.72475696040570137 0 0 0.68900460691020682 
-		-0.72475696040570492 0 0 0.68900460691020304 1 1 1 yes;
-	setAttr ".xm[10]" -type "matrix" "xform" 1 1 1 0 0 0 0 0 -1.3027936059877687
-		 -0.10209162625932566 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 1 1 1 yes;
-	setAttr -s 11 ".m";
-	setAttr -s 11 ".p";
-	setAttr -s 11 ".g[0:10]" yes no no no no no no yes no no no;
-	setAttr ".bp" yes;
 createNode skinCluster -n "skinCluster2";
 	rename -uid "71B1B557-49F8-ADD4-BE62-0186FC25486A";
 	setAttr -s 481 ".wl";
@@ -8297,8 +7659,6 @@ select -ne :defaultColorMgtGlobals;
 select -ne :hardwareRenderGlobals;
 	setAttr ".ctrs" 256;
 	setAttr ".btrs" 512;
-select -ne :ikSystem;
-	setAttr -s 4 ".sol";
 connectAttr "Body_layer.di" "pasted__gunlet_l1.do";
 connectAttr "skinCluster5.og[0]" "pasted__gunlet_l1Shape.i";
 connectAttr "Body_layer.di" "pasted__gunlet_r1.do";
@@ -8330,7 +7690,7 @@ connectAttr "skinCluster18.og[0]" "pasted__decShape.i";
 connectAttr "Body_layer.di" "hood.do";
 connectAttr "skinCluster3.og[0]" "hoodShape.i";
 connectAttr "Body_layer.di" "robe_out.do";
-connectAttr "skinCluster1.og[0]" "robe_outShape.i";
+connectAttr "robe_outShapeOrig.w" "robe_outShape.i";
 connectAttr "Body_layer.di" "polySurface1.do";
 connectAttr "skinCluster2.og[0]" "polySurfaceShape2.i";
 connectAttr "Body_layer.di" "robe_in.do";
@@ -8731,126 +8091,6 @@ connectAttr "C_Root_ctrl.s" "C_Root_joint_parentConstraint1.tg[0].ts";
 connectAttr "C_Root_ctrl.pm" "C_Root_joint_parentConstraint1.tg[0].tpm";
 connectAttr "C_Root_joint_parentConstraint1.w0" "C_Root_joint_parentConstraint1.tg[0].tw"
 		;
-connectAttr "Veil_Joint_layer.di" "B_C_Veil_joint.do";
-connectAttr "B_C_Veil_joint.s" "B_L_Veil1_joint.is";
-connectAttr "B_L_Veil1_joint_orientConstraint1.crx" "B_L_Veil1_joint.rx";
-connectAttr "B_L_Veil1_joint_orientConstraint1.cry" "B_L_Veil1_joint.ry";
-connectAttr "B_L_Veil1_joint_orientConstraint1.crz" "B_L_Veil1_joint.rz";
-connectAttr "B_L_Veil1_joint.s" "|Master_ctrl|B_C_Veil_joint|B_L_Veil1_joint|B_R_Veil2_End_joint.is"
-		;
-connectAttr "B_L_Veil1_joint.ro" "B_L_Veil1_joint_orientConstraint1.cro";
-connectAttr "B_L_Veil1_joint.pim" "B_L_Veil1_joint_orientConstraint1.cpim";
-connectAttr "B_L_Veil1_joint.jo" "B_L_Veil1_joint_orientConstraint1.cjo";
-connectAttr "B_L_Veil1_joint.is" "B_L_Veil1_joint_orientConstraint1.is";
-connectAttr "B_L_Veil_ctrl.r" "B_L_Veil1_joint_orientConstraint1.tg[0].tr";
-connectAttr "B_L_Veil_ctrl.ro" "B_L_Veil1_joint_orientConstraint1.tg[0].tro";
-connectAttr "B_L_Veil_ctrl.pm" "B_L_Veil1_joint_orientConstraint1.tg[0].tpm";
-connectAttr "B_L_Veil1_joint_orientConstraint1.w0" "B_L_Veil1_joint_orientConstraint1.tg[0].tw"
-		;
-connectAttr "B_C_Veil_joint.s" "B_M_Veil1_joint.is";
-connectAttr "B_M_Veil1_joint_orientConstraint1.crx" "B_M_Veil1_joint.rx";
-connectAttr "B_M_Veil1_joint_orientConstraint1.cry" "B_M_Veil1_joint.ry";
-connectAttr "B_M_Veil1_joint_orientConstraint1.crz" "B_M_Veil1_joint.rz";
-connectAttr "B_M_Veil1_joint.s" "B_M_Veil2_End_joint.is";
-connectAttr "B_M_Veil1_joint.ro" "B_M_Veil1_joint_orientConstraint1.cro";
-connectAttr "B_M_Veil1_joint.pim" "B_M_Veil1_joint_orientConstraint1.cpim";
-connectAttr "B_M_Veil1_joint.jo" "B_M_Veil1_joint_orientConstraint1.cjo";
-connectAttr "B_M_Veil1_joint.is" "B_M_Veil1_joint_orientConstraint1.is";
-connectAttr "B_M_Veil_ctrl.r" "B_M_Veil1_joint_orientConstraint1.tg[0].tr";
-connectAttr "B_M_Veil_ctrl.ro" "B_M_Veil1_joint_orientConstraint1.tg[0].tro";
-connectAttr "B_M_Veil_ctrl.pm" "B_M_Veil1_joint_orientConstraint1.tg[0].tpm";
-connectAttr "B_M_Veil1_joint_orientConstraint1.w0" "B_M_Veil1_joint_orientConstraint1.tg[0].tw"
-		;
-connectAttr "B_C_Veil_joint.s" "B_R_Veil1_joint.is";
-connectAttr "B_R_Veil1_joint_orientConstraint1.crx" "B_R_Veil1_joint.rx";
-connectAttr "B_R_Veil1_joint_orientConstraint1.cry" "B_R_Veil1_joint.ry";
-connectAttr "B_R_Veil1_joint_orientConstraint1.crz" "B_R_Veil1_joint.rz";
-connectAttr "B_R_Veil1_joint.s" "|Master_ctrl|B_C_Veil_joint|B_R_Veil1_joint|B_R_Veil2_End_joint.is"
-		;
-connectAttr "B_R_Veil1_joint.ro" "B_R_Veil1_joint_orientConstraint1.cro";
-connectAttr "B_R_Veil1_joint.pim" "B_R_Veil1_joint_orientConstraint1.cpim";
-connectAttr "B_R_Veil1_joint.jo" "B_R_Veil1_joint_orientConstraint1.cjo";
-connectAttr "B_R_Veil1_joint.is" "B_R_Veil1_joint_orientConstraint1.is";
-connectAttr "B_R_Veil_ctrl.r" "B_R_Veil1_joint_orientConstraint1.tg[0].tr";
-connectAttr "B_R_Veil_ctrl.ro" "B_R_Veil1_joint_orientConstraint1.tg[0].tro";
-connectAttr "B_R_Veil_ctrl.pm" "B_R_Veil1_joint_orientConstraint1.tg[0].tpm";
-connectAttr "B_R_Veil1_joint_orientConstraint1.w0" "B_R_Veil1_joint_orientConstraint1.tg[0].tw"
-		;
-connectAttr "Veil_Joint_layer.di" "F_C_Veil_joint.do";
-connectAttr "F_C_Veil_joint.s" "F_D_Veil1_joint.is";
-connectAttr "F_D_Veil1_joint_orientConstraint1.crx" "F_D_Veil1_joint.rx";
-connectAttr "F_D_Veil1_joint_orientConstraint1.cry" "F_D_Veil1_joint.ry";
-connectAttr "F_D_Veil1_joint_orientConstraint1.crz" "F_D_Veil1_joint.rz";
-connectAttr "F_D_Veil1_joint.s" "F_D_Veil2_End_joint.is";
-connectAttr "F_D_Veil1_joint.ro" "F_D_Veil1_joint_orientConstraint1.cro";
-connectAttr "F_D_Veil1_joint.pim" "F_D_Veil1_joint_orientConstraint1.cpim";
-connectAttr "F_D_Veil1_joint.jo" "F_D_Veil1_joint_orientConstraint1.cjo";
-connectAttr "F_D_Veil1_joint.is" "F_D_Veil1_joint_orientConstraint1.is";
-connectAttr "F_C_Veil_ctrl.r" "F_D_Veil1_joint_orientConstraint1.tg[0].tr";
-connectAttr "F_C_Veil_ctrl.ro" "F_D_Veil1_joint_orientConstraint1.tg[0].tro";
-connectAttr "F_C_Veil_ctrl.pm" "F_D_Veil1_joint_orientConstraint1.tg[0].tpm";
-connectAttr "F_D_Veil1_joint_orientConstraint1.w0" "F_D_Veil1_joint_orientConstraint1.tg[0].tw"
-		;
-connectAttr "F_C_Veil_joint.s" "F_L_Veil1_joint.is";
-connectAttr "F_L_Veil1_joint_orientConstraint1.crx" "F_L_Veil1_joint.rx";
-connectAttr "F_L_Veil1_joint_orientConstraint1.cry" "F_L_Veil1_joint.ry";
-connectAttr "F_L_Veil1_joint_orientConstraint1.crz" "F_L_Veil1_joint.rz";
-connectAttr "F_L_Veil1_joint.s" "F_L_Veil2_End_joint.is";
-connectAttr "F_L_Veil1_joint.ro" "F_L_Veil1_joint_orientConstraint1.cro";
-connectAttr "F_L_Veil1_joint.pim" "F_L_Veil1_joint_orientConstraint1.cpim";
-connectAttr "F_L_Veil1_joint.jo" "F_L_Veil1_joint_orientConstraint1.cjo";
-connectAttr "F_L_Veil1_joint.is" "F_L_Veil1_joint_orientConstraint1.is";
-connectAttr "F_L_Veil_ctrl.r" "F_L_Veil1_joint_orientConstraint1.tg[0].tr";
-connectAttr "F_L_Veil_ctrl.ro" "F_L_Veil1_joint_orientConstraint1.tg[0].tro";
-connectAttr "F_L_Veil_ctrl.pm" "F_L_Veil1_joint_orientConstraint1.tg[0].tpm";
-connectAttr "F_L_Veil1_joint_orientConstraint1.w0" "F_L_Veil1_joint_orientConstraint1.tg[0].tw"
-		;
-connectAttr "F_C_Veil_joint.s" "F_R_Veil1_joint.is";
-connectAttr "F_R_Veil1_joint_orientConstraint1.crx" "F_R_Veil1_joint.rx";
-connectAttr "F_R_Veil1_joint_orientConstraint1.cry" "F_R_Veil1_joint.ry";
-connectAttr "F_R_Veil1_joint_orientConstraint1.crz" "F_R_Veil1_joint.rz";
-connectAttr "F_R_Veil1_joint.s" "F_R_Veil2_End_joint.is";
-connectAttr "F_R_Veil1_joint.ro" "F_R_Veil1_joint_orientConstraint1.cro";
-connectAttr "F_R_Veil1_joint.pim" "F_R_Veil1_joint_orientConstraint1.cpim";
-connectAttr "F_R_Veil1_joint.jo" "F_R_Veil1_joint_orientConstraint1.cjo";
-connectAttr "F_R_Veil1_joint.is" "F_R_Veil1_joint_orientConstraint1.is";
-connectAttr "F_R_Veil_ctrl.r" "F_R_Veil1_joint_orientConstraint1.tg[0].tr";
-connectAttr "F_R_Veil_ctrl.ro" "F_R_Veil1_joint_orientConstraint1.tg[0].tro";
-connectAttr "F_R_Veil_ctrl.pm" "F_R_Veil1_joint_orientConstraint1.tg[0].tpm";
-connectAttr "F_R_Veil1_joint_orientConstraint1.w0" "F_R_Veil1_joint_orientConstraint1.tg[0].tw"
-		;
-connectAttr "Veil_Joint_layer.di" "L_Veil1_joint.do";
-connectAttr "L_Veil1_joint_orientConstraint1.crx" "L_Veil1_joint.rx";
-connectAttr "L_Veil1_joint_orientConstraint1.cry" "L_Veil1_joint.ry";
-connectAttr "L_Veil1_joint_orientConstraint1.crz" "L_Veil1_joint.rz";
-connectAttr "L_Veil1_joint.s" "L_Veil2_End_joint.is";
-connectAttr "L_Veil1_joint.s" "F_L_Veil_joint.is";
-connectAttr "L_Veil1_joint.s" "B_L_Veil_joint.is";
-connectAttr "L_Veil1_joint.ro" "L_Veil1_joint_orientConstraint1.cro";
-connectAttr "L_Veil1_joint.pim" "L_Veil1_joint_orientConstraint1.cpim";
-connectAttr "L_Veil1_joint.jo" "L_Veil1_joint_orientConstraint1.cjo";
-connectAttr "L_Veil1_joint.is" "L_Veil1_joint_orientConstraint1.is";
-connectAttr "L_Veil_ctrl.r" "L_Veil1_joint_orientConstraint1.tg[0].tr";
-connectAttr "L_Veil_ctrl.ro" "L_Veil1_joint_orientConstraint1.tg[0].tro";
-connectAttr "L_Veil_ctrl.pm" "L_Veil1_joint_orientConstraint1.tg[0].tpm";
-connectAttr "L_Veil1_joint_orientConstraint1.w0" "L_Veil1_joint_orientConstraint1.tg[0].tw"
-		;
-connectAttr "Veil_Joint_layer.di" "R_Veil1_joint.do";
-connectAttr "R_Veil1_joint_orientConstraint1.crx" "R_Veil1_joint.rx";
-connectAttr "R_Veil1_joint_orientConstraint1.cry" "R_Veil1_joint.ry";
-connectAttr "R_Veil1_joint_orientConstraint1.crz" "R_Veil1_joint.rz";
-connectAttr "R_Veil1_joint.s" "R_Veil2_End_joint.is";
-connectAttr "R_Veil1_joint.s" "F_R_Veil_joint.is";
-connectAttr "R_Veil1_joint.s" "B_R_Veil_joint.is";
-connectAttr "R_Veil1_joint.ro" "R_Veil1_joint_orientConstraint1.cro";
-connectAttr "R_Veil1_joint.pim" "R_Veil1_joint_orientConstraint1.cpim";
-connectAttr "R_Veil1_joint.jo" "R_Veil1_joint_orientConstraint1.cjo";
-connectAttr "R_Veil1_joint.is" "R_Veil1_joint_orientConstraint1.is";
-connectAttr "R_Veil_ctrl.r" "R_Veil1_joint_orientConstraint1.tg[0].tr";
-connectAttr "R_Veil_ctrl.ro" "R_Veil1_joint_orientConstraint1.tg[0].tro";
-connectAttr "R_Veil_ctrl.pm" "R_Veil1_joint_orientConstraint1.tg[0].tpm";
-connectAttr "R_Veil1_joint_orientConstraint1.w0" "R_Veil1_joint_orientConstraint1.tg[0].tw"
-		;
 connectAttr "Ctrl_layer.di" "C_Root_ctrl.do";
 connectAttr "Ctrl_layer.di" "C_Back_ctrl.do";
 connectAttr "Ctrl_layer.di" "C_Chest_ctrl.do";
@@ -8879,14 +8119,6 @@ connectAttr "Ctrl_layer.di" "L_Foot_ctrl.do";
 connectAttr "Ctrl_layer.di" "R_Hip_ctrl.do";
 connectAttr "Ctrl_layer.di" "R_Knee_ctrl.do";
 connectAttr "Ctrl_layer.di" "R_Foot_ctrl.do";
-connectAttr "Ctrl_layer.di" "F_C_Veil_ctrl.do";
-connectAttr "Ctrl_layer.di" "B_L_Veil_ctrl.do";
-connectAttr "Ctrl_layer.di" "B_R_Veil_ctrl.do";
-connectAttr "Ctrl_layer.di" "F_R_Veil_ctrl.do";
-connectAttr "Ctrl_layer.di" "F_L_Veil_ctrl.do";
-connectAttr "Ctrl_layer.di" "B_M_Veil_ctrl.do";
-connectAttr "Ctrl_layer.di" "R_Veil_ctrl.do";
-connectAttr "Ctrl_layer.di" "L_Veil_ctrl.do";
 relationship "link" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" ":initialParticleSE.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" "texturedFacets.message" ":defaultLightSet.message";
@@ -9055,59 +8287,6 @@ connectAttr "aiStandardSurface1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.t
 		;
 connectAttr "place2dTexture1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[3].dn"
 		;
-connectAttr "robe_outShapeOrig.w" "skinCluster1.ip[0].ig";
-connectAttr "robe_outShapeOrig.o" "skinCluster1.orggeom[0]";
-connectAttr "bindPose6.msg" "skinCluster1.bp";
-connectAttr "R_Veil1_joint.wm" "skinCluster1.ma[0]";
-connectAttr "L_Veil1_joint.wm" "skinCluster1.ma[1]";
-connectAttr "F_R_Veil1_joint.wm" "skinCluster1.ma[2]";
-connectAttr "F_L_Veil1_joint.wm" "skinCluster1.ma[3]";
-connectAttr "F_D_Veil1_joint.wm" "skinCluster1.ma[4]";
-connectAttr "F_C_Veil_joint.wm" "skinCluster1.ma[5]";
-connectAttr "B_R_Veil1_joint.wm" "skinCluster1.ma[6]";
-connectAttr "B_L_Veil1_joint.wm" "skinCluster1.ma[7]";
-connectAttr "B_M_Veil1_joint.wm" "skinCluster1.ma[8]";
-connectAttr "R_Veil1_joint.liw" "skinCluster1.lw[0]";
-connectAttr "L_Veil1_joint.liw" "skinCluster1.lw[1]";
-connectAttr "F_R_Veil1_joint.liw" "skinCluster1.lw[2]";
-connectAttr "F_L_Veil1_joint.liw" "skinCluster1.lw[3]";
-connectAttr "F_D_Veil1_joint.liw" "skinCluster1.lw[4]";
-connectAttr "F_C_Veil_joint.liw" "skinCluster1.lw[5]";
-connectAttr "B_R_Veil1_joint.liw" "skinCluster1.lw[6]";
-connectAttr "B_L_Veil1_joint.liw" "skinCluster1.lw[7]";
-connectAttr "B_M_Veil1_joint.liw" "skinCluster1.lw[8]";
-connectAttr "R_Veil1_joint.obcc" "skinCluster1.ifcl[0]";
-connectAttr "L_Veil1_joint.obcc" "skinCluster1.ifcl[1]";
-connectAttr "F_R_Veil1_joint.obcc" "skinCluster1.ifcl[2]";
-connectAttr "F_L_Veil1_joint.obcc" "skinCluster1.ifcl[3]";
-connectAttr "F_D_Veil1_joint.obcc" "skinCluster1.ifcl[4]";
-connectAttr "F_C_Veil_joint.obcc" "skinCluster1.ifcl[5]";
-connectAttr "B_R_Veil1_joint.obcc" "skinCluster1.ifcl[6]";
-connectAttr "B_L_Veil1_joint.obcc" "skinCluster1.ifcl[7]";
-connectAttr "B_M_Veil1_joint.obcc" "skinCluster1.ifcl[8]";
-connectAttr "F_C_Veil_joint.msg" "skinCluster1.ptt";
-connectAttr "Master_ctrl.msg" "bindPose6.m[0]";
-connectAttr "R_Veil1_joint.msg" "bindPose6.m[1]";
-connectAttr "L_Veil1_joint.msg" "bindPose6.m[2]";
-connectAttr "F_C_Veil_joint.msg" "bindPose6.m[3]";
-connectAttr "F_R_Veil1_joint.msg" "bindPose6.m[4]";
-connectAttr "F_L_Veil1_joint.msg" "bindPose6.m[5]";
-connectAttr "F_D_Veil1_joint.msg" "bindPose6.m[6]";
-connectAttr "B_C_Veil_joint.msg" "bindPose6.m[7]";
-connectAttr "B_R_Veil1_joint.msg" "bindPose6.m[8]";
-connectAttr "B_L_Veil1_joint.msg" "bindPose6.m[9]";
-connectAttr "B_M_Veil1_joint.msg" "bindPose6.m[10]";
-connectAttr "bindPose6.w" "bindPose6.p[0]";
-connectAttr "bindPose6.m[0]" "bindPose6.p[1]";
-connectAttr "bindPose6.m[0]" "bindPose6.p[2]";
-connectAttr "bindPose6.m[0]" "bindPose6.p[3]";
-connectAttr "bindPose6.m[3]" "bindPose6.p[4]";
-connectAttr "bindPose6.m[3]" "bindPose6.p[5]";
-connectAttr "bindPose6.m[3]" "bindPose6.p[6]";
-connectAttr "bindPose6.m[0]" "bindPose6.p[7]";
-connectAttr "bindPose6.m[7]" "bindPose6.p[8]";
-connectAttr "bindPose6.m[7]" "bindPose6.p[9]";
-connectAttr "bindPose6.m[7]" "bindPose6.p[10]";
 connectAttr "polySurfaceShape2Orig.w" "skinCluster2.ip[0].ig";
 connectAttr "polySurfaceShape2Orig.o" "skinCluster2.orggeom[0]";
 connectAttr "bindPose7.msg" "skinCluster2.bp";
@@ -9392,4 +8571,4 @@ connectAttr "place2dTexture1.msg" ":defaultRenderUtilityList1.u" -na;
 connectAttr "defaultRenderLayer.msg" ":defaultRenderingList1.r" -na;
 connectAttr "defaultPolygonTexture.msg" ":defaultTextureList1.tx" -na;
 connectAttr "Mage_Base_Color1_1.msg" ":defaultTextureList1.tx" -na;
-// End of mage2_Rigging_F2.ma
+// End of mage2_Rigging_F3.ma
