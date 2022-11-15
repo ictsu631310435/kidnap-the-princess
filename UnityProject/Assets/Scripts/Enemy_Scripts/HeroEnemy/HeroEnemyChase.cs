@@ -18,6 +18,8 @@ public class HeroEnemyChase : EnemyChase
 
         // Set time for next attack
         _heroEnemy.nextAttackTime = Time.time + _heroEnemy.timeBtwRangedAttacks;
+
+        _heroEnemy.charaAnimator.transform.localPosition = new Vector3(0, 0, -0.45f);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -37,6 +39,7 @@ public class HeroEnemyChase : EnemyChase
                 aiDestination.target = animator.gameObject.transform;
                 // Set bool for state transition to "Attack"
                 animator.SetTrigger("Attack");
+                _heroEnemy.charaAnimator.SetTrigger("Attack");
             }
 
             // Reached destination enter "inCombat" state
@@ -45,6 +48,7 @@ public class HeroEnemyChase : EnemyChase
                 //Debug.Log("Stop chase: in Attack Range");
                 // Set bool for state transition to "inCombat"
                 animator.SetBool("inCombat", true);
+                _heroEnemy.charaAnimator.SetBool("inCombat", true);
             }
         }
         // Player out of detectRange, stop chase after reached the last Player position before out of range
@@ -62,8 +66,19 @@ public class HeroEnemyChase : EnemyChase
                 //Debug.Log("Stop chase: Player lost");
                 // Set bool for state transition to "Idle"
                 animator.SetBool("isChasing", false);
+                _heroEnemy.charaAnimator.SetBool("isChasing", false);
             }
         }
+    }
+
+    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        // Make sure isChasing = false when exit state
+        animator.SetBool("isChasing", false);
+        _heroEnemy.charaAnimator.SetBool("isChasing", false);
+        // Make sure to not set target to anything when exit state
+        aiDestination.target = null;
     }
     #endregion
 }

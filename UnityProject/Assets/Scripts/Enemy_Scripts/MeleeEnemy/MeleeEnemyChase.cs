@@ -17,6 +17,8 @@ public class MeleeEnemyChase : EnemyChase
         aiPath = _meleeEnemy.aiPath;
         aiDestination = _meleeEnemy.aiDestination;
 
+        _meleeEnemy.charaAnimator.transform.localPosition = new Vector3(0, 0, -0.45f);
+
         // Change slowdownDistance and endReachedDistance base on entered combat or not
         if (_meleeEnemy.inCombat)
         {   // If entered combat, slow down and stop when target in attackRange
@@ -52,6 +54,7 @@ public class MeleeEnemyChase : EnemyChase
                     //Debug.Log("Stop chase: in Attack Range");
                     // Set bool for state transition to "inCombat"
                     animator.SetBool("inCombat", true);
+                    _meleeEnemy.charaAnimator.SetBool("inCombat", true);
                 }
                 // If  can not, enter onStandby state
                 else
@@ -59,6 +62,7 @@ public class MeleeEnemyChase : EnemyChase
                     //Debug.Log("Stop chase: Reached destination");
                     // Set bool for state transition to "Standby"
                     animator.SetBool("onStandby", true);
+                    _meleeEnemy.charaAnimator.SetBool("onStandby", true);
                 }
             }
         }
@@ -79,8 +83,19 @@ public class MeleeEnemyChase : EnemyChase
                 //Debug.Log("Stop chase: Player lost");
                 // Set bool for state transition to "Idle"
                 animator.SetBool("isChasing", false);
+                _meleeEnemy.charaAnimator.SetBool("isChasing", false);
             }
         }
+    }
+
+    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        // Make sure isChasing = false when exit state
+        animator.SetBool("isChasing", false);
+        _meleeEnemy.charaAnimator.SetBool("isChasing", false);
+        // Make sure to not set target to anything when exit state
+        aiDestination.target = null;
     }
     #endregion
 }

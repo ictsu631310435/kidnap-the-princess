@@ -20,6 +20,8 @@ public class MeleeEnemyStandby : StateMachineBehaviour
         _meleeEnemy = animator.GetComponent<MeleeEnemy>();
         _aiPath = animator.GetComponent<AIPath>();
         _aiDestination = _meleeEnemy.aiDestination;
+
+        _meleeEnemy.charaAnimator.transform.localPosition = new Vector3(0, 0, 0);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -42,6 +44,7 @@ public class MeleeEnemyStandby : StateMachineBehaviour
                 //Debug.Log("Start Chase: Get in to fight");
                 // Set bool for state transition to "Chase"
                 animator.SetBool("isChasing", true);
+                _meleeEnemy.charaAnimator.SetBool("isChasing", true);
             }
         }
         // If Player out of standbyRange, enter Chase state to get in range
@@ -53,6 +56,7 @@ public class MeleeEnemyStandby : StateMachineBehaviour
             //Debug.Log("Start Chase: Player out of standby range");
             // Set bool for state transition to "Chase"
             animator.SetBool("isChasing", true);
+            _meleeEnemy.charaAnimator.SetBool("isChasing", true);
         }
 
         // If can not enter combat, reposition (chase after waypoint)
@@ -73,6 +77,7 @@ public class MeleeEnemyStandby : StateMachineBehaviour
             //Debug.Log("Reposition");
             // Set bool for state transition to "Chase"
             animator.SetBool("isChasing", true);
+            _meleeEnemy.charaAnimator.SetBool("isChasing", true);
         }
     }
 
@@ -81,6 +86,7 @@ public class MeleeEnemyStandby : StateMachineBehaviour
     {
         // Make sure onStandby = false when exit state
         animator.SetBool("onStandby", false);
+        _meleeEnemy.charaAnimator.SetBool("onStandby", false);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
