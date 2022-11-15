@@ -14,6 +14,8 @@ public class Sound
 
     public AudioMixerGroup mixerGroup;
 
+    public bool loop;
+
     [Range(0f, 1f)]
     public float volume;
     [Range(-3f, 3f)]

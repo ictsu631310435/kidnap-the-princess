@@ -30,6 +30,8 @@ public class RangedEnemy : Enemy
     // Method for attacking (Ranged)
     public override void Attack()
     {
+        audioHandler.Play("Fireball");
+
         // Create projectile clone at attackPoint
         GameObject _bullet = Instantiate(projectile, attackPoint.position, transform.rotation);
         // Initialize projectile

@@ -30,6 +30,10 @@ public class GameManager : MonoBehaviour
     public bool bossAlive;
     public GameObject winPanel;
     public Text winTimeText;
+    public string endingSceneName;
+
+    [Header("Music")]
+    public AudioHandler bgmManager;
     #endregion
 
     #region Unity Callbacks
@@ -41,6 +45,11 @@ public class GameManager : MonoBehaviour
 
         // Solve timestop after restart level
         Time.timeScale = 1;
+    }
+
+    void Start()
+    {
+        bgmManager.PlayFirstSound();
     }
 
     // Update is called once per frame
@@ -166,6 +175,15 @@ public class GameManager : MonoBehaviour
         winPanel.SetActive(true);
         // Update time score
         winTimeText.text = FormatTime(gameTime);
+    }
+
+    // Method for go to Ending screen
+    public void WatchEnding()
+    {
+        // Resume time
+        Time.timeScale = 1;
+        // Load Ending scene
+        SceneManager.LoadScene(endingSceneName);
     }
     #endregion
 }

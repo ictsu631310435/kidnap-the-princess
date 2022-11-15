@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
     // Method for Melee Attack
     public void MeleeAttack(StatusEffect inflictEffect)
     {
-        audioHandler.Play("Whoosh");
+        audioHandler.Play("Melee");
 
         // Array of all Colliders in targetLayer caught in Range.
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(attackPoint.position, meleeRange, enemyLayer);

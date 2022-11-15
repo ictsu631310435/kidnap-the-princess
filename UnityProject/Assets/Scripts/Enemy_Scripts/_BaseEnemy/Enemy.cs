@@ -29,6 +29,9 @@ public abstract class Enemy : MonoBehaviour
     [HideInInspector] public Rigidbody2D rb;
 
     public Animator charaAnimator;
+
+    [Header("Audio")]
+    public AudioHandler audioHandler;
     #endregion
 
     #region Unity Callbacks

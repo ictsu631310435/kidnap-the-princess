@@ -26,6 +26,8 @@ public class HeroEnemy : Enemy
     // Method for attacking (Melee)
     public override void Attack(StatusEffect statusEffect)
     {
+        audioHandler.Play("Melee");
+
         // Array of all Colliders in targetLayer caught in Range.
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, playerLayer);
         foreach (var collider in hitColliders)
@@ -48,6 +50,8 @@ public class HeroEnemy : Enemy
     // Method for attacking (Ranged)
     public override void Attack()
     {
+        audioHandler.Play("Fireball");
+
         // Create projectile clone at attackPoint
         GameObject _bullet = Instantiate(projectile, attackPoint.position, transform.rotation);
         // Initialize projectile

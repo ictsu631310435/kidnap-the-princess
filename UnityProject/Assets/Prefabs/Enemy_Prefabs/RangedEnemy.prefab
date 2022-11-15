@@ -1,5 +1,62 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5102302801663560466
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4795775543130148425}
+  - component: {fileID: 4043201268654678443}
+  m_Layer: 6
+  m_Name: AudioHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4795775543130148425
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5102302801663560466}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8922856266008625264}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4043201268654678443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5102302801663560466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37db38eb0f509cc42a16c295b3602d45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Attack
+    audioClip: {fileID: 8300000, guid: 5f9a6ad9701b59a43867602f063070d6, type: 3}
+    mixerGroup: {fileID: -2190507236778344, guid: 84be4c6830c0a7848ae95dd0e8b6e5cf, type: 2}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Fireball
+    audioClip: {fileID: 8300000, guid: 93e529640497d2e43ab6c18869012b3b, type: 3}
+    mixerGroup: {fileID: -2190507236778344, guid: 84be4c6830c0a7848ae95dd0e8b6e5cf, type: 2}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
 --- !u!1 &8922856266008625261
 GameObject:
   m_ObjectHideFlags: 0
@@ -42,6 +99,7 @@ Transform:
   - {fileID: 8922856267099646146}
   - {fileID: 5153851407950750238}
   - {fileID: 3371037840259815944}
+  - {fileID: 4795775543130148425}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -75,6 +133,7 @@ MonoBehaviour:
   aiDestination: {fileID: 0}
   rb: {fileID: 0}
   charaAnimator: {fileID: 1254824886033988454}
+  audioHandler: {fileID: 4043201268654678443}
   projectile: {fileID: 7828675481890059469, guid: f844ebc992020be4e8db45d3e4944b38, type: 3}
   angleOffsets:
   - 0

@@ -18,6 +18,8 @@ public class PlayerRangedAttack : StateMachineBehaviour
         // Get Component
         _playerCtrl = animator.gameObject.GetComponent<PlayerController>();
 
+        _playerCtrl.audioHandler.Play("Fireball");
+
         _playerCtrl.charaAnimator.transform.localPosition = new Vector3(0, 0, -0.35f);
 
         // Call RangedAttack method

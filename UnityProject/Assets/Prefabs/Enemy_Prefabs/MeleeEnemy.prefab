@@ -1,5 +1,56 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2405085318067060290
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 349983184454158877}
+  - component: {fileID: 4586792367531712515}
+  m_Layer: 6
+  m_Name: AudioHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &349983184454158877
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2405085318067060290}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8922856266008625264}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4586792367531712515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2405085318067060290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37db38eb0f509cc42a16c295b3602d45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Attack
+    audioClip: {fileID: 8300000, guid: 5f9a6ad9701b59a43867602f063070d6, type: 3}
+    mixerGroup: {fileID: -2190507236778344, guid: 84be4c6830c0a7848ae95dd0e8b6e5cf, type: 2}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
 --- !u!1 &8922856266008625261
 GameObject:
   m_ObjectHideFlags: 0
@@ -41,6 +92,7 @@ Transform:
   - {fileID: 8922856267099646146}
   - {fileID: 5153851407950750238}
   - {fileID: 2155573920304491177}
+  - {fileID: 349983184454158877}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -74,6 +126,7 @@ MonoBehaviour:
   aiDestination: {fileID: 0}
   rb: {fileID: 0}
   charaAnimator: {fileID: 3244799583147554923}
+  audioHandler: {fileID: 4586792367531712515}
   standbyRange: 6
   inCombat: 0
   friendLayer:

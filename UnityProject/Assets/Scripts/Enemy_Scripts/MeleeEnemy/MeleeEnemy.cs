@@ -65,6 +65,8 @@ public class MeleeEnemy : Enemy
     // Method for attacking (Melee)
     public override void Attack(StatusEffect statusEffect)
     {
+        audioHandler.Play("Attack");
+
         // Array of all Colliders in targetLayer caught in Range.
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, playerLayer);
         foreach (var collider in hitColliders)
