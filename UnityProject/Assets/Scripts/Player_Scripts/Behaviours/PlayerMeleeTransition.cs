@@ -25,6 +25,7 @@ public class PlayerMeleeTransition : StateMachineBehaviour
         {
             // Set trigger for state Transition to "Melee Attack"
             animator.SetTrigger("MeleeAtk");
+            _playerCtrl.charaAnimator.SetTrigger("MeleeAtk");
         }
     }
 

@@ -19,6 +19,8 @@ public class PlayerIdle : StateMachineBehaviour
         _playerCtrl = animator.gameObject.GetComponent<PlayerController>();
         _rigidbody = animator.gameObject.GetComponent<Rigidbody2D>();
         _effectHandler = animator.gameObject.GetComponent<StatusEffectHandler>();
+
+        _playerCtrl.charaAnimator.transform.localPosition = new Vector3(0, 0, 0);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -31,24 +33,28 @@ public class PlayerIdle : StateMachineBehaviour
             {
                 // Set bool for state Transition to "Walk"
                 animator.SetBool("isWalking", true);
+                _playerCtrl.charaAnimator.SetBool("isWalking", true);
             }
             // Player inputs "Roll", Transition to Roll State
             else if (Input.GetButtonDown("Dash") && _playerCtrl.canMove)
             {
                 // Set trigger for state Transition to "Melee Attack"
                 animator.SetTrigger("Dash");
+                _playerCtrl.charaAnimator.SetTrigger("Dash");
             }
             // Player inputs "MeleeAttack", Transition to Melee Attack state
             else if (Input.GetButtonDown("MeleeAttack") && _playerCtrl.canAttack)
             {
                 // Set trigger for state Transition to "Melee Attack"
                 animator.SetTrigger("MeleeAtk");
+                _playerCtrl.charaAnimator.SetTrigger("MeleeAtk");
             }
             // Player inputs "RangedAttack", Transition to Ranged Attack state
             else if (Input.GetButtonDown("RangedAttack") && _playerCtrl.canAttack)
             {
                 // Set trigger for state Transition to "Ranged Attack"
                 animator.SetTrigger("RangedAtk");
+                _playerCtrl.charaAnimator.SetTrigger("RangedAtk");
             }
             // Player do not inputs anything and not effected by StatusEffect
             else if (_effectHandler.activeEffects.Count == 0)

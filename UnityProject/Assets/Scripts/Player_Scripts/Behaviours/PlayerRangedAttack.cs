@@ -18,6 +18,8 @@ public class PlayerRangedAttack : StateMachineBehaviour
         // Get Component
         _playerCtrl = animator.gameObject.GetComponent<PlayerController>();
 
+        _playerCtrl.charaAnimator.transform.localPosition = new Vector3(0, 0, -0.25f);
+
         // Call RangedAttack method
         _playerCtrl.Invoke("RangedAttack", delayTime);
     }
