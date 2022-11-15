@@ -12,6 +12,8 @@ public class RangedEnemyAttack : EnemyAttack
         // Get Component
         enemy = animator.GetComponent<Enemy>();
 
+        enemy.charaAnimator.transform.localPosition = new Vector3(0, 0, -0.45f);
+
         // Attack after a delay
         enemy.StartCoroutine(Attack(delayTime));
     }

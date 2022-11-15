@@ -18,6 +18,8 @@ public class EnemyIdle : StateMachineBehaviour
         // Get Components
         enemy = animator.GetComponent<Enemy>();
         _aiDestination = enemy.aiDestination;
+
+        enemy.charaAnimator.transform.localPosition = new Vector3(0, 0, 0);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -34,6 +36,7 @@ public class EnemyIdle : StateMachineBehaviour
         {
             // Set bool for state Transition to "Chase"
             animator.SetBool("isChasing", true);
+            enemy.charaAnimator.SetBool("isChasing", true);
         }
     }
 

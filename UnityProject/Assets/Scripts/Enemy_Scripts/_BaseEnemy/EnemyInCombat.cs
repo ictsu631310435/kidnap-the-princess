@@ -19,6 +19,8 @@ public class EnemyInCombat : StateMachineBehaviour
         enemy = animator.GetComponent<Enemy>();
         _aiDestination = enemy.aiDestination;
 
+        enemy.charaAnimator.transform.localPosition = new Vector3(0, 0, 0);
+
         // Set time for next attack
         enemy.nextAttackTime = Time.time + enemy.timeBtwAttacks;
     }
@@ -34,6 +36,7 @@ public class EnemyInCombat : StateMachineBehaviour
             _aiDestination.target = enemy.player;
             // Set bool for state transition to "Chase"
             animator.SetBool("isChasing", true);
+            enemy.charaAnimator.SetBool("isChasing", true);
         }
         // If player in attackRange, try to attack
         else
@@ -44,6 +47,7 @@ public class EnemyInCombat : StateMachineBehaviour
                 //enemy.nextAttackTime = Time.time + enemy.timeBtwAttacks;
                 // Set bool for state transition to "Attack"
                 animator.SetTrigger("Attack");
+                enemy.charaAnimator.SetTrigger("Attack");
             }
             // If not, turn to face Player
             else
@@ -59,6 +63,7 @@ public class EnemyInCombat : StateMachineBehaviour
     {
         // Make sure inCombat = false when exit state
         animator.SetBool("inCombat", false);
+        enemy.charaAnimator.SetBool("inCombat", false);
     }
     #endregion
 }

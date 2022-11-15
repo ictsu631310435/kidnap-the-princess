@@ -20,7 +20,7 @@ public class PlayerMeleeAttack : StateMachineBehaviour
         // Get Component
         _playerCtrl = animator.gameObject.GetComponent<PlayerController>();
 
-        _playerCtrl.charaAnimator.transform.localPosition = new Vector3(0, 0, -0.25f);
+        _playerCtrl.charaAnimator.transform.localPosition = new Vector3(0, 0, -0.35f);
 
         // Call MeleeAttack method
         //_playerCtrl.MeleeAttack(inflictEffect);

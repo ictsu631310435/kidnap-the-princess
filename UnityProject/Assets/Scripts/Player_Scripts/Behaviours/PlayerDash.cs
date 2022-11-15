@@ -20,7 +20,7 @@ public class PlayerDash : StateMachineBehaviour
         _playerCtrl = animator.gameObject.GetComponent<PlayerController>();
         _rigidbody = animator.gameObject.GetComponent<Rigidbody2D>();
 
-        _playerCtrl.charaAnimator.transform.localPosition = new Vector3(0, 0, -0.25f);
+        _playerCtrl.charaAnimator.transform.localPosition = new Vector3(0, 0, -0.35f);
 
         // Calculate start location
         _startPoint = _playerCtrl.transform.position;

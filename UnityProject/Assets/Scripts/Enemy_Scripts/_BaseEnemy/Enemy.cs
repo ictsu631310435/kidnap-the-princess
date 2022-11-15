@@ -27,6 +27,8 @@ public abstract class Enemy : MonoBehaviour
     [HideInInspector] public AIDestinationSetter aiDestination;
 
     [HideInInspector] public Rigidbody2D rb;
+
+    public Animator charaAnimator;
     #endregion
 
     #region Unity Callbacks

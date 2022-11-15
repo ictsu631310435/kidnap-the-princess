@@ -20,6 +20,8 @@ public class EnemyChase : StateMachineBehaviour
         enemy = animator.GetComponent<Enemy>();
         aiPath = enemy.aiPath;
         aiDestination = enemy.aiDestination;
+
+        enemy.charaAnimator.transform.localPosition = new Vector3(0, 0, -0.45f);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -40,6 +42,7 @@ public class EnemyChase : StateMachineBehaviour
                 //Debug.Log("Stop chase: in Attack Range");
                 // Set bool for state transition to "inCombat"
                 animator.SetBool("inCombat", true);
+                enemy.charaAnimator.SetBool("inCombat", true);
             }
         }
         // Player out of detectRange, stop chase after reached the last Player position before out of range
@@ -57,6 +60,7 @@ public class EnemyChase : StateMachineBehaviour
                 //Debug.Log("Stop chase: Player lost");
                 // Set bool for state transition to "Idle"
                 animator.SetBool("isChasing", false);
+                enemy.charaAnimator.SetBool("isChasing", false);
             }
         }
     }
@@ -66,6 +70,7 @@ public class EnemyChase : StateMachineBehaviour
     {
         // Make sure isChasing = false when exit state
         animator.SetBool("isChasing", false);
+        enemy.charaAnimator.SetBool("isChasing", false);
         // Make sure to not set target to anything when exit state
         aiDestination.target = null;
     }
