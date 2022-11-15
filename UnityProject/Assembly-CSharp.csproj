@@ -92,11 +92,11 @@
     <Compile Include="Assets\Scripts\Enemy_Scripts\MeleeEnemy\MeleeEnemy.cs" />
     <Compile Include="Assets\Scripts\Trigger_Scripts\EnemySpawner.cs" />
     <Compile Include="Assets\Scripts\StatusEffect_Scripts\KnockBack.cs" />
+    <Compile Include="Assets\Scripts\Intro.cs" />
     <Compile Include="Assets\Scripts\Enemy_Scripts\_BaseEnemy\EnemyAttack.cs" />
     <Compile Include="Assets\Scripts\MaterialFlashHandler.cs" />
     <Compile Include="Assets\Scripts\Player_Scripts\Behaviours\PlayerMeleeAttack.cs" />
     <Compile Include="Assets\Scripts\Player_Scripts\Behaviours\PlayerIdle.cs" />
-    <Compile Include="Assets\Scripts\Intro.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

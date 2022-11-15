@@ -8,6 +8,8 @@ public class PlayerMeleeAttack : StateMachineBehaviour
     #region Data Members
     private PlayerController _playerCtrl;
 
+    public float delayTime;
+
     public StatusEffect inflictEffect;
     #endregion
 
@@ -18,7 +20,19 @@ public class PlayerMeleeAttack : StateMachineBehaviour
         // Get Component
         _playerCtrl = animator.gameObject.GetComponent<PlayerController>();
 
+        _playerCtrl.charaAnimator.transform.localPosition = new Vector3(0, 0, -0.25f);
+
         // Call MeleeAttack method
+        //_playerCtrl.MeleeAttack(inflictEffect);
+        _playerCtrl.StartCoroutine(DelayHit(delayTime));
+    }
+
+    public IEnumerator DelayHit(float waitTime)
+    {
+        // Wait for (waitTime)
+        yield return new WaitForSeconds(waitTime);
+
+        // Call Attack method
         _playerCtrl.MeleeAttack(inflictEffect);
     }
 

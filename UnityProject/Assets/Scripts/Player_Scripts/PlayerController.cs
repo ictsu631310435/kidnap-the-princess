@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public bool canMove;
     [HideInInspector] public bool canAttack;
 
+    public Animator charaAnimator;
+
     [Header("Audio")]
     public AudioHandler audioHandler;
     #endregion

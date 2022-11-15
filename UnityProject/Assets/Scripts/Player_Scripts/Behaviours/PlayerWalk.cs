@@ -17,6 +17,8 @@ public class PlayerWalk : StateMachineBehaviour
         // Get Components
         _playerCtrl = animator.gameObject.GetComponent<PlayerController>();
         _rigidbody = animator.gameObject.GetComponent<Rigidbody2D>();
+
+        _playerCtrl.charaAnimator.transform.localPosition = new Vector3(0, 0, -0.25f);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -29,6 +31,7 @@ public class PlayerWalk : StateMachineBehaviour
             {
                 // Set bool for state Transition to "Idle"
                 animator.SetBool("isWalking", false);
+                _playerCtrl.charaAnimator.SetBool("isWalking", false);
             }
             // Player is still walking
             else
@@ -43,18 +46,21 @@ public class PlayerWalk : StateMachineBehaviour
                 {
                     // Set trigger for state Transition to "Melee Attack"
                     animator.SetTrigger("Dash");
+                    _playerCtrl.charaAnimator.SetTrigger("Dash");
                 }
                 // Player inputs "MeleeAttack", Transition to "Melee Attack" state
                 else if (Input.GetButtonDown("MeleeAttack") && _playerCtrl.canAttack)
                 {
                     // Set trigger for state Transition to "Melee Attack"
                     animator.SetTrigger("MeleeAtk");
+                    _playerCtrl.charaAnimator.SetTrigger("MeleeAtk");
                 }
                 // Player inputs "RangedAttack", Transition to Ranged Attack state
                 else if (Input.GetButtonDown("RangedAttack") && _playerCtrl.canAttack)
                 {
                     // Set trigger for state Transition to "Ranged Attack"
                     animator.SetTrigger("RangedAtk");
+                    _playerCtrl.charaAnimator.SetTrigger("RangedAtk");
                 }
             }
         }   
@@ -68,6 +74,7 @@ public class PlayerWalk : StateMachineBehaviour
 
         // Make sure isWalking = false when Exit this State
         animator.SetBool("isWalking", false);
+        _playerCtrl.charaAnimator.SetBool("isWalking", false);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
