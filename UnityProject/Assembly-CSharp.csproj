@@ -98,6 +98,8 @@
     <Compile Include="Assets\Scripts\MaterialFlashHandler.cs" />
     <Compile Include="Assets\Scripts\Player_Scripts\Behaviours\PlayerMeleeAttack.cs" />
     <Compile Include="Assets\Scripts\Player_Scripts\Behaviours\PlayerIdle.cs" />
+    <Compile Include="Assets\Scripts\Enemy_Scripts\_BaseEnemy\EnemyDead.cs" />
+    <Compile Include="Assets\Scripts\Story_Scripts\FixEndingScene.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

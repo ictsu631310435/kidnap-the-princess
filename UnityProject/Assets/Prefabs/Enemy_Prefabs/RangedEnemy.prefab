@@ -48,12 +48,14 @@ MonoBehaviour:
   - name: Attack
     audioClip: {fileID: 8300000, guid: 5f9a6ad9701b59a43867602f063070d6, type: 3}
     mixerGroup: {fileID: -2190507236778344, guid: 84be4c6830c0a7848ae95dd0e8b6e5cf, type: 2}
+    loop: 0
     volume: 1
     pitch: 1
     source: {fileID: 0}
   - name: Fireball
     audioClip: {fileID: 8300000, guid: 93e529640497d2e43ab6c18869012b3b, type: 3}
     mixerGroup: {fileID: -2190507236778344, guid: 84be4c6830c0a7848ae95dd0e8b6e5cf, type: 2}
+    loop: 0
     volume: 0.5
     pitch: 1
     source: {fileID: 0}
@@ -132,6 +134,7 @@ MonoBehaviour:
   aiPath: {fileID: 0}
   aiDestination: {fileID: 0}
   rb: {fileID: 0}
+  stateMachine: {fileID: 8922856266008625270}
   charaAnimator: {fileID: 1254824886033988454}
   audioHandler: {fileID: 4043201268654678443}
   projectile: {fileID: 7828675481890059469, guid: f844ebc992020be4e8db45d3e4944b38, type: 3}
@@ -580,7 +583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  uniqueID: 3078552044711340725
+  uniqueID: 6763328656702829141
   updateError: 1
   checkTime: 0.2
 --- !u!114 &9040485118323239211
@@ -694,6 +697,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MageIdle
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b0fe271534c305148b9fb024ac3be70c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0fe271534c305148b9fb024ac3be70c, type: 3}
 --- !u!1 &1134666406347723364 stripped
@@ -773,7 +780,7 @@ Animator:
   m_GameObject: {fileID: 2887744517382614612}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1b0391ef6c959d546b331559d61d6f50, type: 2}
+  m_Controller: {fileID: 9100000, guid: 594cbbecb6b4ae4409b2d5762e23a45e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1211,6 +1218,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8922856266008625264}
     m_Modifications:
+    - target: {fileID: 5561980262163279853, guid: 0f0a2c7ab3c9a30418f3711e8faee2a6, type: 3}
+      propertyPath: uniqueID
+      value: 7211633790974426890
+      objectReference: {fileID: 0}
     - target: {fileID: 5561980262163279853, guid: 0f0a2c7ab3c9a30418f3711e8faee2a6, type: 3}
       propertyPath: m_Enabled
       value: 1

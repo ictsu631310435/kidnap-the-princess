@@ -60,10 +60,19 @@ public class HeroEnemy : Enemy
 
     public override void Die()
     {
+        base.Die();
+
+        // End boss fight
+        //GameManager.Instance.bossAlive = false;
+        StartCoroutine(DelayWin());
+    }
+
+    public IEnumerator DelayWin()
+    {
+        yield return new WaitForSeconds(2.5f);
+
         // End boss fight
         GameManager.Instance.bossAlive = false;
-
-        base.Die();
     }
     #endregion
 }

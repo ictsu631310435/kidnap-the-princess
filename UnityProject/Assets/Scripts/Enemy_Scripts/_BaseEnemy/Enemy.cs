@@ -28,6 +28,7 @@ public abstract class Enemy : MonoBehaviour
 
     [HideInInspector] public Rigidbody2D rb;
 
+    public Animator stateMachine;
     public Animator charaAnimator;
 
     [Header("Audio")]
@@ -142,11 +143,10 @@ public abstract class Enemy : MonoBehaviour
 
     public virtual void Die()
     {
-        //PlayerController _playerCtrl = FindObjectOfType<PlayerController>();
-        //_playerCtrl.GetComponent<HealthHandler>().ChangeHealth(+1);
+        stateMachine.SetBool("isDead", true);
+        charaAnimator.SetBool("isDead", true);
 
-        //gameObject.SetActive(false);
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
     #endregion
 }

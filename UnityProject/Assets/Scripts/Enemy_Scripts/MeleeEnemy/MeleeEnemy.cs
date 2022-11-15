@@ -88,9 +88,9 @@ public class MeleeEnemy : Enemy
 
     public override void Die() 
     {
-        Destroy(waypoint.gameObject);
-
         base.Die();
+
+        Destroy(waypoint.gameObject, 2f);
     }
 
     // Unused
