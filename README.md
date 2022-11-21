@@ -12,4 +12,8 @@ Kidnap the Princess
 631310089 นทีธร ธรรมชาติ   (2D Artist)      https://github.com/ictsu631310089 \
 631310435 จิรพัทธ์ สายสืบ   (Technical Artist)      https://github.com/ictsu631310435
 
+### Links
+ลิงก์ดาวน์โหลดเกม: https://katathon-s-ictsu.itch.io/kidnap-the-princess
+
+### Engine
 Unity 2021.3.8f1
