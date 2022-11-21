@@ -13,7 +13,8 @@ Kidnap the Princess
 631310435 จิรพัทธ์ สายสืบ   (Technical Artist)      https://github.com/ictsu631310435
 
 ### Links
-ลิงก์ดาวน์โหลดเกม: https://katathon-s-ictsu.itch.io/kidnap-the-princess
+ลิงก์ดาวน์โหลดเกม: https://katathon-s-ictsu.itch.io/kidnap-the-princess \
+เพลย์ลิสต์วิดีโอการพัฒนาเกม: https://www.youtube.com/playlist?list=PLF8ijClPzZs8snRN80gIGvmUowds4fWfD
 
 ### Engine
 Unity 2021.3.8f1
